@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+.result-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.result-title {
+    text-align: center;
+    font-size: 3.5em;
+    color: #333;
+    margin-top: 5vw;
+    margin-bottom: 4vw;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.result-section {
+    width: 45%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+.result-section:hover {
+    transform: scale(1.05);
+}
+
+.section-title {
+    font-size: 1.5em;
+    color: #000;
+    border-bottom: 2px solid #499c58;
+    padding-bottom: 10px;
+    margin-bottom: 2vw;
+    margin-top: 0.5vw;
+}
+
+.result-list {
+    list-style-type: none; /* 기본 점 제거 */
+    padding: 0;
+}
+
+.result-list li {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    display: flex; /* 날짜와 텍스트를 나란히 배치 */
+    flex-wrap: wrap; /* 긴 텍스트 줄바꿈 허용 */
+    align-items: flex-start; /* 수직 정렬을 시작 위치로 */
+}
+
+.result-date {
+    font-weight: bold;
+    color: #000;
+    margin-right: 10px; /* 날짜와 텍스트 사이의 간격 */
+    white-space: nowrap; /* 날짜 줄바꿈 방지 */
+    flex-shrink: 0; /* 날짜가 줄어들지 않도록 고정 */
+    margin-top: 0.3vw;
+    margin-right: 1vw;
+}
+
+.result-text {
+    flex: 1; /* 남은 공간을 텍스트가 차지하도록 설정 */
+    white-space: normal; /* 텍스트 줄바꿈 허용 */
+    margin-top: 5px; /* 텍스트가 줄바꿈 될 때, 날짜와의 간격 추가 */
+}
+ 
+
+/* 왼쪽에서 오른쪽으로 슬라이드 */
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 오른쪽에서 왼쪽으로 슬라이드 */
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+
+/* 애니메이션 적용 */
+.slide-in-left {
+    transform: translateX(-100%);
+    animation: slideInLeft 0.6s ease forwards;
+}
+
+.slide-in-right {
+    transform: translateX(100%);
+    animation: slideInRight 0.6s ease forwards;
+}
+
+/* 모바일 레이아웃을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+    .result-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .result-section {
+        width: 90%;
+        opacity: 0;
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    
+    .result-title {
+        font-size: 2.5em;
+        margin-bottom: 20vw;
+        margin-top: 15vw;
+    }
+
+    .result-list li {
+        flex-wrap: wrap; /* 긴 텍스트 줄바꿈 허용 */
+    }
+
+    .result-date {
+        width: auto; /* 날짜 너비 자동 조정 */
+        margin-bottom: 5px; /* 날짜와 텍스트 사이 간격 조정 */
+        margin-top: 5px;
+        font-size: 0.9em;
+        margin-right: 4.5vw;
+    }
+
+    .result-text {
+        width: 100%; /* 텍스트가 남은 공간을 차지 */
+        font-size: 0.9em;
+    }
+}
