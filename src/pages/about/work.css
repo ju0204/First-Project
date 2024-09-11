@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100px); /* 시작 위치를 아래로 설정 */
+        opacity: 0; /* 불투명도를 0으로 시작 */
+    }
+    100% {
+        transform: translateY(0); /* 끝 위치를 원래 위치로 설정 */
+        opacity: 1; /* 불투명도를 1로 설정 */
+    }
+}
+
+/* 각 부서의 박스와 리스트에 개별적으로 애니메이션을 적용 */
+.ceo-box, .department-box, .department-list {
+    animation: slideUp 1s ease-out; /* 애니메이션 적용 */
+}
+
+/* 각 부서별로 약간의 딜레이를 줘서 순차적으로 올라오게 할 수 있음 */
+/* .department:nth-child(1) .department-box, .department:nth-child(1) .department-list {
+    animation-delay: 0.5s;
+}
+
+.department:nth-child(2) .department-box, .department:nth-child(2) .department-list {
+    animation-delay: 0.7s;
+}
+
+.department:nth-child(3) .department-box, .department:nth-child(3) .department-list {
+    animation-delay: 0.9s;
+} */
+
+.work-container {
+    text-align: center;
+    margin-top: 10vw;
+    padding: 4vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10vw;
+    animation: slideUp 1s ease-out; /* 애니메이션 적용 */
+}
+
+.ceo-box {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    background-color: #4A90E2;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 20vw;
+    height: 11vh;
+    margin: 0 auto;
+}
+
+.ceo-line {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    height: 10vh;
+    width: 2px;
+    background-color: black;
+    transform: translateX(-50%);
+}
+
+.departments-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5vw;
+    position: relative;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.horizontal-line {
+    position: absolute;
+    top: 0;
+    left: 16.7%;
+    right: 16.6%;
+    height: 2px;
+    background-color: black;
+}
+
+.department {
+    margin: 0 40px;
+    text-align: center;
+    position: relative;
+    flex-grow: 1;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 10vh;
+    background-color: black;
+    transform: translateX(-50%);
+}
+
+.department-box {
+    background-color: #B3D4FC;
+    padding: 10px;
+    font-weight: bold;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 30px;
+    margin-top: 5vw;
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    height: 10vh;
+    position: relative;
+}
+
+.department-list {
+    padding-left: 9vw;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    list-style-type: disc;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 20px; /* 리스트 항목의 기본 글꼴 크기 */
+    line-height: 1.5; /* 리스트 항목 사이의 간격 */
+    text-align: left; /* 리스트 항목을 왼쪽 정렬 */
+}
+
+
+.department-item {
+    font-family: "Noto Sans KR", sans-serif;
+    margin-bottom: 5px; /* 리스트 항목 사이의 하단 간격 */
+    font-size: 21px; /* 리스트 항목의 글꼴 크기 */
+}
+
+.department-item::marker {
+    margin-right: 50px;
+}
+
+/* 모바일 화면에서의 스타일 조정 */
+@media only screen and (max-width: 768px) {
+    .work-container {
+        padding: 2vw;
+        width: 100%;
+    }
+
+    .ceo-box {
+        font-size: 6vw;
+        width: 30vw;
+        height: 9vh;
+    }
+
+    .ceo-line {
+        height: 5vh;
+    }
+
+    .departments-container {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        width: 100%;
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
+    .horizontal-line {
+        width: 60%;
+        left: 20%;
+        right: 0;
+        margin-top: 1vw;
+    }
+
+    .department {
+        margin: 1vw;
+        width: 30vw;
+        text-align: center;
+    }
+
+    .department-box {
+        font-size: 4vw;
+        width: 100%;
+        height: 8vh;
+        margin-left: 0;
+        margin-top: 5vh;
+    }
+
+    .vertical-line {
+        height: 10vh;
+    }
+
+    .department-list {
+        padding-left: 1vw;
+        font-size: 3vw;
+        margin-left: 5vw;
+    }
+
+    .department-item {
+        font-size: 3.5vw;
+    }
+}

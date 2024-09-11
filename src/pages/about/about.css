@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+
+.about-about-img {
+  width: 100vw;
+  height: 60vh;
+  background-image: url('/src/pages/image/forest-fire.jpg'); /* 이미지 경로 수정 */
+  background-size: cover;
+  background-position: center;
+  margin-top: 10vh;
+  opacity: 0;
+}
+
+
+.about-about-text {
+    max-width: 100%; /* 텍스트 컨테이너의 최대 너비를 설정 */
+    word-wrap: break-word; /* 단어가 너무 길 때 자동으로 줄바꿈 */
+    overflow-wrap: break-word; /* 오래된 브라우저 호환성을 위해 추가 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수평 중앙 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    text-align: center; 
+    width: 100vw;
+    height: 60vh;
+    background-color: rgb(255, 255, 255);
+    /* border: 1px solid black; */
+    overflow: hidden;
+    opacity: 0; /* 기본적으로 숨김 */
+  }
+
+  /* 애니메이션 효과를 적용할 클래스 */
+.fade-in {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.about-about-text h1 {
+    margin-bottom: 40px; /* 제목과 본문 사이 간격 */
+    margin-left: -10px; /* 왼쪽으로 10px 이동 (원하는 값으로 조정) */
+    word-wrap: break-word;
+    padding: 10px 3vw;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: weight;
+    font-size: 3.5vw;
+    background: linear-gradient(to right top, #12702f, #a8d4b1);
+      color: transparent;
+      -webkit-background-clip: text;
+
+  }
+  
+
+  .about-about-text p {
+    margin-bottom: 40px; /* 제목과 본문 사이 간격 */
+    margin-left: -10px; /* 왼쪽으로 10px 이동 (원하는 값으로 조정) */
+    word-wrap: break-word;
+    padding: 10px 2.8vw;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: weight;
+    font-size: 1.5vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+
+  }
+
+  @media only screen and (max-width: 768px) {
+    .about-about-img {
+      height: 40vh; /* 이미지의 높이를 줄임 */
+      background-position: center;
+      background-size: cover;
+      margin-top: 5vh;
+  }
+
+  .about-about-text {
+      width: 90vw; /* 텍스트 컨테이너의 너비를 줄임 */
+      height: auto; /* 텍스트 컨테이너의 높이를 자동으로 조절 */
+      padding: 5vw 3vw; /* 텍스트 주변에 여백 추가 */
+      margin-top: 5vh;
+  }
+
+  .about-about-text h1 {
+      font-size: 5vw; /* 제목의 글자 크기를 줄임 */
+      margin-bottom: 20px; /* 제목과 본문 사이의 간격을 줄임 */
+  }
+
+  .about-about-text p {
+      font-size: 3.5vw; /* 본문의 글자 크기를 줄임 */
+      margin-bottom: 20px; /* 본문과 다음 요소 사이의 간격을 줄임 */
+      padding: 5vw; /* 본문 주변에 여백 추가 */
+      margin-left: 0;
+      margin-right: 0;
+  }
+  }

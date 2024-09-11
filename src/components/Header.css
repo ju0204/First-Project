@@ -1,0 +1,247 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+#navbar {
+  padding: 0;
+}
+
+#nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 10vh;
+  max-width: 100vw;
+  padding: 0;
+  border-bottom: solid 1px black;
+}
+
+#nav-link {
+  font-size: 1.5vw;
+  color: BLACK;
+  padding: 0.5vw 1vw;
+  border: none;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: weight;
+  white-space: nowrap; /* 글자 줄바꿈 방지 */
+}
+
+.navbar-nav {
+  display: flex;
+  flex-wrap: nowrap; /* 글자가 길어지더라도 한 줄로 표시 */
+}
+
+#nav-logo {
+  width: 4vw;
+  height: auto;
+  margin-left: 0;
+  margin-right: 3vw;
+}
+
+/* 드롭다운 화살표 숨기기 */
+.navbar-nav .nav-link {
+  position: relative;
+  }
+
+   .navbar-nav .nav-link::after {
+     display: none;
+   } 
+
+ /* 드롭다운 메뉴 애니메이션 정의 */
+   @keyframes dropdown-slide {
+     from {
+       opacity: 0;
+       max-height: 0;
+       padding-top: 0;
+       padding-bottom: 0;
+     }
+     to {
+       opacity: 1;
+       max-height: 200px; /* 최대 높이 설정 (필요에 따라 조정) */
+       padding-top: 0.5rem; /* 적절한 패딩값 설정 */
+       padding-bottom: 0.5rem; /* 적절한 패딩값 설정 */
+     }
+   }
+
+
+   /* 드롭다운 메뉴 기본 스타일 */
+   .navbar-nav .dropdown-menu {
+     opacity: 0;
+     max-height: 200px;
+     overflow: hidden;
+     transition: opacity 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
+     border: none; /* 테두리 제거 */
+     box-shadow: none; /* 그림자 제거 */
+     
+     background-color:white;
+     width: auto; /* 드롭다운 메뉴의 너비가 유동적으로 조정 */
+     min-width: 150px; /* 드롭다운 메뉴 최소 너비 설정 */
+     max-width: 50vw; /* 최대 너비 설정 */
+    padding: 0;
+    margin: 0;
+    
+   }
+
+   /* 드롭다운 메뉴가 보일 때의 스타일 */
+   .navbar-nav .dropdown-menu.show {
+     opacity: 1;
+     max-height: 300px; /* 최대 높이 설정 (필요에 따라 조정) */
+     padding-top: 0.5rem; /* 적절한 패딩값 설정 */
+     padding-bottom: 0.5rem; /* 적절한 패딩값 설정 */
+     animation: dropdown-slide 0.3s ease-out;
+     border: none; /* 테두리 제거 */
+     /* box-shadow: none;  */
+     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    }
+
+   /* 드롭다운 아이템 스타일 */
+   .navbar-nav .dropdown-item {
+     display: flex; /* 플렉스 박스 레이아웃 활성화 */
+     align-items: center; /* 수직 가운데 정렬 */
+     justify-content: center; /* 수평 가운데 정렬 */
+     border: none; /* 드롭다운 아이템의 테두리 제거 */
+     background-color: black;
+     height: auto;
+     min-width: 100px; /* 최소 너비 설정 */
+    max-width: 500px; /* 최대 너비 설정 */
+     font-size: 10px;
+     text-align: center;
+     
+     
+   }
+
+   /* 드롭다운 아이템 호버 스타일 */
+   .navbar-nav .dropdown-item:hover {
+     background-color: white; /* 호버 시 배경 색상 조정 */
+     color: #000; /* 호버 시 글자 색상 조정 */
+   }
+
+
+
+ 
+   /* 드롭다운 아이템 스타일 조정 */
+   #custom-dropdown-item {
+    /* 상하, 좌우 패딩 조정 */
+     padding: 0.5vw 0.5vw; 
+     font-size: 1.5vw;    /* 글자 크기 조정 */
+     background-color: #ffffff; /* 배경 색상 조정 */
+     font-family: "Noto Sans KR", sans-serif;
+     font-optical-sizing: auto;
+     font-weight: weight;
+     font-style: normal;
+     margin: 0;
+     min-width: 100px; /* 최소 너비 설정 */
+    max-width: 500px; /* 최대 너비 설정 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+   }
+
+  #drawer-box {
+    padding: 0;
+  }
+
+   /* 드로어 리스트 항목 스타일 */
+  #drawer-list .MuiListItemButton-root {
+    font-size: 2vw; /* 원하는 폰트 크기로 조정 */
+    padding: 10px;
+    margin-left: 30px;
+  }
+
+  #drawer-list .MuiListItemText-primary {
+    font-size: 2vw; /* 폰트 크기 조정 */
+    padding: auto;
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+  }
+
+  .close-icon-box {
+    margin-bottom: 30px;
+  }
+
+  /* 'x' 아이콘을 포함하는 버튼의 스타일 */
+.close-button {
+  /* 버튼의 배경색을 투명하게 설정 */
+  background-color: transparent !important;
+
+  /* 버튼 크기 조정 */
+  width: 80px;
+  height: 80px;
+
+  /* 버튼에 약간의 여백 추가 */
+  margin: 30px;
+  margin-bottom: 100px;
+}
+
+/* 'x' 아이콘의 스타일 */
+#close-icon {
+  /* 아이콘의 색상 조정 */
+  color: black;
+
+  /* 아이콘의 크기 조정 */
+  font-size: 4vw;
+  margin-left: 1rem;
+  
+  /* 추가적인 스타일 조정 가능 */
+}
+
+/*폰트*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+
+
+/* 화면 크기가 전체화면일때 */
+@media (max-width: 100vw) {
+    #nav-logo {
+      margin-left: 40px;
+      
+    }
+    #nav-menu {
+      width: 3vw;
+      height: auto;
+      margin-right: 3vw;
+      
+    }
+
+    #drawer-list {
+      width: 50vw;
+    }
+    
+ }
+ 
+/* 모바일일 때 */
+ @media only screen and (max-width: 768px) {
+  #nav-logo {
+    width: 10vw;
+    margin-left: 5vw;
+  }
+
+  #navbar .nav-link {
+    display: none; /* 글자 숨기기 */
+  }
+
+  #drawer-list {
+    width: 100vw;
+  }
+
+  #nav-menu {
+    width: 10vw;
+  }
+
+  #close-icon {
+    font-size: 12vw;
+  }
+
+  #drawer-list .MuiListItemText-primary {
+    font-size: 8vw;
+  }
+
+ }
+
+
+
+
+
+  
