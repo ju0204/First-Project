@@ -122,21 +122,21 @@
 /* 모바일 레이아웃을 위한 미디어 쿼리 */
 @media (max-width: 768px) {
     .result-content {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* 세로 정렬 */
+        align-items: center; 
     }
 
     .result-section {
-        width: 90%;
+        width: 100%; /* 가로 너비를 100%로 변경하여 빈틈 제거 */
+        margin: 10px 0; /* 상하 여백을 추가하여 요소 간 간격 확보 */
         opacity: 0;
         transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    
     .result-title {
         font-size: 2.5em;
-        margin-bottom: 20vw;
-        margin-top: 15vw;
+        margin-bottom: 5vw; /* 하단 여백을 더 적게 조정 */
+        margin-top: 10vw; /* 상단 여백을 더 적게 조정 */
     }
 
     .result-list li {
@@ -148,7 +148,7 @@
         margin-bottom: 5px; /* 날짜와 텍스트 사이 간격 조정 */
         margin-top: 5px;
         font-size: 0.9em;
-        margin-right: 4.5vw;
+        margin-right: 10px; /* 날짜와 텍스트 간격 조정 */
     }
 
     .result-text {
