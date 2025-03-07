@@ -7,7 +7,7 @@ function Contact() {
   useEffect(() => {
     const script = document.createElement("script");
     script.async = true;
-    script.src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=28342c70caab6310c13b7cc6d6f4c840&autoload=false";
+    script.src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=86678a8e64a8c649d1b7fb0d1b5aa63b&autoload=false";
     document.head.appendChild(script);
 
     script.onload = () => {

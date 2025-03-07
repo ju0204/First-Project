@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+.one-container {
+    justify-content: space-between;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.introduce-text1 {
+    flex: 1;
+    margin-left: 9vw;
+    margin-top: 8vw;
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 3.5vw;
+    animation: slideUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+.introduce-text2 {
+    flex: 1;
+    margin-left: 11vw;
+    margin-top: 2.5vw;
+    margin-right: 5vw;
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.8vw;
+    animation: slideUp 1s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+.introduce-text2::before {
+    content: ''; /* 가상 요소에 내용 추가 */
+    position: absolute; /* 부모 요소를 기준으로 절대 위치 설정 */
+    left: -1.5vw; /* introduce-text2의 왼쪽에서 선의 위치 조정 */
+    top: 0; /* 상단 정렬 */
+    width: 0.5vw; /* 선의 두께 */
+    height: 100%; /* introduce-text2의 높이와 동일하게 설정 */
+    background-color: #499c58; /* 선의 색상 */
+}
+
+.install-line {
+    position: relative; 
+    width: 100%; 
+    border-top: 1px solid rgb(198, 195, 195);
+    margin-bottom: 2vw;
+    margin-top: 4vw;
+}
+
+
+.repair-two-container {
+    margin-top: 3vw;
+    /* width: 80%; */
+}
+
+.repair-need-title h1 {
+    
+    margin-bottom: 5vw;
+    margin-left:10vw;
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 3vw;
+    margin-top: 4vw;
+   
+}
+
+
+
+/*필요한 곳 리스트!!*/
+.repair-need-ex-container {
+    display: flex; /* Flexbox를 사용하여 내부 요소를 수평 정렬 */
+    justify-content: left; /* 가로 중앙 정렬 */
+    align-items: left; /* 세로 중앙 정렬 (선택 사항) */
+    width: 80%; /* 원하는 너비 설정 */
+    margin: 0 auto; /* 중앙 정렬을 위한 자동 마진 */
+    border: 1px solid #bab5b5;
+    /* border-radius: 30px 30px;; */
+    margin-bottom: 5%;
+   
+}
+
+
+
+.repair-need-list {
+    display: flex;
+    flex-direction: column; /* 리스트 항목을 세로로 정렬 */
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0;
+    margin: 2%;
+    
+
+}
+
+.repair-need-list li {
+    display: flex;
+    align-items: baseline; /* h2와 p의 베이스라인 맞추기 */
+    gap: 10px; /* h2와 p 사이의 간격 조정 */
+    padding: 3px 0; /* 상하 패딩 */
+}
+
+.repair-need-number {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    background-color: white;
+    text-align: center;
+    line-height: 30px; /* 세로로 가운데 정렬 */
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    margin-right: 10px; /* 날짜와 텍스트 사이의 간격 */
+    white-space: nowrap; /* 날짜 줄바꿈 방지 */
+    flex-shrink: 0; /* 날짜가 줄어들지 않도록 고정 */
+    margin-top: 0.3vw;
+    margin-right: 1vw;
+    margin-left: 2vw;
+}
+
+.repair-need-text {
+    flex: 1; /* 남은 공간을 텍스트가 차지하도록 설정 */
+    white-space: normal; /* 텍스트 줄바꿈 허용 */
+    margin-top: 0px; /* 텍스트가 줄바꿈 될 때, 날짜와의 간격 추가 */
+    margin-bottom: 0;
+}
+
