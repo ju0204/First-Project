@@ -13,6 +13,7 @@ function Ask() {
     const name = f.elements["from_name"]?.value?.trim();
     const email = f.elements["from_email"]?.value?.trim();
     const phone = f.elements["from_phone"]?.value?.trim();
+    const company = f.elements["company"]?.value?.trim();
     const subject = f.elements["subject"]?.value?.trim();
     const message = f.elements["message"]?.value?.trim();
     const agree = f.elements["agree"]?.checked;
@@ -37,6 +38,7 @@ function Ask() {
           name,
           email,
           phone,
+          company,
           subject,
           message,
           agree,
@@ -152,11 +154,10 @@ function Ask() {
           <div className="agree">
             <input id="agree" name="agree" type="checkbox" required disabled={status.sending} />
             <label htmlFor="agree">
-              (필수) 개인정보 수집·이용에 동의합니다.
-              <br />
-              <small>수집 항목: 이름, 이메일, 연락처, 문의내용 / 보유·이용기간: 문의 처리 후 1년</small>
+                <span className="lead">(필수) 개인정보 수집·이용에 동의합니다.</span>
+                <small>수집 항목: 이름, 이메일, 연락처, 문의내용 / 보유·이용기간: 문의 처리 후 1년</small>
             </label>
-          </div>
+            </div>
 
           {/* 상태 메시지 */}
           {status.error && <p className="status error">{status.error}</p>}
