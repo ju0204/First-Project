@@ -64,6 +64,7 @@ input:focus, textarea:focus{
   align-items:flex-start;   /* 멀티라인일 때 체크박스와 텍스트 윗줄 정렬 */
   gap:15px;                 /* 체크박스 ↔ 텍스트 간격 (원하면 6~12px로 조절) */
   margin:14px 0 10px;       /* 영역 바깥 여백 */
+  margin-left: 20px;
   padding-top:2px;
 }
 
@@ -71,7 +72,8 @@ input:focus, textarea:focus{
   flex:0 0 auto;
   width:18px; height:18px;  /* 체크박스 크기 */
   margin:0;                 /* 개별 마진 제거(간격은 gap으로 관리) */
-  margin-top:2px;           /* 수평선 맞추기 위해 살짝 내려줌(옵션) */
+  margin-top:2px;   
+
 }
 
 .agree label{
@@ -85,6 +87,7 @@ input:focus, textarea:focus{
   display:inline-block;
   white-space:nowrap;       /* “(필수)…동의합니다.” 한 줄 유지 */
   font-weight:700;          /* 한 줄 문구는 더 굵게 */
+  font-size:14px; 
 }
 
 .agree small{
@@ -101,7 +104,17 @@ input:focus, textarea:focus{
 }
 
 /* Buttons */
-.actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+/* Buttons */
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:6px;
+  justify-content:center;   /* ✅ 가운데 정렬 */
+  align-items:center;        /* (선택) 수직 중앙정렬 */
+  margin-top: 40px;
+}
+
 .btn{
   appearance:none; border:none; border-radius:10px; padding:12px 16px;
   font-weight:800; cursor:pointer; background:#e5e7eb;

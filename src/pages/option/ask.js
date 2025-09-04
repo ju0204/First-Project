@@ -1,3 +1,4 @@
+// Ask.jsx
 import React, { useRef, useState } from "react";
 import Footer from "../../components/Footer";
 import "./ask.css";
@@ -17,7 +18,7 @@ function Ask() {
     const subject = f.elements["subject"]?.value?.trim();
     const message = f.elements["message"]?.value?.trim();
     const agree = f.elements["agree"]?.checked;
-    const honeypot = f.elements["website"]?.value; // 봇 방지(사용자에겐 숨김)
+    const honeypot = f.elements["website"]?.value;
 
     if (!agree) {
       setStatus({ sending: false, ok: false, error: "개인정보 처리에 동의해 주세요." });
@@ -35,20 +36,17 @@ function Ask() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
-          email,
-          phone,
-          company,
-          subject,
-          message,
-          agree,
-          honeypot,
+          name, email, phone, company, subject, message, agree, honeypot,
         }),
       });
 
       if (!res.ok) throw new Error("send_failed");
+
       setStatus({ sending: false, ok: true, error: "" });
       f.reset();
+
+      // ✅ 전송 성공 알림
+      alert("전송되었습니다. 빠르게 확인 후 연락드리겠습니다!");
     } catch (err) {
       console.error(err);
       setStatus({
@@ -70,53 +68,23 @@ function Ask() {
 
       <section className="form-area">
         <form ref={formRef} onSubmit={handleSubmit} aria-busy={status.sending}>
-          {/* ✅ 수신자 고정은 프론트에서 하지 않습니다. (CONTACT_TO는 서버 환경변수로 관리) */}
-          {/* ❌ <input type="hidden" name="to_email" ...> 제거 */}
-
-          {/* 허니팟(봇 방지) — 사용자에게는 보이지 않음 */}
-          <input
-            type="text"
-            name="website"
-            tabIndex="-1"
-            autoComplete="off"
-            className="hp"
-            aria-hidden="true"
-          />
+          <input type="text" name="website" tabIndex="-1" autoComplete="off" className="hp" aria-hidden="true" />
 
           <div className="row two">
             <div className="field">
               <label className="req" htmlFor="from_name">이름</label>
-              <input
-                id="from_name"
-                name="from_name"
-                placeholder="홍길동"
-                required
-                disabled={status.sending}
-              />
+              <input id="from_name" name="from_name" placeholder="홍길동" required disabled={status.sending} />
             </div>
             <div className="field">
               <label className="req" htmlFor="from_email">이메일</label>
-              <input
-                id="from_email"
-                name="from_email"
-                type="email"
-                placeholder="you@example.com"
-                required
-                disabled={status.sending}
-              />
+              <input id="from_email" name="from_email" type="email" placeholder="you@example.com" required disabled={status.sending} />
             </div>
           </div>
 
           <div className="row two">
             <div className="field">
               <label htmlFor="from_phone">전화번호</label>
-              <input
-                id="from_phone"
-                name="from_phone"
-                type="tel"
-                placeholder="010-1234-5678"
-                disabled={status.sending}
-              />
+              <input id="from_phone" name="from_phone" type="tel" placeholder="010-1234-5678" disabled={status.sending} />
             </div>
             <div className="field">
               <label htmlFor="company">회사명</label>
@@ -127,41 +95,28 @@ function Ask() {
           <div className="row one">
             <div className="field">
               <label className="req" htmlFor="subject">제목</label>
-              <input
-                id="subject"
-                name="subject"
-                placeholder="예: 유지보수 문의"
-                required
-                disabled={status.sending}
-              />
+              <input id="subject" name="subject" placeholder="예: 유지보수 문의" required disabled={status.sending} />
             </div>
           </div>
 
           <div className="row one">
             <div className="field">
               <label className="req" htmlFor="message">내용</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="문의 내용을 입력해 주세요."
-                required
-                disabled={status.sending}
-              />
+              <textarea id="message" name="message" placeholder="문의 내용을 입력해 주세요." required disabled={status.sending} />
             </div>
           </div>
 
-          {/* 개인정보 동의 */}
           <div className="agree">
             <input id="agree" name="agree" type="checkbox" required disabled={status.sending} />
             <label htmlFor="agree">
-                <span className="lead">(필수) 개인정보 수집·이용에 동의합니다.</span>
-                <small>수집 항목: 이름, 이메일, 연락처, 문의내용 / 보유·이용기간: 문의 처리 후 1년</small>
+              <span className="lead">(필수) 개인정보 수집·이용에 동의합니다.</span>
+              <small>수집 항목: 이름, 이메일, 연락처, 문의내용 / 보유·이용기간: 문의 처리 후 1년</small>
             </label>
-            </div>
+          </div>
 
-          {/* 상태 메시지 */}
+          {/* 에러만 화면에 표시 (성공은 alert로 대체) */}
           {status.error && <p className="status error">{status.error}</p>}
-          {status.ok && <p className="status ok">전송되었습니다. 빠르게 확인 후 연락드리겠습니다!</p>}
+          {/* {status.ok && <p className="status ok">전송되었습니다. 빠르게 확인 후 연락드리겠습니다!</p>} */}
 
           <div className="actions">
             <button className="btn primary" type="submit" disabled={status.sending}>

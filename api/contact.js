@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
 
   const esc = (s='') => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const html = `
-    <h2>웹 문의 도착</h2>
+    <h2>문의</h2>
     <ul>
       <li><b>이름</b>: ${esc(name)}</li>
       <li><b>이메일</b>: ${esc(email)}</li>
