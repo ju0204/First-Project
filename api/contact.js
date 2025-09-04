@@ -1,14 +1,14 @@
-// /api/contact.js  (CommonJS)
+// /api/contact.js (CommonJS)
 const { Resend } = require('resend');
 
 module.exports = async (req, res) => {
-  // CORS/프리플라이트(같은 프로젝트면 무해, 다른 도메인이면 도움됨)
+  console.log('[contact] method =', req.method, 'url =', req.url); // ← 추가
+
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(204).end();
 
-  // 헬스체크용: GET은 살아있는지만 확인
   if (req.method === 'GET') {
     return res.status(200).json({ ok: true, note: 'Use POST to send email' });
   }
@@ -16,15 +16,13 @@ module.exports = async (req, res) => {
     return res.status(405).json({ ok: false, error: 'method_not_allowed' });
   }
 
-  // 바디 파싱
   let body = req.body || {};
   if (typeof body === 'string') {
-    try { body = JSON.parse(body || '{}'); } catch { return res.status(400).json({ ok:false, error:'invalid_json' }); }
+    try { body = JSON.parse(body || '{}'); }
+    catch { return res.status(400).json({ ok:false, error:'invalid_json' }); }
   }
 
   const { name, email, phone, subject, message, agree, honeypot, company } = body || {};
-
-  // 봇/유효성
   if (honeypot) return res.status(200).json({ ok: true });
   if (!agree || !name || !email || !subject || !message) {
     return res.status(400).json({ ok: false, error: 'invalid_input' });
@@ -47,9 +45,9 @@ module.exports = async (req, res) => {
 
   try {
     await resend.emails.send({
-      from: process.env.CONTACT_FROM,           // 예: '문의 <contact@juhee.store>' (Resend에서 인증된 도메인)
-      to: process.env.CONTACT_TO,               // 예: 'p1106000@naver.com'
-      reply_to: `${name} <${email}>`,           // ✅ Reply-To (snake_case)
+      from: process.env.CONTACT_FROM,
+      to: process.env.CONTACT_TO,
+      reply_to: `${name} <${email}>`,
       subject: `[문의] ${subject} — ${name}`,
       text: [
         `보낸사람: ${name}`,
