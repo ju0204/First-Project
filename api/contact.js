@@ -1,46 +1,70 @@
-// /api/contact.js
-import { Resend } from 'resend';
+// /api/contact.js  (CommonJS)
+const { Resend } = require('resend');
 
-export default async function handler(req, res) {
-  // 허용 메서드 제한
-  if (req.method === 'OPTIONS') {
-    // (서브도메인이 다르면 CORS 필요. 같은 Vercel 프로젝트면 보통 불필요)
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    return res.status(204).end();
+module.exports = async (req, res) => {
+  // CORS/프리플라이트(같은 프로젝트면 무해, 다른 도메인이면 도움됨)
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.status(204).end();
+
+  // 헬스체크용: GET은 살아있는지만 확인
+  if (req.method === 'GET') {
+    return res.status(200).json({ ok: true, note: 'Use POST to send email' });
   }
-  if (req.method !== 'POST') return res.status(405).end();
+  if (req.method !== 'POST') {
+    return res.status(405).json({ ok: false, error: 'method_not_allowed' });
+  }
 
-  // JSON 파싱 (Vercel은 보통 req.body가 객체지만, 안전하게 처리)
-  const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
-  const { name, email, phone, subject, message, agree, honeypot } = body;
+  // 바디 파싱
+  let body = req.body || {};
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body || '{}'); } catch { return res.status(400).json({ ok:false, error:'invalid_json' }); }
+  }
 
-  // 간단 검증 + 봇(Honeypot) 차단
-  if (honeypot) return res.status(200).json({ ok: true }); // 봇이면 조용히 성공처럼
-  if (!agree) return res.status(400).json({ error: 'privacy_required' });
-  if (!name || !email || !subject || !message) return res.status(400).json({ error: 'missing_fields' });
+  const { name, email, phone, subject, message, agree, honeypot, company } = body || {};
+
+  // 봇/유효성
+  if (honeypot) return res.status(200).json({ ok: true });
+  if (!agree || !name || !email || !subject || !message) {
+    return res.status(400).json({ ok: false, error: 'invalid_input' });
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  const esc = (s='') => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const html = `
+    <h2>웹 문의 도착</h2>
+    <ul>
+      <li><b>이름</b>: ${esc(name)}</li>
+      <li><b>이메일</b>: ${esc(email)}</li>
+      <li><b>전화</b>: ${esc(phone || '')}</li>
+      <li><b>회사</b>: ${esc(company || '')}</li>
+      <li><b>제목</b>: ${esc(subject)}</li>
+    </ul>
+    <pre style="white-space:pre-wrap;font-family:inherit;border:1px solid #eee;padding:12px;border-radius:8px;">${esc(message)}</pre>
+  `;
 
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
     await resend.emails.send({
-      from: process.env.CONTACT_FROM,         // ex) 'Contact <noreply@yourdomain.com>'
-      to: process.env.CONTACT_TO,             // ex) 'contact@yourdomain.com'
-      replyTo: email,                         // “답장” 누르면 문의자에게
+      from: process.env.CONTACT_FROM,           // 예: '문의 <contact@juhee.store>' (Resend에서 인증된 도메인)
+      to: process.env.CONTACT_TO,               // 예: 'p1106000@naver.com'
+      reply_to: `${name} <${email}>`,           // ✅ Reply-To (snake_case)
       subject: `[문의] ${subject} — ${name}`,
       text: [
         `보낸사람: ${name}`,
         `이메일: ${email}`,
         `전화: ${phone || '-'}`,
+        `회사: ${company || '-'}`,
         '',
         message
       ].join('\n'),
+      html
     });
 
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('[contact] send_failed:', err);
-    return res.status(500).json({ error: 'send_failed' });
+    return res.status(500).json({ ok: false, error: 'send_failed' });
   }
-}
+};
