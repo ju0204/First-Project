@@ -57,7 +57,15 @@ module.exports = async (req, res) => {
         '',
         message
       ].join('\n'),
-      html
+      html,
+
+      reply_to: `${name} <${email}>`,
+
+
+      replyTo: `${name} <${email}>`,
+
+
+      headers: { 'Reply-To': `${name} <${email}>` },
     });
 
     return res.status(200).json({ ok: true });
