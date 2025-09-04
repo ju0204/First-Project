@@ -1,158 +1,240 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;800;900&display=swap');
 
-.result-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    font-family: "Noto Sans KR", sans-serif;
+/* ===== Variables ===== */
+:root{
+  /* colors */
+  --ink:#0f172a;
+  --muted:#6b7280;
+  --line:#c7d2fe;            /* 중앙 라인 */
+  --dot:#3b82f6;             /* 도트/강조색 */
+  --card:#ffffff;
+
+  /* effects */
+  --shadow: 0 8px 26px rgba(2,6,23,.08);
+  --radius:18px;
+  --brand:#3b82f6;
+
+  /* layout (desktop) */
+  --center-col: 96px;        /* 가운데(라인+월) 컬럼 폭 */
+  --col-gap: clamp(26px, 4.8vw, 56px);  /* 좌/우 컬럼과의 간격 */
+  --gap-dot-month-desktop: 52px;        /* dot ↔ 월배지 간격 */
+
+  /* layout (mobile) */
+  --gap-dot-month-mobile: 28px;         /* dot ↔ 월배지 간격 */
+  --mobile-dot-offset: 26px;            /* 행의 상단에서 dot 중심까지 */
+  --mobile-badge-offset: 10px;          /* 행의 상단에서 배지 상단까지 */
 }
 
-.result-title {
-    text-align: center;
-    font-size: 3.5em;
-    color: #333;
-    margin-top: 5vw;
-    margin-bottom: 4vw;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: slideUp 0.6s ease forwards;
+/* ===== Shell ===== */
+.history-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(16px,4vw,28px) clamp(12px,3vw,16px) 80px;
+  font-family: "Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--ink);
 }
 
-@keyframes slideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Header */
+.result-title{
+  text-align:center;
+  font-size: clamp(28px, 4.2vw, 48px);
+  margin-top: clamp(28px, 6vw, 72px);
+  margin-bottom: 8px;
+}
+.result-sub{
+  text-align:center;
+  color: var(--muted);
+  margin: 0 0 clamp(24px, 4vw, 40px);
+  font-size: clamp(14px,1.6vw,18px);
 }
 
-.result-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+/* ===== Timeline ===== */
+.timeline{
+  position: relative;
+  padding: 18px 0 40px;
+}
+.timeline::before{
+  content:"";
+  position:absolute; top:0; bottom:0; left:50%;
+  width:2px; transform:translateX(-50%);
+  background: linear-gradient(180deg, transparent 0, var(--line) 10%, var(--line) 90%, transparent 100%);
+  z-index: 0;
 }
 
-.result-section {
-    width: 45%;
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    opacity: 0;
+/* Year badge + mask */
+.tl-year-group{ margin-bottom: clamp(36px, 6vw, 60px); }
+.tl-year{
+  position: relative;
+  display:flex; justify-content:center; align-items:center;
+  margin-bottom: clamp(16px, 4vw, 24px);
+  z-index: 1;
+}
+.tl-year::after{
+  content:"";
+  position:absolute; left:50%; top:50%;
+  transform: translate(-50%, -50%);
+  width: clamp(140px, 28vw, 240px);
+  height: clamp(38px, 6vw, 58px);
+  background:#fff; border-radius: 999px; z-index: 1;
+}
+.tl-year-badge{
+  position: relative; z-index: 2;
+  background:#fff; border: 3px solid var(--brand); color: var(--brand);
+  font-weight:800; font-size: clamp(20px, 3.6vw, 36px);
+  padding: 6px 16px; border-radius: 999px; box-shadow: var(--shadow);
 }
 
-.result-section:hover {
-    transform: scale(1.05);
+/* ===== Rows (좌/중앙/우 3열) ===== */
+.tl-list{
+  list-style:none; padding:0; margin:0;
+  display:grid;
+  grid-template-columns: 1fr var(--center-col) 1fr;
+  column-gap: var(--col-gap);
+  row-gap: clamp(28px, 4.2vw, 40px);
+}
+.tl-row{ display: contents; }
+
+.tl-col.left   { grid-column: 1 / 2; }
+.tl-col.center { grid-column: 2 / 3; display:flex; align-items:center; justify-content:flex-start; position:relative; z-index:2; }
+.tl-col.right  { grid-column: 3 / 4; }
+
+/* Center: dot + month badge */
+.tl-col.center .tl-dot{
+  position:absolute; top:50%; left:50%;
+  transform: translate(-50%, -50%);
+  width:14px; height:14px; border-radius:999px;
+  background: var(--dot);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.15);
+  z-index: 1;
+}
+.tl-month-badge{
+  margin-left: var(--gap-dot-month-desktop);
+  min-width: 42px; height: 28px; padding: 0 10px;
+  display:inline-flex; align-items:center; justify-content:center;
+  border-radius: 999px; background:#eef2ff; color:#1e40af; font-weight:800;
 }
 
-.section-title {
-    font-size: 1.5em;
-    color: #000;
-    border-bottom: 2px solid #499c58;
-    padding-bottom: 10px;
-    margin-bottom: 2vw;
-    margin-top: 0.5vw;
+/* Cards */
+.tl-cards{ display:grid; grid-template-columns: 1fr; gap:12px; opacity:0; }
+@media (min-width: 980px){ .tl-cards{ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } }
+
+.tl-card{
+  position: relative; z-index: 1;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: clamp(14px, 2.6vw, 20px) clamp(14px, 3vw, 22px);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(2,6,23,.06);
+}
+.tl-tag{
+  display:inline-block; margin-bottom:6px;
+  padding:4px 10px; background:#e0f2fe; color:#0369a1;
+  border-radius:999px; font-weight:700; font-size:12px;
+}
+.tl-text{ margin:0; line-height:1.55; color:#111827; }
+
+/* 카드가 중앙 라인에 조금 더 가까워 보이도록 */
+.tl-col.left  .tl-card{  margin-right: clamp(6px, 1.6vw, 16px); }
+.tl-col.right .tl-card{  margin-left:  clamp(6px, 1.6vw, 16px); }
+
+/* Appear animations */
+@keyframes slideLeft  { from{transform:translateX(-28px); opacity:0;} to{transform:none; opacity:1;} }
+@keyframes slideRight { from{transform:translateX( 28px); opacity:0;} to{transform:none; opacity:1;} }
+.tl-cards.left.in-view  { animation: slideLeft  .6s ease forwards; }
+.tl-cards.right.in-view { animation: slideRight .6s ease forwards; }
+
+/* ===== Mobile (<=860px) ===== */
+/* ==== Mobile (<=860px): 연도 배지를 '선 위'에, 월/카드 한 줄 정렬 ==== */
+/* ===== MOBILE 정렬 고정: dot·배지·카드 모두 같은 줄로 ===== */
+/* 모바일: 월배지 ↔ 카드 수평 정렬(같은 줄에서 시작) */
+@media (max-width: 860px){
+  :root{
+    --mobile-line-x: 28px;    /* 세로 라인 x좌표 */
+    --row-top: 8px;          /* 한 행의 '시작선' 높이(배지/카드 둘 다 적용) */
+    --badge-gap: 10px;        /* dot ↔ 배지 간격 */
+    --badge-size: 28px;       /* 월 배지 높이 (숫자 보정시 변경) */
+    --year-badge-h: clamp(38px, 6vw, 58px);
+    --year-gap-after: 40px;   /* ← 연도와 첫 월 사이 간격, 필요시 8~20px로 조절 */
+     --year-top-gap: 28px;
+     --page-left-gap: 48px; /* ← 원하는 만큼 조절(예: 16~40px) */
 }
 
-.result-list {
-    list-style-type: none; /* 기본 점 제거 */
-    padding: 0;
-}
-
-.result-list li {
-    font-size: 1.1em;
-    color: #555;
-    margin-bottom: 10px;
-    line-height: 1.5;
-    display: flex; /* 날짜와 텍스트를 나란히 배치 */
-    flex-wrap: wrap; /* 긴 텍스트 줄바꿈 허용 */
-    align-items: flex-start; /* 수직 정렬을 시작 위치로 */
-}
-
-.result-date {
-    font-weight: bold;
-    color: #000;
-    margin-right: 10px; /* 날짜와 텍스트 사이의 간격 */
-    white-space: nowrap; /* 날짜 줄바꿈 방지 */
-    flex-shrink: 0; /* 날짜가 줄어들지 않도록 고정 */
-    margin-top: 0.3vw;
-    margin-right: 1vw;
-}
-
-.result-text {
-    flex: 1; /* 남은 공간을 텍스트가 차지하도록 설정 */
-    white-space: normal; /* 텍스트 줄바꿈 허용 */
-    margin-top: 5px; /* 텍스트가 줄바꿈 될 때, 날짜와의 간격 추가 */
-}
- 
-
-/* 왼쪽에서 오른쪽으로 슬라이드 */
-@keyframes slideInLeft {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* 오른쪽에서 왼쪽으로 슬라이드 */
-@keyframes slideInRight {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.fade-in {
-    opacity: 0;
-    animation: slideUp 0.6s ease-out forwards;
+  .tl-year{
+    min-height: var(--year-badge-h);
+    margin-bottom: var(--year-gap-after);
   }
-  
 
-/* 애니메이션 적용 */
-.slide-in-left {
-    transform: translateX(-100%);
-    animation: slideInLeft 0.6s ease forwards;
-}
+.history-wrap{
+    padding-left: calc(clamp(12px, 3vw, 16px) + var(--page-left-gap));
+    /* 오른쪽은 그대로 두고 싶으면 padding-right는 건드리지 마세요 */
+  }
 
-.slide-in-right {
-    transform: translateX(100%);
-    animation: slideInRight 0.6s ease forwards;
-}
 
-/* 모바일 레이아웃을 위한 미디어 쿼리 */
-@media (max-width: 768px) {
-    .result-content {
-        flex-direction: column; /* 세로 정렬 */
-        align-items: center; 
-    }
+.timeline{ padding-top: var(--year-top-gap); }
 
-    .result-section {
-        width: 100%; /* 가로 너비를 100%로 변경하여 빈틈 제거 */
-        margin: 10px 0; /* 상하 여백을 추가하여 요소 간 간격 확보 */
-        opacity: 0;
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+  /* 한 줄 레이아웃: [월배지] [카드] */
+  .tl-list{
+    grid-template-columns: max-content 1fr;
+    column-gap: 12px;   /* 배지 ↔ 카드 가로 간격 */
+    row-gap: 18px;
+  }
 
-    .result-title {
-        font-size: 2.5em;
-        margin-bottom: 5vw; /* 하단 여백을 더 적게 조정 */
-        margin-top: 10vw; /* 상단 여백을 더 적게 조정 */
-    }
+  /* 라인 위치 + 연도 배지 라인 위 정렬 */
+  .timeline::before{ left: var(--mobile-line-x); transform:none; }
+   /* 연도 마스크 높이도 맞추기(선택: 일관성) */
+  .tl-year::after{
+    height: var(--year-badge-h);
+    left: var(--mobile-line-x);
+    transform: translate(-50%, -50%);
+  }
 
-    .result-list li {
-        flex-wrap: wrap; /* 긴 텍스트 줄바꿈 허용 */
-    }
+  /* 연도 뱃지를 영역 가운데에 고정 */
+  .tl-year-badge{
+    position: absolute;
+    left: var(--mobile-line-x);
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-    .result-date {
-        width: auto; /* 날짜 너비 자동 조정 */
-        margin-bottom: 5px; /* 날짜와 텍스트 사이 간격 조정 */
-        margin-top: 5px;
-        font-size: 0.9em;
-        margin-right: 10px; /* 날짜와 텍스트 간격 조정 */
-    }
+  /* 배지열과 카드열을 같은 '시작선'으로 */
+  .tl-col.center{
+    grid-column: 1 / 2;
+    display:flex; align-items:flex-start;
+    padding-left: var(--mobile-line-x);
+    padding-top: var(--row-top);       /* ← 배지 시작 높이 */
+    position:relative;
+  }
+  .tl-col.left, .tl-col.right{
+    grid-column: 2 / 3;
+    padding-top: var(--row-top);       /* ← 카드 시작 높이 (배지와 동일) */
+  }
 
-    .result-text {
-        width: 100%; /* 텍스트가 남은 공간을 차지 */
-        font-size: 0.9em;
-    }
+  /* dot은 라인 위 + 배지 중심에 수평 정렬 */
+  .tl-col.center .tl-dot{
+    left: var(--mobile-line-x);
+    top: calc(var(--row-top) + var(--badge-size) / 2);
+    transform: translate(-50%, -50%);
+  }
+
+  /* 월 배지(숫자)는 dot 옆으로 바로 붙이기 */
+  .tl-month-badge{
+    height: var(--badge-size); line-height: var(--badge-size);
+    margin-left: var(--badge-gap);
+    white-space: nowrap;
+  }
+
+    .tl-list{
+    grid-template-columns: max-content 1fr;
+    column-gap: 12px;
+    row-gap: 18px;
+    /* ⬇️ 핵심: 같은 행의 빈 칸을 뒤에서 채움 */
+    grid-auto-flow: row dense;
+  }
+
+  /* ⬇️ 비어있는 좌/우 컬럼은 자리 자체를 제거 */
+  .tl-col.left:empty,
+  .tl-col.right:empty{
+    display: none;
+  }
+
 }

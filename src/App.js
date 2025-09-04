@@ -4,10 +4,12 @@ import Header from './components/Header';
 import Main from './pages/main';
 import Install from './pages/fire/install';
 import Repair from './pages/fire/repair';
-import Road from './pages/road';
+import Road from './pages/option/road';
 import About from './pages/about/about';
 import Result from './pages/about/result';
 import Work from './pages/about/work';
+import Record from './pages/about/record';
+import Ask from './pages/option/ask';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/result" element={<Result />} />
         <Route path="/work" element={<Work />} />
+        <Route path="/record" element={<Record />} />
+        <Route path="/ask" element={<Ask />} />
         {/* 기타 경로에 대한 라우트를 추가하세요 */}
       </Routes>
     </Router>

@@ -6,10 +6,10 @@
 
 .background-image {
   position: relative;
-  background-image: url('/src/pages/image/forest2.jpg'); /* 배경 이미지 경로 */
+  background-image: url('/src/pages/image/leaf.jpg'); /* 배경 이미지 경로 */
   background-size: cover;
   background-position: center;
-  height: 55vh; /* 배경 이미지의 높이 조정 */
+  height: 35vh; /* 배경 이미지의 높이 조정 */
   display: flex;
   align-items: center; /* 수직 중앙 정렬 */
   justify-content: center; /* 수평 중앙 정렬 */
@@ -17,8 +17,8 @@
 }
 
 .centered-text {
-  font-size: 4rem; /* 원하는 폰트 크기로 설정 */
-  font-weight: bold;
+  font-size: clamp(24px, 3vw, 25px);
+  font-weight: 700; /* 'weight'는 잘못된 값 → 숫자/bold 로 */
   color: #fff; /* 텍스트 색상, 배경에 따라 조정 */
   text-align: center; /* 텍스트 중앙 정렬 */
   z-index: 1; /* 텍스트가 탭 아래에 위치하도록 설정 */

@@ -17,8 +17,8 @@
 }
 
 .centered-text {
-  font-size: 4rem; /* 원하는 폰트 크기로 설정 */
-  font-weight: bold;
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 600; /* 'weight'는 잘못된 값 → 숫자/bold 로 */
   color: #fff; /* 텍스트 색상, 배경에 따라 조정 */
   text-align: center; /* 텍스트 중앙 정렬 */
   z-index: 1; /* 텍스트가 탭 아래에 위치하도록 설정 */

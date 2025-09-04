@@ -1,158 +1,146 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;800;900&display=swap');
 
-/* Slider Container */
-.slider-container {
-  position: relative;
-  width: 100%;
-  height: 90vh;
-  overflow: hidden;
+:root{
+  --brand: var(--brand, #10b981);
+  --ink: #0f172a;
 }
 
-/* Each Slide */
-.slide {
-  position: relative;
-  width: 100%;
-  height: 100%;
+/* ===== 컨테이너 & 슬라이드 기본 ===== */
+.slider-container{
+  position:relative;
+  width:100%;
+  height:clamp(540px, 100vh, 900px); /* 화면 커져도/작아도 안정적인 높이 */
+  overflow:hidden;
+  font-family:"Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
-/* Image in the Slide */
-.slider-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* slick이 끼워 넣는 모든 래퍼의 높이를 100%로 */
+.slider-container .slick-slider,
+.slider-container .slick-list,
+.slider-container .slick-track,
+.slider-container .slick-slide,
+.slider-container .slick-slide > div{
+  height:100%;
 }
 
-/* Text Container */
-.text-container {
-  position: absolute;
-  top: 40%;
-  left: 40%;
-  transform: translate(-40%, -50%);
-  text-align: left;
-  color: white;
-  z-index: 2;
+.slide{ position:relative; width:100%; height:100%; }
+.slider-image{
+  width:100%; height:100%; object-fit:cover; object-position:center;
 }
 
-/* Slide Title */
-.slide-title {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 4vw;
-  font-weight: bold;
-  margin: 0;
-  opacity: 0;
+/* 어두운 좌→우 그라데이션 + 상단 비네트 */
+.scrim{
+  position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 42%, rgba(0,0,0,.15) 66%, rgba(0,0,0,0) 85%),
+    linear-gradient(0deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 40%);
 }
 
-/* Slide Subtitle */
-.slide-subtitle {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 2.5vw;
-  margin: 10px 0;
-  opacity: 0;
+/* ===== 텍스트: 어떤 크기에서도 '정중앙' ===== */
+.text-container.center{
+  position:absolute; inset:0; z-index:2;
+  display:grid; place-items:center;        /* 가로/세로 완전 중앙 */
+  padding: clamp(12px, 4vw, 32px);
+  /* 기존 위치 계산값 무효화 */
+  left:0 !important; top:0 !important; transform:none !important;
+  text-align:left;
 }
 
-/* Slide Description */
-.slide-description {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 1.5vw;
-  margin-top: 20px;
-  opacity: 0;
+/* 실제 텍스트 상자 폭 제어 */
+.text-box{
+  width:min(900px, 92vw);
+  text-shadow: 0 2px 18px rgba(0,0,0,.35);
+  color:#fff;
 }
 
-/* Animation */
-.animate .slide-title,
-.animate .slide-subtitle,
-.animate .slide-description {
-  animation: slideUp 1s ease-in-out forwards;
+/* ===== 타이포 ===== */
+.overline{
+  display:inline-block;
+  font-weight:700; letter-spacing:.06em;
+  font-size: clamp(12px, 1.4vw, 14px);
+  text-transform: uppercase;
+  color: rgba(255,255,255,.9);
+  border-bottom: 3px solid rgba(255,255,255,.8);
+  padding-bottom: 6px; margin-bottom: 18px;
+  opacity:0; transform: translateY(12px);
 }
 
-.animate .slide-title {
-  animation-delay: 0.5s;
+.headline{
+  font-weight:800;
+  font-size: clamp(28px, 6vw, 64px);
+  line-height:1.12; margin: 0 0 14px;
+  opacity:0; transform: translateY(12px);
 }
 
-.animate .slide-subtitle {
-  animation-delay: 1s;
+.desc{
+  font-weight:400;
+  font-size: clamp(14px, 2vw, 20px);
+  opacity:.9; margin: 6px 0 8px;
+  opacity:0; transform: translateY(12px);
 }
 
-.animate .slide-description {
-  animation-delay: 1.5s;
+/* CTA 버튼 */
+.cta{
+  display:inline-flex; align-items:center; gap:8px;
+  margin-top: 22px; padding: 14px 18px;
+  background: var(--brand); color:#fff; text-decoration:none;
+  background-color: #1f8b67;
+  border-radius: 12px; font-weight:700; letter-spacing:.01em;
+  box-shadow: 0 10px 30px rgba(16,185,129,.28);
+  opacity:0; transform: translateY(12px);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.cta:hover{ transform: translateY(-2px); box-shadow: 0 16px 36px rgba(16,185,129,.35); filter:brightness(1.02); }
+
+/* ===== 등장 애니메이션 ===== */
+.is-active .overline,
+.is-active .headline,
+.is-active .desc,
+.is-active .cta{ animation: rise .7s ease forwards; }
+.is-active .headline{ animation-delay: .15s; }
+.is-active .desc{ animation-delay: .35s; }
+.is-active .cta{ animation-delay: .55s; }
+
+@keyframes rise{
+  from{ opacity:0; transform: translateY(14px); }
+  to  { opacity:1; transform: translateY(0); }
 }
 
-/* Arrow Navigation */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0);
-  border-radius: 50%;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ===== 화살표(항상 화면 중앙) ===== */
+.arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  z-index:3; width:56px; height:56px; padding:0;
+  display:flex; place-items:center;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,.38);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 999px;
+  cursor:pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.arrow:hover{ transform:translateY(-50%) scale(1.04); background:rgba(0,0,0,.46); border-color:#fff; }
+.arrow:focus-visible{ outline:3px solid #fff; outline-offset:2px; }
+.prev{ left: clamp(10px, 2vw, 18px); }
+.next{ right: clamp(10px, 2vw, 18px); }
+.arrow-icon{ font-size: clamp(18px, 2.6vw, 28px); color:#fff; }
+
+/* slick 기본 화살표(::before) 숨기기 - 중복 아이콘 제거 */
+.slider-container .slick-prev::before,
+.slider-container .slick-next::before {
+  content: '' !important;
+  color: transparent !important;
+  opacity: 0 !important;
 }
 
-.next {
-  right: 10px;
+/* ===== 반응형 미세 조정 ===== */
+@media (max-width: 768px){
+  .slider-container{ height: clamp(520px, 78vh, 760px); }
+  .arrow{ width:48px; height:48px; }
 }
 
-.prev {
-  left: 13px;
-}
-
-#arrow-icon {
-  font-size: 3vw;
-  color: #ffffff;
-}
-
-/* Slide Up Animation */
-@keyframes slideUp {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@media only screen and (max-width: 768px){
-  .slider-container {
-    position: relative;
-    width: 100%;
-    height: 90vh; /* 화면 높이에 맞게 조정 */
-    overflow: hidden;
-  }
-
-  .slider-image {
-    width: 100%;
-    height: 90vh; /* 이미지 높이도 화면 높이에 맞게 조정 */
-    object-fit: cover; /* 이미지가 잘리지 않고 꽉 차게 표시되도록 설정 */
-  }
-
-  .slide-title {
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 10vw;
-    font-weight: bold;
-    margin: 0;
-    opacity: 0;
-  }
-  
-  /* Slide Subtitle */
-  .slide-subtitle {
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 8vw;
-    margin: 10px 0;
-    opacity: 0;
-  }
-  
-  /* Slide Description */
-  .slide-description {
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 6vw;
-    margin-top: 20px;
-    opacity: 0;
-  }
+@media (max-width: 560px){
+  .slider-container{ height: clamp(480px, 72vh, 680px); }
+  .text-box{ width: 92vw; }
 }

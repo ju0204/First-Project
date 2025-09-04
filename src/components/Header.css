@@ -1,247 +1,207 @@
+/* 1) 폰트: 1회만 import */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-
-#navbar {
-  padding: 0;
+/* 2) 변수 */
+:root{
+  --accent:#208525;
+  --text:#111;
+  --muted:#6b7280;
+  --border:rgba(0,0,0,.1);
+  --nav-h: clamp(56px, 9vh, 80px);
+  --mega-offset: 15px;
 }
 
-#nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(255, 255, 255);
-  height: 10vh;
-  max-width: 100vw;
-  padding: 0;
-  border-bottom: solid 1px black;
+/* 3) 상단 네비게이션 기본 */
+#navbar{
+  background:#fff !important;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
 }
 
-#nav-link {
-  font-size: 1.5vw;
-  color: BLACK;
-  padding: 0.5vw 1vw;
-  border: none;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: weight;
-  white-space: nowrap; /* 글자 줄바꿈 방지 */
+#navbar .nav-link-custom,
+#navbar .nav-menu{
+  color:var(--text) !important; /* var(--text) = #111 */
 }
 
-.navbar-nav {
-  display: flex;
-  flex-wrap: nowrap; /* 글자가 길어지더라도 한 줄로 표시 */
+#navbar .top-link:hover{
+  background:transparent;
+  color:var(--text) !important;
 }
 
-#nav-logo {
-  width: 4vw;
-  height: auto;
-  margin-left: 0;
-  margin-right: 3vw;
+/* 4) 컨테이너/브랜드 */
+#nav-container{
+  display:flex; justify-content:space-between; align-items:center;
+  height:var(--nav-h); padding:0 16px; max-width:100vw;
+}
+.brand{ display:flex; align-items:center; }
+#nav-logo{ width:clamp(28px, 2.4vw, 42px); height:auto; margin-right:clamp(12px, 2.2vw, 24px); }
+
+/* 5) 링크 (상단 탭) */
+.navbar-nav.main-nav{ display:flex; flex-wrap:nowrap; gap:clamp(8px, 1vw, 16px); }
+.nav-item.has-mega{ position:relative; }
+
+.nav-link-custom{
+  position:relative;
+  font-family:"Noto Sans KR", sans-serif;
+  font-size:clamp(16px, 2vw, 22px);
+  font-weight:700;
+  padding:.5rem .75rem;
+  border-radius:6px;
+  white-space:nowrap; display:inline-block;
+  transition: background-color .18s ease, color .18s ease;
 }
 
-/* 드롭다운 화살표 숨기기 */
-.navbar-nav .nav-link {
-  position: relative;
-  }
+/* 밑줄 이펙트 (기본 숨김) */
+.nav-link-custom::after{
+  content:""; position:absolute; left:6px; right:6px; bottom:-10px;
+  height:3px; background:var(--accent); border-radius:2px;
+  transform:scaleX(0); opacity:0; transform-origin:center;
+  transition: transform .18s ease, opacity .18s ease;
+}
+.top-link:hover::after,
+.nav-link-custom.active::after{ transform:scaleX(1); opacity:1; }
 
-   .navbar-nav .nav-link::after {
-     display: none;
-   } 
+/* 6) 메가 패널 (가로형) */
+.mega-panel{
+  position:fixed; left:0; right:0; top:var(--nav-h);
+  background:#fff; border-top:1px solid rgba(0,0,0,.06);
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  transform:translateY(-8px); opacity:0; pointer-events:none;
+  transition: transform .22s cubic-bezier(.22,1,.36,1), opacity .18s ease;
+  z-index:1030;
+  top: calc(var(--nav-h) + var(--mega-offset));
+}
+.mega-panel.show{ transform:translateY(0); opacity:1; pointer-events:auto; }
 
- /* 드롭다운 메뉴 애니메이션 정의 */
-   @keyframes dropdown-slide {
-     from {
-       opacity: 0;
-       max-height: 0;
-       padding-top: 0;
-       padding-bottom: 0;
-     }
-     to {
-       opacity: 1;
-       max-height: 200px; /* 최대 높이 설정 (필요에 따라 조정) */
-       padding-top: 0.5rem; /* 적절한 패딩값 설정 */
-       padding-bottom: 0.5rem; /* 적절한 패딩값 설정 */
-     }
-   }
+.mega-panel .mega-inner{
+  display:flex; justify-content:center; align-items:center;
+  margin:0 auto; max-width:1400px;
+  padding:18px clamp(16px, 8vw, 72px) 22px;
+  min-height:64px; gap:0;
+}
+.mega-panel .mega-col{ width:auto; }
+.mega-panel .mega-col ul{
+  display:flex; align-items:center; gap:clamp(24px, 5vw, 72px);
+  margin:0; padding:0; list-style:none; white-space:nowrap;
+}
+.mega-panel .mega-col li{ list-style:none; }
+.mega-panel .mega-link{
+  position:relative; display:block; padding:10px 2px;
+  font-size:18px; line-height:1; color:var(--text);
+  text-decoration:none; font-weight:700;
+}
+.mega-panel .mega-link:hover{ color:var(--accent); text-decoration:none; }
 
-
-   /* 드롭다운 메뉴 기본 스타일 */
-   .navbar-nav .dropdown-menu {
-     opacity: 0;
-     max-height: 200px;
-     overflow: hidden;
-     transition: opacity 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
-     border: none; /* 테두리 제거 */
-     box-shadow: none; /* 그림자 제거 */
-     
-     background-color:white;
-     width: auto; /* 드롭다운 메뉴의 너비가 유동적으로 조정 */
-     min-width: 150px; /* 드롭다운 메뉴 최소 너비 설정 */
-     max-width: 50vw; /* 최대 너비 설정 */
-    padding: 0;
-    margin: 0;
-    
-   }
-
-   /* 드롭다운 메뉴가 보일 때의 스타일 */
-   .navbar-nav .dropdown-menu.show {
-     opacity: 1;
-     max-height: 300px; /* 최대 높이 설정 (필요에 따라 조정) */
-     padding-top: 0.5rem; /* 적절한 패딩값 설정 */
-     padding-bottom: 0.5rem; /* 적절한 패딩값 설정 */
-     animation: dropdown-slide 0.3s ease-out;
-     border: none; /* 테두리 제거 */
-     /* box-shadow: none;  */
-     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
-    }
-
-   /* 드롭다운 아이템 스타일 */
-   .navbar-nav .dropdown-item {
-     display: flex; /* 플렉스 박스 레이아웃 활성화 */
-     align-items: center; /* 수직 가운데 정렬 */
-     justify-content: center; /* 수평 가운데 정렬 */
-     border: none; /* 드롭다운 아이템의 테두리 제거 */
-     background-color: black;
-     height: auto;
-     min-width: 100px; /* 최소 너비 설정 */
-    max-width: 500px; /* 최대 너비 설정 */
-     font-size: 10px;
-     text-align: center;
-     
-     
-   }
-
-   /* 드롭다운 아이템 호버 스타일 */
-   .navbar-nav .dropdown-item:hover {
-     background-color: white; /* 호버 시 배경 색상 조정 */
-     color: #000; /* 호버 시 글자 색상 조정 */
-   }
-
-
-
- 
-   /* 드롭다운 아이템 스타일 조정 */
-   #custom-dropdown-item {
-    /* 상하, 좌우 패딩 조정 */
-     padding: 0.5vw 0.5vw; 
-     font-size: 1.5vw;    /* 글자 크기 조정 */
-     background-color: #ffffff; /* 배경 색상 조정 */
-     font-family: "Noto Sans KR", sans-serif;
-     font-optical-sizing: auto;
-     font-weight: weight;
-     font-style: normal;
-     margin: 0;
-     min-width: 100px; /* 최소 너비 설정 */
-    max-width: 500px; /* 최대 너비 설정 */
-    white-space: nowrap; /* 줄바꿈 방지 */
-   }
-
-  #drawer-box {
-    padding: 0;
-  }
-
-   /* 드로어 리스트 항목 스타일 */
-  #drawer-list .MuiListItemButton-root {
-    font-size: 2vw; /* 원하는 폰트 크기로 조정 */
-    padding: 10px;
-    margin-left: 30px;
-  }
-
-  #drawer-list .MuiListItemText-primary {
-    font-size: 2vw; /* 폰트 크기 조정 */
-    padding: auto;
-    font-family: "Noto Sans KR", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
-  }
-
-  .close-icon-box {
-    margin-bottom: 30px;
-  }
-
-  /* 'x' 아이콘을 포함하는 버튼의 스타일 */
-.close-button {
-  /* 버튼의 배경색을 투명하게 설정 */
-  background-color: transparent !important;
-
-  /* 버튼 크기 조정 */
-  width: 80px;
-  height: 80px;
-
-  /* 버튼에 약간의 여백 추가 */
-  margin: 30px;
-  margin-bottom: 100px;
+/* 헤더-패널 사이 작은 갭이 있을 때 호버 유지용 브릿지 */
+.mega-panel::before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:-12px;           /* --mega-offset 과 맞춰주기 */
+  height:12px;
 }
 
-/* 'x' 아이콘의 스타일 */
-#close-icon {
-  /* 아이콘의 색상 조정 */
-  color: black;
 
-  /* 아이콘의 크기 조정 */
-  font-size: 4vw;
-  margin-left: 1rem;
-  
-  /* 추가적인 스타일 조정 가능 */
+
+/* 7) Drawer / 모바일 아이콘 */
+.nav-menu{ width:clamp(28px,2.2vw,36px); height:auto; margin-right:clamp(12px,3vw,24px); }
+#drawer-box{ padding:0; }
+#drawer-list .MuiListItemButton-root{ padding:12px 20px; }
+#drawer-list .MuiListItemText-primary{
+  font-family:"Noto Sans KR", sans-serif;
+  font-size:clamp(16px, 2.2vw, 22px);
+  font-weight:500;
+}
+.close-icon-box{ margin-bottom:12px; }
+.close-button{ background:transparent !important; width:64px; height:64px; margin:12px; }
+#close-icon{ color:var(--text); font-size:clamp(28px, 3.6vw, 40px); }
+
+/* 8) 상태별 색상 로직 */
+/* 비-스크롤(최상단): 투명 배경 + 흰 텍스트/아이콘 */
+/* #navbar:not(.scrolled){
+  background:transparent !important; border:none !important; box-shadow:none !important;
+}
+#navbar:not(.scrolled) .nav-link-custom,
+#navbar:not(.scrolled) .nav-menu{ color:#fff !important; } */
+
+/* 부트스트랩 배경 무력화(비-스크롤일 때만) */
+/* #navbar:not(.scrolled).navbar,
+#navbar:not(.scrolled).bg-light,
+#navbar:not(.scrolled).navbar-light.bg-light,
+#navbar:not(.scrolled).navbar.nav-transparent,
+#navbar:not(.scrolled).navbar.bg-transparent{
+  background-color:transparent !important;
+} */
+
+/* 비-스크롤 + 상단 탭 hover → pill 반전 */
+/* #navbar:not(.scrolled) .top-link:hover,
+#navbar:not(.scrolled) .top-link:focus{
+  background:#fff; color:var(--text) !important;
+} */
+
+/* 비-스크롤 + 메가패널 열림/헤더 hover → 흰 배경 + 검정 텍스트, pill 제거 */
+/* #navbar:not(.scrolled):has(.mega-panel.show), */
+#navbar:hover{
+  background:#fff !important;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+}
+/* #navbar:not(.scrolled):has(.mega-panel.show) .nav-link-custom,
+#navbar:not(.scrolled):has(.mega-panel.show) .nav-menu, */
+#navbar:hover .nav-link-custom,
+#navbar:hover .nav-menu{
+  color:var(--text) !important;
+}
+/* #navbar:not(.scrolled):has(.mega-panel.show) .top-link:hover, */
+#navbar:hover .top-link:hover{ background:transparent; color:var(--text) !important; }
+
+/* 스크롤 상태: 항상 흰 배경 + 검정 텍스트, pill 제거 */
+#navbar.scrolled{
+  background:#fff !important;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+}
+#navbar.scrolled .nav-link-custom,
+#navbar.scrolled .nav-menu{ color:var(--text) !important; }
+#navbar.scrolled .top-link:hover{ background:transparent; color:var(--text) !important; }
+
+/* 9) 모바일 */
+@media (max-width: 992px){
+  .navbar .main-nav{ display:none !important; }
+  #nav-logo{ width:clamp(32px,8vw,44px); margin-left:2vw; }
+  .nav-menu{ width:clamp(32px,8vw,44px); margin-right:2vw; }
+  .mega-panel{ display:none !important; }
 }
 
-/*폰트*/
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-
-
-
-/* 화면 크기가 전체화면일때 */
-@media (max-width: 100vw) {
-    #nav-logo {
-      margin-left: 40px;
-      
-    }
-    #nav-menu {
-      width: 3vw;
-      height: auto;
-      margin-right: 3vw;
-      
-    }
-
-    #drawer-list {
-      width: 50vw;
-    }
-    
- }
- 
-/* 모바일일 때 */
- @media only screen and (max-width: 768px) {
-  #nav-logo {
-    width: 10vw;
-    margin-left: 5vw;
+/* 데스크톱에서 중앙 정렬 */
+@media (min-width: 993px){
+  /* Bootstrap 기본 flex를 덮어씀 */
+  #nav-container{
+    display: grid !important;
+    grid-template-columns: auto 1fr auto; /* [로고] [네비] [아이콘] */
+    align-items: center;
+    padding: 0 clamp(16px, 4vw, 32px);
   }
 
-  #navbar .nav-link {
-    display: none; /* 글자 숨기기 */
+  /* Nav 그룹(그리드 가운데 칸) 자체를 가운데 배치 */
+  .navbar-nav.main-nav{
+    justify-self: center;          /* 그리드 셀 중앙 */
+    justify-content: center;       /* 내부 항목도 가운데 */
+    margin: 0 !important;          /* 잔여 여백 제거 */
+    gap: clamp(12px, 1.2vw, 20px);
   }
 
-  #drawer-list {
-    width: 100vw;
+  /* 혹시 me-auto가 남아있어도 영향 제거(백업용) */
+  #nav-container .me-auto{ margin-right: 0 !important; }
+
+  .brand{ justify-self: start; }
+  .nav-menu{ justify-self: end; }
+}
+
+/* 그리드 미지원 구형 대비 */
+@supports not (display: grid){
+  #nav-container{ position: relative; }
+  .navbar-nav.main-nav{
+    position:absolute; left:50%; transform:translateX(-50%);
   }
-
-  #nav-menu {
-    width: 10vw;
-  }
-
-  #close-icon {
-    font-size: 12vw;
-  }
-
-  #drawer-list .MuiListItemText-primary {
-    font-size: 8vw;
-  }
-
- }
-
-
-
-
-
-  
+}

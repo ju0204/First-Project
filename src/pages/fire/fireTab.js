@@ -15,16 +15,16 @@ const CompanyTabs = () => {
   return (
     <div className="tabs-container">
       <div className="background-image">
-        <div className="centered-text">사업소개</div>
+        <div className="centered-text">대건이엔에스</div>
       </div>
-      <ul className="tabs">
+      {/* <ul className="tabs">
         <li className={activeTab === 'install' ? 'active' : ''}>
           <Link to="/install">설치사업</Link>
         </li>
         <li className={activeTab === 'repair' ? 'active' : ''}>
           <Link to="/repair">유지보수</Link>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 };
