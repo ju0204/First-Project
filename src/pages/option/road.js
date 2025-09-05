@@ -5,55 +5,66 @@ import "./road.css";
 
 export default function Road() {
   useEffect(() => {
-    // 하드코딩한 JavaScript 키 (테스트앱/본앱 확인해서 넣기)
-    const APP_KEY = "90f666eba87650bf36e03427b0d1aaa5";
+    const GMAPS_KEY =
+      process.env.REACT_APP_GOOGLE_MAPS_KEY || "AIzaSyAB7yEi5uXfLi6ztbwBIGu7YIjQCkkrFcY";
 
     const init = () => {
-      const { kakao } = window;
-      kakao.maps.load(() => {
-        const container = document.getElementById("map");
-        if (!container) return;
+      const { google } = window;
+      const container = document.getElementById("map");
+      if (!container || !google?.maps) return;
 
-        const center = new kakao.maps.LatLng(37.481210, 126.882823);
-        const map = new kakao.maps.Map(container, { center, level: 3 });
-        new kakao.maps.Marker({ position: center }).setMap(map);
+      const center = { lat: 37.481210, lng: 126.882823 };
+
+      const map = new google.maps.Map(container, {
+        center,
+        zoom: 16,
+        // mapId: "YOUR_MAP_ID", // 스타일 맵을 쓰면 주석 해제
       });
+
+      const marker = new google.maps.Marker({
+        position: center,
+        map,
+        title: "SK트윈타워 B동 504호",
+      });
+
+      const info = new google.maps.InfoWindow({
+        content:
+          `<div style="line-height:1.4">
+            <strong>이플래닛</strong><br/>
+            서울시 금천구 가산동 345-9<br/>
+            SK트윈타워 B동 504호
+          </div>`,
+      });
+
+      marker.addListener("click", () => info.open({ anchor: marker, map }));
     };
 
-    // 이미 SDK가 준비됐다면 바로 초기화
-    if (window.kakao?.maps) {
+    // 이미 로드되어 있으면 바로 초기화
+    if (window.google?.maps) {
       init();
     } else {
       // 중복 로드 방지
-      let s = document.querySelector('script[data-kakao-sdk="true"]');
+      let s = document.querySelector('script[data-google-sdk="true"]');
       if (!s) {
         s = document.createElement("script");
-        s.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${APP_KEY}&autoload=false`;
         s.async = true;
-        s.setAttribute("data-kakao-sdk", "true");
+        s.defer = true;
+        s.setAttribute("data-google-sdk", "true");
+        s.src = `https://maps.googleapis.com/maps/api/js?key=${GMAPS_KEY}&language=ko&region=KR`;
         s.onload = init;
         s.onerror = () =>
-          console.error("Kakao SDK 로드 실패: 키/도메인 등록 확인");
+          console.error("Google Maps SDK 로드 실패: 키/도메인(HTTP referrer) 제한 확인");
         document.head.appendChild(s);
       } else {
         s.addEventListener("load", init, { once: true });
       }
     }
-
-    // 등장 애니메이션
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("visible")),
-      { threshold: 0.15 }
-    );
-    document.querySelectorAll(".road-details").forEach((el) => io.observe(el));
-    return () => io.disconnect();
   }, []);
 
   return (
     <div className="road-page">
       <div className="contact-container">
         <h2 className="road-title">오시는 길</h2>
-
         <div className="map-container">
           <div id="map" className="map" />
         </div>
