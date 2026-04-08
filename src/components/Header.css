@@ -58,8 +58,11 @@
   transform:scaleX(0); opacity:0; transform-origin:center;
   transition: transform .18s ease, opacity .18s ease;
 }
-.top-link:hover::after,
-.nav-link-custom.active::after{ transform:scaleX(1); opacity:1; }
+
+.nav-link-custom:hover::after{
+  transform:scaleX(1);
+  opacity:1;
+}
 
 /* 6) 메가 패널 (가로형) */
 .mega-panel{
