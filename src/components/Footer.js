@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import DG from './photo/DG1.png';
 import './Footer.css';
 

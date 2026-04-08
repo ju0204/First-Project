@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+
 import './fireTab.css';
-import { Link, Route, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const CompanyTabs = () => {
   const location = useLocation();

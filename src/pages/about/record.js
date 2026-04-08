@@ -122,7 +122,7 @@ export default function ConstructionRecords() {
               type="button"
               className={`ys-btn ${yearMode === "all" ? "active" : ""}`}
               onClick={() => { setYearMode("all"); setSelectedYear(""); }}
-              aria-selected={yearMode === "all"}
+              aria-pressed={yearMode === "all"}
             >
               전체 연도
             </button>
@@ -130,7 +130,7 @@ export default function ConstructionRecords() {
               type="button"
               className={`ys-btn ${yearMode === "select" ? "active" : ""}`}
               onClick={() => setYearMode("select")}
-              aria-selected={yearMode === "select"}
+              aria-pressed={yearMode === "select"}
             >
               연도 선택
             </button>
