@@ -9,14 +9,19 @@ function Main() {
   const bizRef = useRef(null);
 
   useEffect(() => {
+    const current = bizRef.current;
+
     const io = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
       setShow(true);
       io.unobserve(entry.target);
     }, { threshold: 0.12 });
 
-    if (bizRef.current) io.observe(bizRef.current);
-    return () => bizRef.current && io.unobserve(bizRef.current);
+    if (current) io.observe(current);
+
+    return () => {
+      if (current) io.unobserve(current);
+    };
   }, []);
 
   const items = [
