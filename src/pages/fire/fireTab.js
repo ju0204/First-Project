@@ -10,7 +10,6 @@ const CompanyTabs = () => {
     return 'install';
   };
 
-  const activeTab = getActiveTab();
 
   return (
     <div className="tabs-container">
