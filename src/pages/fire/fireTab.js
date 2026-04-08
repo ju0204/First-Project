@@ -3,12 +3,8 @@ import './fireTab.css';
 import { useLocation } from 'react-router-dom';
 
 const CompanyTabs = () => {
-  const location = useLocation();
 
-  const getActiveTab = () => {
-    if (location.pathname.includes('repair')) return 'repair';
-    return 'install';
-  };
+
 
 
   return (
