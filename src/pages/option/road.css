@@ -1,126 +1,145 @@
+/* road.css */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
-.road-title {
-    text-align: center;
-    font-size: 3vw;
-    margin-top: 5vw;
-    margin-bottom: 3vw;
-    font-family: "Noto Sans KR", sans-serif;
+:root{
+  --ink:#0f172a;
+  --muted:#64748b;
+  --border: rgba(0,0,0,.08);
+  --shadow: 0 10px 24px rgba(2,6,23,.08);
+  --radius: 12px;
+  --maxw: 1100px;
 }
 
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  .map-container {
+* { box-sizing: border-box; }
+
+.road-page{
+  padding: 64px 16px 80px;
+  color: var(--ink);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.road-title{
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: -.02em;
+  font-size: clamp(24px, 3.6vw, 40px);
+  margin: 24px 0 22px;
+}
+
+/* 가운데 정렬 + 최대폭 제한 */
+.contact-container{
+  --map-max: 980px;              /* 지도 최대 가로폭(원하면 숫자만 바꾸면 됨) */
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+/* 지도 래퍼: 가로 100%, 보기 좋은 비율 유지 */
+/* 지도 크기 변경~~!!!!! */
+.map-container{
+  width: 100%;
+  margin: 12px auto 22px;
+  display: flex;                 /* ← 자식(iframe) 가로 가운데 */
+  justify-content: center;
+}
+
+.map-container iframe{
+  display: block;
+  width: clamp(320px, 80%, var(--map-max)) !important;  /* 기본 80%, 최대 var(--map-max) */
+  height: clamp(320px, 50vh, 520px) !important;         /* 화면 높이에 비례 + 상한 */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* 구글맵 div – class와 id 둘 다 대응 */
+.map, #map{
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* 주소/연락처 블록 */
+.road-info{
+  /* 지도 iframe과 동일한 폭: 80% 기본, 최대 980px (변수 없으면 980px 사용) */
+  width: clamp(320px, 80%, var(--map-max, 980px));
+  margin: 12px auto 0;       /* 가운데 정렬 */
+  text-align: left;          /* 왼쪽 정렬 */
+}
+
+/* 자동 페이드 업 애니메이션 */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.road-details{
+  display:flex; align-items:center;
+  gap: 12px;
+  margin-bottom: 10px;
+  opacity: 0; transform: translateY(10px);
+  animation: fadeUp .48s ease forwards;
+}
+
+/* 살짝 순차 재생 */
+.road-details:nth-child(1){ animation-delay: .03s; }
+.road-details:nth-child(2){ animation-delay: .10s; }
+.road-details:nth-child(3){ animation-delay: .17s; }
+.road-details:nth-child(4){ animation-delay: .24s; }
+
+.road-label{
+  flex: 0 0 auto;
+  font-weight: 800;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+.road-name{
+  flex: 1 1 auto;
+  font-size: clamp(13px, 1.05vw, 17px);
+  line-height: 1.5;
+}
+
+/* 푸터 영역 간격 */
+.footer-container{ margin-top: 24px; }
+
+/* ===== 모바일 ===== */
+@media (max-width: 768px){
+  .road-page{ padding: 56px 14px 64px; }
+
+  .map-container{
     width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #map {
-    width: 80%;
-    height: 100%;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 16 / 12;
+    min-height: 300px;
+    margin: 10px auto 18px;
   }
 
-  .road-info {
-    text-align: left; /* 왼쪽 정렬 */
-    margin-left: 10vw;
-    width: 80%; /* 원하는 너비로 설정 */
-    margin-top: 5vw;
-  }
-  
-  .road-details {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 10px;
-    transform: translateY(20px); /* 처음에는 아래로 20px 이동 */
-    opacity: 0; /* 처음에는 투명 */
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-    .road-details.visible {
-        transform: translateY(0); /* 제자리로 돌아옴 */
-        opacity: 1; /* 불투명 */
-    }
-  
-  .road-label {
-    font-weight: bold;
-    margin-right: 10px;
-    font-size: 1.3vw;
-    margin-right: 1.5vw;
-    font-family: "Noto Sans KR", sans-serif;
-  }
-  
-  .road-name {
-    margin-left: 5px;
-    font-size: 1.1vw;
-    font-family: "Noto Sans KR", sans-serif;
+  .map-container iframe{
+    width: 92% !important;       /* 모바일에서 살짝 더 넓게 */
+    height: 360px !important;    /* 필요 시 숫자만 조절 */
   }
 
-  .footer-container{
-    margin-top: 3vw;
+  .road-info{ width: 92%; }
+
+
+  .road-title{
+    font-size: clamp(22px, 8vw, 34px);
+    margin: 18px 0 18px;
   }
 
-  /* 모바일 화면에서 스타일 조정 */
-@media screen and (max-width: 768px) {
-    .road-title {
-        font-size: 10vw; /* 모바일 화면에서 폰트 크기 증가 */
-        margin-top: 10vw;
-        margin-bottom: 15vw;
-    }
+  .road-details{
+    gap: 10px;
+    margin-bottom: 12px;
+  }
 
-    .contact-container {
-        height: auto; /* 모바일에서는 자동 높이 */
-        padding: 20px;
-    }
+  .road-label{
+    font-size: clamp(13px, 3.6vw, 16px);
+    min-width: 64px;   /* 라벨 줄바꿈 방지용 살짝 고정 */
+  }
 
-    .map-container {
-        width: 90vw; /* 맵을 모바일에 맞게 넓게 */
-        height: 40vh; /* 높이는 적당하게 */
-        margin-bottom: 20px;
-    }
+  .road-name{
+    font-size: clamp(13px, 3.4vw, 16px);
+  }
 
-    .road-info {
-        width: 90%; /* 모바일에서 조금 더 넓게 설정 */
-    }
-
-    .road-details {
-        flex-direction: row; /* 가로 정렬 유지 */
-        justify-content: space-between; /* 라벨과 내용이 화면에 맞게 배치되도록 조정 */
-        align-items: center; /* 세로 가운데 정렬 */
-        margin-bottom: 10px;
-        width: 100%; /* 가로 공간을 전부 사용 */
-    }
-
-    .road-label {
-        margin-right: 10px; /* 모바일에서도 가로 간격 유지 */
-        margin-bottom: 0;
-        font-size: 3vw;
-    }
-
-    .road-name {
-        margin-left: 5px;
-        flex-grow: 1; /* 가로로 넓게 차지하도록 설정 */
-        text-align: left; /* 텍스트는 왼쪽 정렬 */
-        font-size: 3vw;
-    }
-
-    .footer-container{
-        margin-top: 2vw;
-    }
-
-    .footer {
-        margin-top:10vw;
-    }
+  .footer-container{ margin-top: 18px; }
 }

@@ -1,0 +1,110 @@
+/* src/pages/about/ceo.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+
+:root{
+  --ink:#0f172a;
+  --muted:#6b7280;
+  --accent:#1c3886;
+  --border:rgba(2,6,23,.10);
+}
+
+.ceo-wrap{
+  position: relative;
+  max-width: 980px;
+  margin: 8vh auto 12vh;
+  padding: 0 20px 80px;
+  font-family: "Noto Sans KR", system-ui, -apple-system, "Segoe UI", "Noto Sans", sans-serif;
+  color: var(--ink);
+}
+
+/* 상단 라벨 */
+.ceo-eyebrow{
+  text-align:center;
+  font-weight: 800;
+  letter-spacing:.08em;
+  font-size: 12px;
+  color: #8b97a6;
+  margin-bottom: 16px;
+}
+
+/* 타이틀 2줄 */
+.ceo-title{
+  text-align:center;
+  font-weight: 900;
+  font-size: clamp(26px, 3.6vw, 42px);
+  letter-spacing:-.02em;
+  margin: 0 0 8px;
+}
+.ceo-subtitle{
+  text-align:center;
+  font-weight: 700;
+  font-size: clamp(20px, 2.8vw, 32px);
+  letter-spacing:-.01em;
+  margin: 0 0 28px;
+  color: var(--ink);
+}
+
+/* 본문 */
+.ceo-body{
+  max-width: 880px;
+  margin: 0 auto 40px;
+  color: #374151;
+  line-height: 1.95;
+  font-size: clamp(14px, 1.25vw, 16.5px);
+}
+.ceo-body p{ margin: 0 0 14px; }
+
+/* 서명(오른쪽 정렬) */
+.ceo-sign{
+  max-width: 880px;
+  margin: 24px auto 0;
+  text-align: right;
+}
+.sign-company{
+  color:#5b6472;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.sign-name{
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: .06em;
+}
+
+/* 점자 무늬 데코 (섹션 하단 중앙) */
+.ceo-dots{
+  position: absolute;
+  left: 50%;
+  bottom: 54px;
+  width: 120px;
+  height: 8px;
+  transform: translateX(-50%);
+  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 8px 8px;
+  background-repeat: repeat-x;
+  opacity: .9;
+}
+
+/* 워터마크(연한 건물 실루엣) — 이미지가 없으면 표시 안 됨 */
+.ceo-watermark{
+  position: absolute;
+  left: 36px;
+  bottom: 8px;
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+  opacity: .12;
+}
+.ceo-watermark img{
+  display: block;
+  max-width: min(40vw, 360px);
+  height: auto;
+  filter: grayscale(100%);
+}
+
+/* 반응형 */
+@media (max-width: 680px){
+  .ceo-wrap{ margin: 6vh auto 10vh; padding-bottom: 72px; }
+  .sign-name{ font-size: 20px; }
+  .ceo-watermark{ left: 16px; }
+}

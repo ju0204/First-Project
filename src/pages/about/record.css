@@ -1,191 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
 :root{
   --ink:#0f172a;
-  --muted:#6b7280;
-  --border:rgba(0,0,0,.08);
-  --accent:#1c3886;         /* 헤더 골드 라인 */
-  --bg:#ffffff;
+  --muted:#64748b;
+  --accent:#1c3886;
+  --border:rgba(2,6,23,.12);
+  --card:#ffffff;
+  --bg:#f8fafc;
+  --shadow:0 10px 24px rgba(2,6,23,.06);
+  --radius:14px;
 }
 
-.rec-wrap{ padding:48px 16px 80px; color:var(--ink); }
-
+*{ box-sizing:border-box; }
+.rec-wrap{ max-width:1200px; margin:0 auto; padding:28px 16px; color:var(--ink); }
 .rec-title{
-  text-align:center; font-weight:900; letter-spacing:-.02em;
-  font-size: clamp(24px, 4vw, 36px);
-  margin-bottom: 60px;
-  margin-top: 50px;
+  text-align:center;
+  font-size:clamp(28px, 4.8vw, 44px);
+  line-height:1.15;
+  letter-spacing:-.02em;
+  margin: 50px 0 24px;
+  font-weight: 900;
+}
+.rec-sub{
+  text-align:center;
+  margin:-12px 0 20px;
+  color: var(--muted);
+  font-size: 15px;
 }
 
-/* 컨트롤 */
+/* 상단 컨트롤 */
 .rec-controls{
-  display:flex; gap:10px; align-items:center; justify-content:center;
-  flex-wrap:wrap; margin: 10px auto 18px; max-width: 1100px;
+  display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  margin-bottom:16px;
 }
-.rec-search{
-  flex:1 1 320px; min-width: 240px;
-  padding:10px 12px; border:1px solid var(--border); border-radius:10px;
+.year-switch{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.ys-btn{
+  padding:10px 14px; border:1px solid var(--border); background:#fff; border-radius:999px;
+  font-weight:700; line-height:1; transition:.15s ease-in-out;
 }
-.rec-select, .rec-reset{
+.ys-btn.active{ background:var(--accent); color:#fff; border-color:var(--accent); }
+.year-select{
   padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:#fff;
 }
-.rec-reset{ cursor:pointer; }
 .rec-count{ color:var(--muted); font-size:14px; }
 
-/* 표 */
-.rec-table-scroll{ max-width:1100px; margin:0 auto; overflow:auto; }
-.rec-table{
-  width:100%; border-collapse:separate; border-spacing:0; background:var(--bg);
-  border:1px solid var(--border); border-radius:14px; overflow:hidden;
-  box-shadow: 0 8px 24px rgba(2,6,23,.06);
+/* 그리드 */
+.rec-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px; }
+@media (max-width: 1024px){ .rec-grid{ grid-template-columns:repeat(2, 1fr);} }
+@media (max-width: 640px){ .rec-grid{ grid-template-columns:1fr;} }
+
+/* 카드 */
+.rec-card{
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;
+  outline:none;
 }
-.rec-table thead th{
-  position: sticky; top:0; background:#f8fafc; z-index:2;
-  text-align:left; font-weight:800; padding:14px 14px;
-  border-bottom: 2px solid #2c4a85;
+.rec-card:focus-visible{ box-shadow:0 0 0 3px rgba(28,56,134,.35); }
+
+/* 썸네일 */
+.rec-thumb{ position:relative; aspect-ratio: 4 / 3; background:#f3f4f6; overflow:hidden; }
+.rec-thumb img{
+  width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease;
 }
-.rec-table thead tr{
-  background: linear-gradient(to bottom, #fff 0%, #fff 70%, transparent 70%),
-              linear-gradient(90deg, rgba(0,0,0,0) 0%, var(--accent) 50%, rgba(0,0,0,0) 100%);
-  background-size: 100% 100%, 100% 3px;
-  background-repeat:no-repeat; background-position: bottom left, bottom left;
+.rec-card:hover .rec-thumb img,
+.rec-card:focus-within .rec-thumb img{ transform:scale(1.03); }
+
+/* 좌상단 뱃지 */
+.rec-thumb-badges{
+  position:absolute; left:10px; top:10px; display:flex; gap:6px; z-index:3;
 }
-.rec-table tbody td{
-  padding:14px; border-top:1px solid #eef2f7; vertical-align:middle;
+.badge{
+  display:inline-flex; align-items:center;
+  padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:-.01em;
+  backdrop-filter: blur(4px); background:rgba(255,255,255,.85);
 }
-.rec-table tbody tr:hover{ background:#fcfcff; }
+.badge.y{ color:#3730a3; }
+.badge.r{ color:#155e75; }
 
-/* "년도" 고정/강조 */
-.year-cell{
-  font-weight:900; font-size:18px; text-align:center; color:#111827;
-  background:#f3f4f6; border-right:1px solid #e5e7eb;
-  position: sticky; left:0; z-index:1; min-width:86px;
+/* Hover/Focus 오버레이 */
+.rec-overlay{
+  position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end;
+  padding:16px; color:#fff; opacity:0; transform:translateY(6px);
+  transition:opacity .25s ease, transform .25s ease;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.72) 100%);
+  pointer-events:none; z-index:2;
 }
+.rec-card:hover .rec-overlay,
+.rec-card:focus-within .rec-overlay{ opacity:1; transform:translateY(0); }
 
-/* 정렬 아이콘 */
-.sort{ margin-left:6px; border:4px solid transparent; border-top-color:#cbd5e1; display:inline-block; transform: translateY(2px); }
-.sort.asc{ border-top-color:#111827; transform: rotate(180deg) translateY(-2px); }
-.sort.desc{ border-top-color:#111827; }
-
-/* 모바일: 카드형 변환 */
-/* === Mobile (<=860px) 카드형 테이블 === */
-@media (max-width: 860px){
-  .rec-wrap{ padding:32px 12px 64px; }
-
-  /* 컨트롤: 한 줄 → 세로 스택 */
-  .rec-controls{
-    display: grid;                      /* ← flex 대신 grid */
-    grid-template-columns: 1fr 110px;   /* [연도 선택] [초기화] */
-    grid-template-areas:
-      "search search"
-      "year   reset"
-      "count  count";
-    gap: 8px 10px;
-    align-items: center;
-    max-width: 640px;
-    margin: 10px auto 18px;
-  }
-
-  .rec-search{           /* 1행 전체 */
-    grid-area: search;
-    flex: 0 0 auto;
-    height: 40px; min-height: 40px; max-height: 40px;
-    font-size: 14px; padding: 8px 12px;
-  }
-
-  .rec-select{           /* 2행 왼쪽 */
-    grid-area: year;
-    height: 40px; padding: 8px 12px; font-size: 14px;
-    width: 100%;
-  }
-
-  .rec-reset{            /* 2행 오른쪽 */
-    grid-area: reset;
-    height: 40px; padding: 8px 12px; font-size: 14px;
-    width: 100%;
-  }
-
-  .rec-count{            /* 3행 오른쪽 정렬 */
-    grid-area: count;
-    justify-self: end;
-    font-size: 13px;
-  }
-
-  .rec-count{ align-self: flex-end; }
-
-  /* 스크롤 래퍼: 카드형에서는 굳이 가로 스크롤 필요 없음 */
-  .rec-table-scroll{ max-width: 640px; }
-
-  /* 테이블 → 카드 리스트 */
-  .rec-table{
-    border: none; border-radius: 0; box-shadow: none; background: transparent;
-    width: 100%;
-  }
-
-  /* thead 시각적으로 숨기기(접근성 유지) */
-  .rec-table thead{
-    position: absolute !important;
-    width: 1px; height: 1px; margin: -1px; padding: 0;
-    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
-  }
-
-  .rec-table tbody{
-    display: grid; gap: 12px;
-  }
-
-  /* 각 행을 카드로 표현 + 왼쪽에 연도 배지 */
-  .rec-table tbody tr{
-    display: grid;
-    grid-template-columns: max-content 1fr; /* [연도배지] [내용] */
-    gap: 10px 12px;
-    align-items: start;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px;
-    box-shadow: 0 6px 20px rgba(2,6,23,.06);
-  }
-  .rec-table tbody tr:hover{ background:#fff; }
-
-  /* 데스크톱의 고정 연도 셀은 숨김 */
-  .rec-table .year-cell{ display: none; }
-
-  /* 행의 data-year로 연도 배지 생성 */
-  .rec-table tbody tr::before{
-    content: attr(data-year) "년";
-    grid-column: 1 / 2;
-    align-self: start;
-    font-weight: 800; font-size: 14px; line-height: 1;
-    color:#1f2937;
-    background:#eef2ff;
-    border:1px solid #e5e7eb;
-    padding:6px 10px; border-radius: 999px;
-  }
-
-  /* 각 셀을 '라벨:값' 두 단으로 */
-  .rec-table tbody td{
-    grid-column: 2 / -1;          /* 연도 배지 오른쪽 컬럼에 배치 */
-    display: grid;
-    grid-template-columns: 84px 1fr; /* [라벨] [값] */
-    gap: 6px;
-    padding: 6px 0;
-    border: 0;
-  }
-  .rec-table tbody td::before{
-    content: attr(data-label);
-    font-size: 12px; font-weight: 700; color: var(--muted);
-    letter-spacing: .01em;
-  }
-
-  /* 카드 맨 아래 여백 정리 */
-  .rec-table tbody tr > td:last-child{ padding-bottom: 0; }
-
-  /* 데스크톱용 스타일 약간 완화 */
-  .rec-table tbody td,
-  .rec-table tbody tr:hover{ background: #fff; }
+/* 모바일(hover 없음)에서는 항상 표시 */
+@media (hover:none){
+  .rec-overlay{ opacity:1; transform:none; }
 }
 
-/* 더 작은 화면(<=420px)에서 라벨 폭 축소 */
-@media (max-width: 420px){
-  .rec-controls{
-    grid-template-columns: 1fr 96px;
-  }
+/* 빈 상태 */
+.rec-empty{
+  grid-column:1 / -1; text-align:center; color:var(--muted);
+  padding:28px; border:1px dashed var(--border); border-radius:var(--radius);
+}
+
+/* 9칸 유지용 ghost 카드 */
+.rec-card.ghost{ visibility:hidden; pointer-events:none; }
+
+/* =========================
+      페이지네이션
+   ========================= */
+.rec-pagination{
+  margin: 50px auto 28px;
+  display:flex; align-items:center; justify-content:center;
+  gap: 24px;
+  flex-wrap:wrap;
+}
+
+/* 숫자 버튼: 앵커처럼 */
+.pg-num{
+  border:0; background:transparent; padding:0;
+  font-weight:800; font-size:16px; line-height:1;
+  color: var(--ink); cursor:pointer;
+}
+.pg-num:hover{ color: var(--accent); }
+.pg-num.active{
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* 사각 버튼 공통(«, ») */
+.pg-btn.square{
+  width: 42px; height: 34px;
+  display:inline-flex; align-items:center; justify-content:center;
+  border:1px solid #e5e7eb; border-radius:8px;
+  background:#fff; font-weight:800;
+  font-size:0; /* 혹시 들어올 수 있는 텍스트 숨김 */
+}
+.pg-btn.square::before{ content:none !important; } /* 외부 before 차단 */
+
+/* 아이콘은 ::after로만 표시(기본 회색) */
+.rec-pagination .pg-btn.square::after{
+  content:"";
+  font-size:16px; line-height:1; font-weight:800;
+  color:#8b949e;
+}
+
+/* 실제 아이콘(싱글) */
+.rec-pagination .pg-btn.square.first::after { content:"\00AB"; } /* « */
+.rec-pagination .pg-btn.square.last::after  { content:"\00BB"; } /* » */
+
+/* 기본 hover는 배경만 약간(흰 유지 원하면 주석) */
+.pg-btn.square:hover{ background:#f8fafc; }
+
+/* »(last) — 평상시 회색, hover/focus시에만 파란 테두리+아이콘, 배경은 항상 흰색 */
+.rec-pagination .pg-btn.square.last:hover,
+.rec-pagination .pg-btn.square.last:focus-visible{
+  background:#fff;
+  border-color:var(--accent);
+  /* box-shadow:0 0 0 2px rgba(28,56,134,.12); */
+}
+.rec-pagination .pg-btn.square.last:hover::after,
+.rec-pagination .pg-btn.square.last:focus-visible::after{
+  color:var(--accent);
+}
+
+/* «(first)도 동일한 인터랙션을 원하면 유지 */
+.rec-pagination .pg-btn.square.first:hover,
+.rec-pagination .pg-btn.square.first:focus-visible{
+  background:#fff;
+  border-color:var(--accent);
+  /* box-shadow:0 0 0 2px rgba(28,56,134,.12); */
+}
+.rec-pagination .pg-btn.square.first:hover::after,
+.rec-pagination .pg-btn.square.first:focus-visible::after{
+  color:var(--accent);
+}
+
+/* 줄임표 */
+.pg-ellipsis{ color:#9aa4b2; padding:0 2px; }
+
+/* 모바일 컴팩트 */
+@media (max-width:640px){
+  .rec-pagination{ margin:24px auto 20px; gap:16px; }
+  .pg-num{ font-size:15px; }
+  .pg-btn.square{ width:38px; height:32px; border-radius:7px; }
 }

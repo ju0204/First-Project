@@ -10,6 +10,7 @@ import Result from './pages/about/result';
 import Work from './pages/about/work';
 import Record from './pages/about/record';
 import Ask from './pages/option/ask';
+import Ceo from './pages/about/ceo';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/work" element={<Work />} />
         <Route path="/record" element={<Record />} />
         <Route path="/ask" element={<Ask />} />
+        <Route path="/ceo" element={<Ceo />} />
         {/* 기타 경로에 대한 라우트를 추가하세요 */}
       </Routes>
     </Router>

@@ -1,78 +1,38 @@
 // src/pages/road/Road.jsx
-import React, { useEffect } from "react";
+import React from "react";
 import Footer from "../../components/Footer";
 import "./road.css";
 
 export default function Road() {
-  useEffect(() => {
-    const GMAPS_KEY =
-      process.env.REACT_APP_GOOGLE_MAPS_KEY || "AIzaSyAB7yEi5uXfLi6ztbwBIGu7YIjQCkkrFcY";
+  // 방법 A: 구글 지도 > 공유 > "지도 퍼가기"에서 복사한 src 붙여넣기
+  // const EMBED_SRC = "https://www.google.com/maps/embed?pb=복사한_pb문자열";
 
-    const init = () => {
-      const { google } = window;
-      const container = document.getElementById("map");
-      if (!container || !google?.maps) return;
-
-      const center = { lat: 37.481210, lng: 126.882823 };
-
-      const map = new google.maps.Map(container, {
-        center,
-        zoom: 16,
-        // mapId: "YOUR_MAP_ID", // 스타일 맵을 쓰면 주석 해제
-      });
-
-      const marker = new google.maps.Marker({
-        position: center,
-        map,
-        title: "SK트윈타워 B동 504호",
-      });
-
-      const info = new google.maps.InfoWindow({
-        content:
-          `<div style="line-height:1.4">
-            <strong>이플래닛</strong><br/>
-            서울시 금천구 가산동 345-9<br/>
-            SK트윈타워 B동 504호
-          </div>`,
-      });
-
-      marker.addListener("click", () => info.open({ anchor: marker, map }));
-    };
-
-    // 이미 로드되어 있으면 바로 초기화
-    if (window.google?.maps) {
-      init();
-    } else {
-      // 중복 로드 방지
-      let s = document.querySelector('script[data-google-sdk="true"]');
-      if (!s) {
-        s = document.createElement("script");
-        s.async = true;
-        s.defer = true;
-        s.setAttribute("data-google-sdk", "true");
-        s.src = `https://maps.googleapis.com/maps/api/js?key=${GMAPS_KEY}&language=ko&region=KR`;
-        s.onload = init;
-        s.onerror = () =>
-          console.error("Google Maps SDK 로드 실패: 키/도메인(HTTP referrer) 제한 확인");
-        document.head.appendChild(s);
-      } else {
-        s.addEventListener("load", init, { once: true });
-      }
-    }
-  }, []);
+  // 방법 B(빠른 대안): 위도/경도만으로 임베드 (키 불필요)
+  const EMBED_SRC =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3158.0562993349213!2d127.07871487625256!3d37.671384872011586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cb8ff340fb2e5%3A0xfa55d3b5ecb8c391!2z64-Z7J2A67mM65Sp!5e0!3m2!1sko!2skr!4v1757070343897!5m2!1sko!2skr";
 
   return (
     <div className="road-page">
       <div className="contact-container">
         <h2 className="road-title">오시는 길</h2>
+
         <div className="map-container">
-          <div id="map" className="map" />
+          <iframe
+            title="이플래닛 위치"
+            src={EMBED_SRC}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            style={{ border: 0, width: "80%", height: "420px" }}
+          />
         </div>
 
         <div className="road-info">
           <div className="road-details">
             <span className="road-label">주소</span>
-            <span className="road-name">서울시 금천구 가산동 345-9 SK트윈타워 B동 504호</span>
+            <span className="road-name">
+              서울시 금천구 가산동 345-9 SK트윈타워 B동 504호
+            </span>
           </div>
           <div className="road-details">
             <span className="road-label">전화</span>

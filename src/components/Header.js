@@ -79,6 +79,7 @@ class Header extends Component {
       <List id="drawer-box">
         {[
           { text: '홈', path: '/' },
+          { text: '인사말', path: '/ceo' },
           { text: '회사소개', path: '/about' },
           { text: '조직도', path: '/work' },
           { text: '실적', path: '/result' },
@@ -135,6 +136,7 @@ class Header extends Component {
                   <div className="mega-inner">
                     <div className="mega-col">
                       <ul>
+                        <li><Link to="/ceo" className="mega-link">인사말</Link></li>
                         <li><Link to="/about" className="mega-link">회사소개</Link></li>
                         <li><Link to="/work" className="mega-link">조직도</Link></li>
                         <li><Link to="/result" className="mega-link">연혁</Link></li>

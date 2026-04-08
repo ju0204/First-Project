@@ -53,7 +53,7 @@ export default function About() {
             <span>We Will</span><br />
             <span>Make It Possible</span>
           </h2>
-          <h3 className="hero-subtitle">산불 및 재해방지 전문기업</h3>
+          <h3 className="hero-subtitle">산불 소화시설 및 재해 방지 전문 기업</h3>
           <p className="hero-desc">
             저희 회사는 국립산림과학원으로부터 특허권을 이전받아 산불 및 재해방지 분야에서 전문성을 갖춘 기업입니다.
             산림청 기준에 적합한 산불방지 급수시설 설치와 산악지형에 적합한 산불 진화용 포 소화약제, 그리고 다양한 전문 장비를 취급하고 있습니다.
