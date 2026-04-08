@@ -1,6 +1,6 @@
 
 import './fireTab.css';
-import { useLocation } from 'react-router-dom';
+
 
 const CompanyTabs = () => {
 
