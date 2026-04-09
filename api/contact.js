@@ -59,9 +59,6 @@ module.exports = async (req, res) => {
       ].join('\n'),
       html,
 
-      reply_to: `${name} <${email}>`,
-
-
       replyTo: `${name} <${email}>`,
 
 
