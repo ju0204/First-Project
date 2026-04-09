@@ -1,115 +1,19 @@
-:root{
-  --brand:#4b9ae6;
-  --line:#9db4d9;
-  --ink:#111827;
-  --org-max:1000px;
-  --bar-h:2px;
-  --trunk:34px;  /* 데스크톱 트렁크 */
-  --drop:44px;   /* 데스크톱 드롭 */
-  --org-scale: 1.25;  
-  --org-max: 1400px;   /* ← 1000px → 1400px 정도로 키우기 */
+.org-wrap {
+  width: 100%;
+  padding: 60px 20px;
 }
 
-.org-wrap{ padding:48px 14px 150px; color:var(--ink); margin-top: 60px;}
-
-/* 상단 */
-.org-head{
-  position:relative;
-  text-align:center;
-  padding-bottom: calc(var(--trunk) + var(--drop)); /* 데스크톱 높이 확보 */
-}
-.ceo-pill{
-  display:inline-block;
-  padding:12px 36px;
-  background:var(--brand);
-  color:#fff; border-radius:8px; font-weight:800;
+.org-image-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-/* SVG(선) 공통 */
-.org-svg{
-  position:absolute;
-  left:50%; transform:translateX(-50%);
-  bottom:0;
-}
-.org-svg.desktop{
-  width: min(92%, var(--org-max));
-  height: calc(var(--trunk) + var(--drop));
-}
-.org-svg.mobile{
-  display:none;                 /* 기본은 숨김(모바일에서만 표시) */
-  width: min(92%, var(--org-max));
-  height: 36px;                 /* 모바일 트렁크 길이 */
-}
-.org-svg .line{
-  stroke: var(--line);
-  stroke-width: var(--bar-h);
-  vector-effect: non-scaling-stroke;
-}
-
-/* 그리드(데스크톱) */
-.org-grid{
-  width: min(92%, var(--org-max));
-  margin: 18px auto 0;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 32px;
-  align-items:start;
-
-  list-style:none;
-  padding-left:0;
-}
-
-.org-svg.desktop,
-.org-grid{
-  width: clamp(960px, 96vw, var(--org-max));   /* 뷰포트의 96%까지 확장, 최대는 --org-max */
-}
-
-
-/* 부서 카드 */
-.dept{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:6px;
-  text-align:center;
-}
-.dept-pill{
-  background:#a9c9f4; color:#0b2a52;
-  font-weight:800;
-  padding:10px 18px;
-  border-radius:8px;
-  margin:0;
-}
-.duties{
-  margin:0;
-  padding-left:0;      /* 들여쓰기 없애고 싶으면 0, 약간 두고 싶으면 10~14px */
-  list-style:none;     /* 불릿 제거 */
-  text-align:left;
-  line-height:1.6;
-}
-
-.duties li{ list-style: none; }
-.duties li::marker{ content: ""; }
-
-/* ===== 모바일 레이아웃 ===== */
-@media (max-width: 560px){
-  /* 상단 높이: 모바일 트렁크만 확보 */
-  .org-head{ padding-bottom: 36px; }
-
-  /* 선 표시 전환 */
-  .org-svg.desktop{ display:none; }
-  .org-svg.mobile{ display:block; }
-
-  /* 1열로 스택 */
-  .org-grid{ grid-template-columns: 1fr; margin-top: 16px; }
-
-  /* 각 과 카드 위에 짧은 드롭라인 추가 (중앙 정렬) */
-  .dept::before{
-    content:"";
-    width: var(--bar-h);
-    height: 22px;               /* 필요 시 18~26px로 조절 */
-    background: var(--line);
-    margin: 0 auto 6px;         /* 중앙에 세우고 아래로 6px 간격 */
-    display:block;
-  }
+.org-image {
+  display: block;
+  width: 650px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 50px;
 }
