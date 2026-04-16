@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import CompanyTabs from './companyTabs';
-import Footer from '../../components/Footer';
 import './about.css';
 
 /* 핵심가치 데이터: 기존 그대로 */
@@ -100,7 +99,6 @@ export default function About() {
   </div>
 </section>
 
-      <Footer />
     </div>
   );
 }

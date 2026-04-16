@@ -1,0 +1,118 @@
+.notice-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  padding: 80px 20px 100px;
+  box-sizing: border-box;
+}
+
+.notice-inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.notice-title {
+  font-size: 35px;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  margin: 0;
+}
+
+.notice-title-line {
+  width: 42px;
+  height: 3px;
+  background: #1e90ff;
+  margin: 18px auto 55px;
+}
+
+.notice-table-wrap {
+  border-top: 1px solid #222;
+}
+
+.notice-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.notice-table thead th {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+  padding: 18px 10px;
+  text-align: center;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.notice-table tbody td {
+  font-size: 15px;
+  color: #555;
+  padding: 22px 10px;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.notice-table .col-no {
+  width: 90px;
+}
+
+.notice-table .col-title {
+  width: auto;
+}
+
+.notice-table .col-author {
+  width: 140px;
+}
+
+.notice-table .col-date {
+  width: 140px;
+}
+
+.notice-table-title {
+  text-align: left !important;
+  padding-left: 20px !important;
+}
+
+.notice-table-title a {
+  color: #555;
+  text-decoration: none;
+}
+
+.notice-table-title a:hover {
+  color: #1e90ff;
+}
+
+@media (max-width: 768px) {
+  .notice-page {
+    padding: 60px 16px 80px;
+  }
+
+  .notice-title {
+    font-size: 34px;
+  }
+
+  .notice-title-line {
+    margin: 14px auto 40px;
+  }
+
+  .notice-table thead th,
+  .notice-table tbody td {
+    font-size: 13px;
+    padding: 16px 6px;
+  }
+
+  .notice-table .col-no {
+    width: 60px;
+  }
+
+  .notice-table .col-author,
+  .notice-table .col-date {
+    width: 90px;
+  }
+
+  .notice-table-title {
+    padding-left: 10px !important;
+  }
+}

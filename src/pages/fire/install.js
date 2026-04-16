@@ -6,7 +6,6 @@ import tank from './img/tank.jpeg';
 import machine from './img/machine.jpeg';
 import elctronic from './img/elctronic.jpeg';
 import './install.css';
-import Footer from '../../components/Footer';
 
 class Install extends Component {
     imgRef = createRef();
@@ -188,9 +187,6 @@ class Install extends Component {
                         </div>
                     </div>
                 )}
-                <div>
-                    <Footer />
-                </div>
             </div>
         );
     }

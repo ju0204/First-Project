@@ -1,6 +1,5 @@
 // Ask.jsx
 import React, { useRef, useState } from "react";
-import Footer from "../../components/Footer";
 import "./ask.css";
 
 function Ask() {
@@ -128,8 +127,6 @@ function Ask() {
           </div>
         </form>
       </section>
-
-      <Footer />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FireTab from './fireTab';
 import './repair.css';
-import Footer from '../../components/Footer';
 
 class repair extends Component {
     render() {
@@ -53,9 +52,6 @@ class repair extends Component {
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <Footer />
                 </div>
             </div>
             

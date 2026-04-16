@@ -1,6 +1,5 @@
 // src/pages/about/CeoMessage.jsx
 import React from "react";
-import Footer from "../../components/Footer";
 import CompanyTabs from './companyTabs';
 import "./ceo.css";
 
@@ -57,8 +56,6 @@ export default function CeoMessage() {
         {/* 점자 무늬 데코(선택) */}
         <i className="ceo-dots" aria-hidden="true" />
       </section>
-
-      <Footer />
     </div>
   );
 }

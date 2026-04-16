@@ -1,6 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
 import CompanyTabs from './companyTabs';
-import Footer from "../../components/Footer";
 import "./record.css";
 
 const RECORDS = [
@@ -201,7 +200,6 @@ export default function ConstructionRecords() {
         </div>
       )}
 
-      <Footer />
     </div>
   );
 }

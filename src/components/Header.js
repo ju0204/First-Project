@@ -1,4 +1,3 @@
-// Header.js
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
@@ -6,14 +5,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DG from './photo/DG1.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Header.css';
@@ -25,6 +23,7 @@ class Header extends Component {
       right: false,
       menuIconHovered: false,
       megaOpen: null, // 'about' | 'biz' | null
+      mobileOpen: null, // 'about' | 'biz' | null
       isScrolled: false,
     };
     this.openTimers = {};
@@ -33,7 +32,7 @@ class Header extends Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll, { passive: true });
-    this.handleScroll(); // 첫 렌더 시 상태 반영
+    this.handleScroll();
   }
 
   componentWillUnmount() {
@@ -41,18 +40,18 @@ class Header extends Component {
   }
 
   handleScroll = () => {
-    const scrolled = window.scrollY > 10; // 임계값은 필요에 따라 조정
+    const scrolled = window.scrollY > 10;
     if (this.state.isScrolled !== scrolled) {
       this.setState({ isScrolled: scrolled });
     }
   };
 
-  // 메가메뉴 open/close 약간의 딜레이로 자연스럽게
   openMega = (key, delay = 90) => {
     clearTimeout(this.closeTimers[key]);
     clearTimeout(this.openTimers[key]);
     this.openTimers[key] = setTimeout(() => this.setState({ megaOpen: key }), delay);
   };
+
   closeMegaDelayed = (key, delay = 180) => {
     clearTimeout(this.openTimers[key]);
     clearTimeout(this.closeTimers[key]);
@@ -68,34 +67,87 @@ class Header extends Component {
 
   handleMenuIconHover = (hover) => this.setState({ menuIconHovered: hover });
 
-  list = () => (
-    <Box role="presentation" onKeyDown={this.toggleDrawer(false)} id="drawer-list">
-      <Box className="close-icon-box" sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <IconButton className="close-button" onClick={this.toggleDrawer(false)} aria-label="메뉴 닫기">
-          <CloseIcon id="close-icon" />
-        </IconButton>
-      </Box>
+  toggleMobileMenu = (key) => {
+    this.setState((prev) => ({
+      mobileOpen: prev.mobileOpen === key ? null : key,
+    }));
+  };
 
-      <List id="drawer-box">
-        {[
-          { text: '홈', path: '/' },
-          { text: '인사말', path: '/ceo' },
-          { text: '회사소개', path: '/about' },
-          { text: '조직도', path: '/work' },
-          { text: '실적', path: '/result' },
-          { text: '산불소화시설 설치사업', path: '/install' },
-          { text: '산불소화시설 유지보수', path: '/repair' },
-          { text: '오시는길', path: '/road' },
-        ].map((item) => (
-          <ListItem key={item.text} disablePadding>
-            <ListItemButton component={Link} to={item.path} onClick={this.toggleDrawer(false)}>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  closeDrawerAndMove = () => {
+    this.setState({ right: false, mobileOpen: null });
+  };
+
+  renderMobileSection = (title, key, items) => {
+    const isOpen = this.state.mobileOpen === key;
+
+    return (
+      <div className={`mobile-accordion-item ${isOpen ? 'open' : ''}`} key={key}>
+        <button
+          type="button"
+          className={`mobile-accordion-trigger ${isOpen ? 'open' : ''}`}
+          onClick={() => this.toggleMobileMenu(key)}
+        >
+          <span>{title}</span>
+          {isOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+        </button>
+
+        <Collapse in={isOpen} timeout="auto" unmountOnExit>
+          <div className="mobile-submenu">
+            {items.map((item) => (
+              <Link
+                key={item.text}
+                to={item.path}
+                className="mobile-submenu-link"
+                onClick={this.closeDrawerAndMove}
+              >
+                {item.text}
+              </Link>
+            ))}
+          </div>
+        </Collapse>
+      </div>
+    );
+  };
+
+  list = () => {
+    const aboutItems = [
+      { text: '인사말', path: '/ceo' },
+      { text: '회사소개', path: '/about' },
+      { text: '연혁', path: '/result' },
+      { text: '조직도', path: '/work' },
+      { text: '오시는길', path: '/road' },
+    ];
+
+    const bizItems = [
+      { text: '개요', path: '/intro' },
+      { text: '산불소화시설시공', path: '/install' },
+      { text: '유지보수점검', path: '/repair' },
+      { text: '전문 컨설팅', path: '/consulting' },
+    ];
+
+    return (
+      <Box role="presentation" id="drawer-list">
+        <Box className="close-icon-box" sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <IconButton className="close-button" onClick={this.toggleDrawer(false)} aria-label="메뉴 닫기">
+            <CloseIcon id="close-icon" />
+          </IconButton>
+        </Box>
+
+        <div id="drawer-box" className="mobile-accordion-menu">
+          {this.renderMobileSection('회사소개', 'about', aboutItems)}
+          {this.renderMobileSection('사업소개', 'biz', bizItems)}
+
+          <Link to="/notice" className="mobile-single-link" onClick={this.closeDrawerAndMove}>
+            공지사항
+          </Link>
+
+          <Link to="/ask" className="mobile-single-link" onClick={this.closeDrawerAndMove}>
+            문의하기
+          </Link>
+        </div>
+      </Box>
+    );
+  };
 
   render() {
     const { menuIconHovered, right, megaOpen, isScrolled } = this.state;
@@ -103,7 +155,7 @@ class Header extends Component {
     return (
       <>
         <Navbar
-         id="navbar"
+          id="navbar"
           bg="light"
           data-bs-theme="light"
           sticky="top"
@@ -114,13 +166,8 @@ class Header extends Component {
               <img id="nav-logo" src={DG} alt="대건이엔에스" />
             </Navbar.Brand>
 
-            {/* 데스크톱 네비 */}
             <Nav className="gap-3 main-nav">
-              <Nav.Link as={NavLink} to="/" end className="nav-link-custom">
-                홈
-              </Nav.Link>
-
-              {/* 회사소개 메가메뉴 */}
+              {/* 회사소개 */}
               <div
                 className="nav-item has-mega"
                 onMouseEnter={() => this.openMega('about')}
@@ -138,16 +185,16 @@ class Header extends Component {
                       <ul>
                         <li><Link to="/ceo" className="mega-link">인사말</Link></li>
                         <li><Link to="/about" className="mega-link">회사소개</Link></li>
-                        <li><Link to="/work" className="mega-link">조직도</Link></li>
                         <li><Link to="/result" className="mega-link">연혁</Link></li>
-                        <li><Link to="/record" className="mega-link">공사 실적</Link></li>
+                        <li><Link to="/work" className="mega-link">조직도</Link></li>
+                        <li><Link to="/road" className="mega-link">오시는길</Link></li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* 사업소개 메가메뉴 */}
+              {/* 사업소개 */}
               <div
                 className="nav-item has-mega"
                 onMouseEnter={() => this.openMega('biz')}
@@ -163,25 +210,25 @@ class Header extends Component {
                   <div className="mega-inner">
                     <div className="mega-col">
                       <ul>
-                        <li><Link to="/install" className="mega-link">산불소화시설 설치사업</Link></li>
-                        <li><Link to="/repair" className="mega-link">산불소화시설 유지보수</Link></li>
+                        <li><Link to="/intro" className="mega-link">개요</Link></li>
+                        <li><Link to="/install" className="mega-link">산불소화시설시공</Link></li>
+                        <li><Link to="/repair" className="mega-link">유지보수점검</Link></li>
+                        <li><Link to="/consulting" className="mega-link">전문 컨설팅</Link></li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* 일반 링크 */}
-              <Nav.Link as={NavLink} to="/road" className="nav-link-custom">
-                오시는길
+              <Nav.Link as={NavLink} to="/notice" className="nav-link-custom">
+                공지사항
               </Nav.Link>
 
               <Nav.Link as={NavLink} to="/ask" className="nav-link-custom">
                 문의하기
-              </Nav.Link> 
+              </Nav.Link>
             </Nav>
 
-            {/* 모바일 드로어 버튼 */}
             <IconButton
               className="nav-menu"
               aria-label="메뉴 열기"
@@ -195,12 +242,16 @@ class Header extends Component {
           </Container>
         </Navbar>
 
-        {/* Drawer (모바일) */}
         <Drawer
           anchor="right"
           open={right}
           onClose={this.toggleDrawer(false)}
-          PaperProps={{ sx: { width: { xs: '100vw', sm: 480 } } }}
+          PaperProps={{
+            sx: {
+              width: { xs: '100vw', sm: 420 },
+              maxWidth: '420px',
+            },
+          }}
         >
           {this.list()}
         </Drawer>

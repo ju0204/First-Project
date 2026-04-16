@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
 import CompanyTabs from './companyTabs';
-import Footer from '../../components/Footer';
 import './result.css';
 
 /** 원본 데이터 */
@@ -125,8 +124,6 @@ export default function Result() {
           ))}
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }
