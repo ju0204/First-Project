@@ -1,292 +1,612 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
-.one-container {
-    justify-content: space-between;
+* {
+  box-sizing: border-box;
 }
 
-@keyframes slideUp {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.install-page {
+  width: 100%;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #ffffff;
 }
 
-.introduce-text1 {
-    flex: 1;
-    margin-left: 9vw;
-    margin-top: 8vw;
-    font-family: "Noto Sans KR", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 3.5vw;
-    animation: slideUp 1s ease-out forwards;
-    opacity: 0;
+.install-content-wrap {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 24px 100px;
 }
 
-.introduce-text2 {
-    flex: 1;
-    margin-left: 11vw;
-    margin-top: 2.5vw;
-    margin-right: 5vw;
-    font-family: "Noto Sans KR", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1.8vw;
-    animation: slideUp 1s ease-out 0.5s forwards;
-    opacity: 0;
+/* 공통 섹션 */
+.install-section {
+  width: 100%;
+  margin-bottom: 100px;
 }
 
-.introduce-text2::before {
-    content: ''; /* 가상 요소에 내용 추가 */
-    position: absolute; /* 부모 요소를 기준으로 절대 위치 설정 */
-    left: -1.5vw; /* introduce-text2의 왼쪽에서 선의 위치 조정 */
-    top: 0; /* 상단 정렬 */
-    width: 0.5vw; /* 선의 두께 */
-    height: 100%; /* introduce-text2의 높이와 동일하게 설정 */
-    background-color: #499c58; /* 선의 색상 */
+.install-section:last-child {
+  margin-bottom: 0;
 }
 
-.install-line {
-    position: relative; 
-    width: 100%; 
-    border-top: 1px solid rgb(198, 195, 195);
-    margin-bottom: 2vw;
-    margin-top: 4vw;
+/* 첫 번째 섹션 */
+.install-section-first {
+  padding-top: 10px;
+  padding-top: 40px;
+}
+
+.install-first-text {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.install-first-title {
+  margin: 0 0 44px;
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #000;
+  word-break: keep-all;
+}
+
+.install-first-summary {
+  margin: 0 0 22px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.65;
+  color: #222;
+  word-break: keep-all;
+}
+
+.install-first-description {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: #9a9a9a;
+  word-break: keep-all;
+}
+
+/* 두 번째 섹션 틀 */
+.install-section-second,
+.install-section-third {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #e8e8e8;
+  padding-top: 40px;
+}
+
+.install-section-inner {
+  width: 100%;
+}
+
+.install-section-title {
+  margin: 0 0 18px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.install-section-text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* 태블릿 */
+@media (max-width: 1200px) {
+  .install-content-wrap {
+    padding: 36px 24px 80px;
+  }
+
+  .install-first-title {
+    font-size: 2.7rem;
+    margin-bottom: 34px;
+  }
+
+  .install-first-summary {
+    font-size: 1.45rem;
+  }
+
+  .install-first-description {
+    font-size: 1rem;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .install-content-wrap {
+    padding: 28px 16px 70px;
+  }
+
+  .install-section {
+    margin-bottom: 70px;
+  }
+
+  .install-first-title {
+    margin-bottom: 24px;
+    font-size: 2.2rem;
+  }
+
+  .install-first-summary {
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .install-first-description {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .install-section-second,
+  .install-section-third {
+    min-height: 220px;
+    padding-top: 28px;
+  }
+
+  .install-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .install-section-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
 }
 
 
-.two-container {
-    margin-top: 3vw;
-    /* width: 80%; */
+/* 두 번째 섹션 */
+.install-section-second {
+  padding-top: 30px;
 }
 
-.install-need-title h1 {
-    
-    margin-bottom: 5vw;
-    margin-left:10vw;
-    font-family: "Noto Sans KR", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 3vw;
-    margin-top: 4vw;
-   
+.install-process-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 26px;
+  row-gap: 32px;
+  align-items: start;
 }
 
-
-
-/*필요한 곳 리스트!!*/
-.install-need-ex-container {
-    display: flex; /* Flexbox를 사용하여 내부 요소를 수평 정렬 */
-    justify-content: left; /* 가로 중앙 정렬 */
-    align-items: left; /* 세로 중앙 정렬 (선택 사항) */
-    width: 80%; /* 원하는 너비 설정 */
-    margin: 0 auto; /* 중앙 정렬을 위한 자동 마진 */
-    border: 1px solid #bab5b5;
-    /* border-radius: 30px 30px;; */
-   
+.install-process-item {
+  text-align: center;
 }
 
-
-
-.install-need-list {
-    display: flex;
-    flex-direction: column; /* 리스트 항목을 세로로 정렬 */
-    list-style: none; /* 기본 리스트 스타일 제거 */
-    padding: 0;
-    margin: 2%;
-    
-
+.install-process-icon {
+  width: 86px;
+  height: 86px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: #a18968;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  line-height: 1;
 }
 
-.install-need-list li {
-    display: flex;
-    align-items: baseline; /* h2와 p의 베이스라인 맞추기 */
-    gap: 10px; /* h2와 p 사이의 간격 조정 */
-    padding: 3px 0; /* 상하 패딩 */
+.install-process-title {
+  margin: 0 0 22px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #4a4a4a;
+  word-break: keep-all;
 }
 
-.install-need-number {
-    display: inline-block;
+/* 각 item 안에서만 선 + 숫자 */
+.install-process-divider {
+  position: relative;
+  height: 34px;
+  margin: 0 12px 26px;
+}
+
+.install-process-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: #8f8f8f;
+  transform: translateY(-50%);
+}
+
+.install-process-number {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #5d5d64;
+  border: 2px solid #d9d9d9;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.install-process-list {
+  margin: 0;
+  padding: 0 8px 0 18px;
+  list-style: none;
+  text-align: left;
+}
+
+.install-process-list li {
+  position: relative;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #555555;
+  word-break: keep-all;
+}
+
+.install-process-list li::before {
+  content: "·";
+  position: absolute;
+  left: -12px;
+  top: 0;
+  color: #555555;
+}
+
+.install-process-list li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1200px) {
+  .install-process-grid {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .install-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 14px;
+    row-gap: 28px;
+    align-items: start;
+  }
+
+  .install-process-item {
+    width: 100%;
+  }
+
+  .install-process-item:last-child {
+    grid-column: 1 / -1;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .install-process-icon {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 12px;
+    font-size: 26px;
+  }
+
+  .install-process-title {
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .install-process-divider {
+    margin: 0 10px 18px;
+    height: 30px;
+  }
+
+  .install-process-number {
     width: 30px;
     height: 30px;
-    border: 2px solid black;
-    background-color: white;
-    text-align: center;
-    line-height: 30px; /* 세로로 가운데 정렬 */
-    font-weight: bold;
-    font-size: 16px;
-    color: #000;
-    margin-right: 10px; /* 날짜와 텍스트 사이의 간격 */
-    white-space: nowrap; /* 날짜 줄바꿈 방지 */
-    flex-shrink: 0; /* 날짜가 줄어들지 않도록 고정 */
-    margin-top: 0.3vw;
-    margin-right: 1vw;
-    margin-left: 2vw;
+    font-size: 0.9rem;
+  }
+
+  .install-process-list {
+    padding: 0 4px 0 16px;
+  }
+
+  .install-process-list li {
+    margin-bottom: 6px;
+    font-size: 0.84rem;
+    line-height: 1.65;
+  }
+
+  .install-process-list li::before {
+    left: -10px;
+  }
 }
 
-.install-need-text {
-    flex: 1; /* 남은 공간을 텍스트가 차지하도록 설정 */
-    white-space: normal; /* 텍스트 줄바꿈 허용 */
-    margin-top: 0px; /* 텍스트가 줄바꿈 될 때, 날짜와의 간격 추가 */
-    margin-bottom: 0;
+/* 세번째 섹션 - 공사실적 삽입형 */
+.intro-section.intro-section-third {
+  width: 100%;
+  min-height: auto;
+  display: block;
+  margin-top: 10px;
+  border: 0;
+  background: transparent;
 }
 
-/*카드*/
-.three-container {
-    display: flex;
-    flex-direction: column; /* 세로 정렬 */
-    align-items: center; /* 가로 중앙 정렬 */
-    gap: 20px; /* card 사이의 간격 */
-    width: 100%; /* 전체 화면 너비 */
-    padding: 20px 0; /* 상하 여백 추가 */
+.intro-third-records {
+  width: 100%;
 }
 
-
-
-.card {
-    display: flex;
-    flex-direction: row; /* image-card와 text-card를 가로로 정렬 */
-    width: 90%; /* 화면의 80% 너비 */
-    max-width: 100%; /* 최대 너비 설정 */
-    height: 350px; /* 고정 높이 설정 */
-    /* border-radius: 12px; */
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background: white;
-    margin-bottom: 10px;
-    opacity: 0;
-    transition: opacity 1s ease-out, transform 1s ease-out;
+.intro-third-records-title {
+  margin: 0;
+  text-align: center;
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #111;
+  word-break: keep-all;
 }
 
-.card:hover {
-    transform: scale(1.05); /* 카드 크기 약간 확대 */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 그림자 강조 */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 */
+.intro-third-records-sub {
+  margin: 8px 0 28px;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #8a8a8a;
+  font-weight: 500;
 }
 
-.image-card {
-    flex: 1.2; /* 남은 공간을 균등하게 분할 */
-    background-color: #e0e0e0; /* 배경색 추가 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* 이미지가 컨테이너를 벗어나지 않도록 */
-    cursor: pointer;
+/* 기존 공사실적 그리드가 들어올 자리 */
+.intro-rec-grid {
+  width: 100%;
 }
 
-.image-card img {
-    width: 100%; /* 이미지 너비를 컨테이너에 맞춤 */
-    height: 100%; /* 이미지 높이를 컨테이너에 맞춤 */
-    object-fit: cover; /* 이미지 비율 유지하며 채움 */
+/* 페이지 안 섹션에 들어오므로 wrap 여백 재정의 */
+.rec-wrap {
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
-.text-card {
-    flex: 0.8; /* 남은 공간을 균등하게 분할 */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: #fafafa;
+/* 4열 카드 */
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px 18px;
 }
 
-.text-card h2 {
-    font-size: 30px;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
-    margin-bottom: 1vw;
+.rec-card {
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.text-card p {
-    margin-top: 10px;
-    font-size: 19px;
-    color: #666;
+.rec-card:hover {
+  transform: translateY(-4px);
 }
 
-/* Modal 스타일 */
-/* 기존 CSS에 추가 */
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8); /* 어두운 배경 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* 다른 요소 위에 표시 */
+.rec-thumb {
+  width: 100%;
+  overflow: hidden;
+  background: #f3f3f3;
 }
 
-.modal-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 80%;  /* 화면의 80%로 최대 높이 설정 */
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* 내용이 넘치지 않도록 처리 */
+.rec-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
-.modal-content img {
-    width: 100%; /* 이미지 너비를 모달 콘텐츠에 맞춤 */
-    height: auto; /* 이미지 비율 유지하면서 높이 자동 조정 */
-    object-fit: contain; /* 이미지 비율을 유지하면서 모달 영역에 맞게 조정 */
+.rec-info {
+  position: relative;
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #e9e9e9;
 }
 
-
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    font-weight: bold; /* 글씨를 굵게 */
-    cursor: pointer;
-    color: #333;
+.rec-name {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.4;
 }
 
-.close-button:hover {
-    color: #000;
+.rec-date {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #9a9a9a;
 }
 
-/* 카드 애니메이션 정의 */
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.rec-plus {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  font-size: 1rem;
+  color: #9a9a9a;
+  line-height: 1;
 }
 
-@keyframes slideInFromRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.intro-rec-pagination,
+.rec-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
 }
 
-
-/* 애니메이션 클래스 */
-.card.slide-in-left {
-    animation: slideInFromLeft 1.5s ease-out forwards;
+.pg-arrow,
+.pg-num {
+  min-width: 36px;
+  height: 36px;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  color: #555;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
-.card.slide-in-right {
-    animation: slideInFromRight 1.5s ease-out forwards;
+.pg-num.active {
+  background: #1f6b43;
+  border-color: #1f6b43;
+  color: #fff;
+}
+
+/* 모달 */
+.rec-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.rec-modal-inner {
+  position: relative;
+  width: min(1100px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+}
+
+.modal-x {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 2;
+  border: 0;
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #444;
+}
+
+.modal-right img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+}
+
+.modal-left {
+  padding: 34px 30px;
+}
+
+.modal-left h2 {
+  margin: 0 0 14px;
+  font-size: 1.7rem;
+  color: #1b1b1b;
+}
+
+.modal-left h3 {
+  margin: 22px 0 14px;
+  font-size: 1.05rem;
+  color: #1b1b1b;
+}
+
+.modal-left p {
+  margin: 10px 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #444;
+}
+
+.modal-left hr {
+  border: 0;
+  border-top: 1px solid #ececec;
+  margin: 18px 0;
+}
+
+.modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.modal-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .rec-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-section.intro-section-third {
+    margin-top: 0;
+  }
+
+  .intro-third-records-title {
+    font-size: 2rem;
+  }
+
+  .intro-third-records-sub {
+    margin-bottom: 22px;
+    font-size: 0.9rem;
+  }
+
+  .rec-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+  }
+
+  .rec-info {
+    padding-right: 18px;
+  }
+
+  .rec-name {
+    font-size: 0.9rem;
+  }
+
+  .rec-date {
+    font-size: 0.76rem;
+  }
+
+  .rec-modal {
+    padding: 12px;
+  }
+
+  .rec-modal-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-right img {
+    min-height: 260px;
+  }
+
+  .modal-left {
+    padding: 22px 18px;
+  }
+
+  .modal-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .rec-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-arrow,
+  .pg-num {
+    min-width: 32px;
+    height: 32px;
+    font-size: 0.82rem;
+  }
 }

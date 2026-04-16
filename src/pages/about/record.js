@@ -2,6 +2,8 @@ import React, { useMemo, useState, useEffect } from "react";
 import CompanyTabs from './companyTabs';
 import "./record.css";
 
+// 시공 페이지로 옮김
+
 const RECORDS = [
     { id: 1, year: 2018, month: 3, site: "관음사 사찰", location: "서울", projectType: "사찰 공사", period: "2018-03~2018-06", client: "관악구청", contractor: "도원건설", image: "https://picsum.photos/seed/rec-1/800/600", images: ["https://picsum.photos/seed/rec-1-1/800/600","https://picsum.photos/seed/rec-1-2/800/600","https://picsum.photos/seed/rec-1-3/800/600"] },
 

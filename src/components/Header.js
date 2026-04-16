@@ -12,7 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import DG from './photo/DG1.png';
+import DG from './photo/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Header.css';
 
@@ -112,9 +112,8 @@ class Header extends Component {
   list = () => {
     const aboutItems = [
       { text: '인사말', path: '/ceo' },
-      { text: '회사소개', path: '/about' },
+      { text: '경영이념', path: '/about' },
       { text: '연혁', path: '/result' },
-      { text: '조직도', path: '/work' },
       { text: '오시는길', path: '/road' },
     ];
 
@@ -166,7 +165,7 @@ class Header extends Component {
               <img id="nav-logo" src={DG} alt="대건이엔에스" />
             </Navbar.Brand>
 
-            <Nav className="gap-3 main-nav">
+            <Nav className="gap-5 main-nav">
               {/* 회사소개 */}
               <div
                 className="nav-item has-mega"
@@ -184,9 +183,8 @@ class Header extends Component {
                     <div className="mega-col">
                       <ul>
                         <li><Link to="/ceo" className="mega-link">인사말</Link></li>
-                        <li><Link to="/about" className="mega-link">회사소개</Link></li>
+                        <li><Link to="/about" className="mega-link">경영이념</Link></li>
                         <li><Link to="/result" className="mega-link">연혁</Link></li>
-                        <li><Link to="/work" className="mega-link">조직도</Link></li>
                         <li><Link to="/road" className="mega-link">오시는길</Link></li>
                       </ul>
                     </div>

@@ -1,7 +1,6 @@
 // Main.js
 import React, { useEffect, useRef, useState } from 'react';
 import ImageSlider from './imageSlider';
-import Footer from '../components/Footer';
 import './main.css';
 
 function Main() {
@@ -90,8 +89,6 @@ function Main() {
           </ul>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

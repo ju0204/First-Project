@@ -52,24 +52,32 @@ export default function Intro() {
 
 
       <section className="intro-section intro-section-third">
-        <div className="intro-third-visual">
-            <img
-            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80"
-            alt="산불소화시설 관련 이미지"
-            />
-        </div>
+        <h3 className="intro-third-title intro-third-title-desktop">
+            산불소화시설이 필요한 곳
+        </h3>
 
-        <div className="intro-third-content">
-            <h3 className="intro-third-title">산불소화시설이 필요한 곳</h3>
+        <div className="intro-third-row">
+            <div className="intro-third-visual">
+            <img
+                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80"
+                alt="산불소화시설 관련 이미지"
+            />
+            </div>
+
+            <div className="intro-third-content">
+            <h3 className="intro-third-title intro-third-title-mobile">
+                산불소화시설이 필요한 곳
+            </h3>
 
             <ul className="intro-third-list">
-            <li>자연휴양림, 산림 및 목재 체험장</li>
-            <li>시험림, 보호림 등 보호할 가치가 높은 산림</li>
-            <li>농산촌 등 산림과 인접한 지역</li>
-            <li>산불이 빈번하게 발생하는 지역</li>
-            <li>대형산불로 확산될 우려가 큰 지역</li>
-            <li>그 외 산불로 인해 재산상의 큰 피해가 예상되는 지역</li>
+                <li>자연휴양림, 산림 및 목재 체험장</li>
+                <li>시험림, 보호림 등 보호할 가치가 높은 산림</li>
+                <li>농산촌 등 산림과 인접한 지역</li>
+                <li>산불이 빈번하게 발생하는 지역</li>
+                <li>대형산불로 확산될 우려가 큰 지역</li>
+                <li>그 외 산불로 인해 재산상의 큰 피해가 예상되는 지역</li>
             </ul>
+            </div>
         </div>
         </section>
         </div>
