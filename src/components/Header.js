@@ -32,11 +32,16 @@ class Header extends Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll, { passive: true });
+    window.addEventListener('blur', this.handleWindowBlur);
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
     this.handleScroll();
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('blur', this.handleWindowBlur);
+    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    this.clearMegaTimers();
   }
 
   handleScroll = () => {
@@ -46,13 +51,13 @@ class Header extends Component {
     }
   };
 
-  openMega = (key, delay = 90) => {
+  openMega = (key, delay = 40) => {
     clearTimeout(this.closeTimers[key]);
     clearTimeout(this.openTimers[key]);
     this.openTimers[key] = setTimeout(() => this.setState({ megaOpen: key }), delay);
   };
 
-  closeMegaDelayed = (key, delay = 180) => {
+  closeMegaDelayed = (key, delay = 40) => {
     clearTimeout(this.openTimers[key]);
     clearTimeout(this.closeTimers[key]);
     this.closeTimers[key] = setTimeout(() => {
@@ -73,8 +78,34 @@ class Header extends Component {
     }));
   };
 
+  clearMegaTimers = () => {
+    Object.values(this.openTimers).forEach((timer) => clearTimeout(timer));
+    Object.values(this.closeTimers).forEach((timer) => clearTimeout(timer));
+    this.openTimers = {};
+    this.closeTimers = {};
+  };
+
+  closeAllMenus = () => {
+    this.clearMegaTimers();
+    this.setState({
+      megaOpen: null,
+      mobileOpen: null,
+    });
+  };
+
+  handleWindowBlur = () => {
+    this.closeAllMenus();
+  };
+
+  handleVisibilityChange = () => {
+    if (document.hidden) {
+      this.closeAllMenus();
+    }
+  };
+
   closeDrawerAndMove = () => {
-    this.setState({ right: false, mobileOpen: null });
+    this.clearMegaTimers();
+    this.setState({ right: false, mobileOpen: null, megaOpen: null });
   };
 
   renderMobileSection = (title, key, items) => {
@@ -118,8 +149,8 @@ class Header extends Component {
     ];
 
     const bizItems = [
-      { text: '개요', path: '/intro' },
-      { text: '산불소화시설시공', path: '/install' },
+      { text: '산불소화시설', path: '/intro' },
+      { text: '시공·실적', path: '/install' },
       { text: '유지보수점검', path: '/repair' },
       { text: '전문 컨설팅', path: '/consulting' },
     ];
@@ -155,14 +186,13 @@ class Header extends Component {
       <>
         <Navbar
           id="navbar"
-          bg="light"
           data-bs-theme="light"
-          sticky="top"
           className={isScrolled ? 'scrolled' : ''}
         >
           <Container id="nav-container" fluid>
             <Navbar.Brand as={Link} to="/" className="brand">
               <img id="nav-logo" src={DG} alt="대건이엔에스" />
+              <span className="brand-name">대건이앤에스</span>
             </Navbar.Brand>
 
             <Nav className="gap-5 main-nav">
@@ -208,8 +238,8 @@ class Header extends Component {
                   <div className="mega-inner">
                     <div className="mega-col">
                       <ul>
-                        <li><Link to="/intro" className="mega-link">개요</Link></li>
-                        <li><Link to="/install" className="mega-link">산불소화시설시공</Link></li>
+                        <li><Link to="/intro" className="mega-link">산불소화시설</Link></li>
+                        <li><Link to="/install" className="mega-link">시공·실적</Link></li>
                         <li><Link to="/repair" className="mega-link">유지보수점검</Link></li>
                         <li><Link to="/consulting" className="mega-link">전문 컨설팅</Link></li>
                       </ul>
@@ -244,10 +274,17 @@ class Header extends Component {
           anchor="right"
           open={right}
           onClose={this.toggleDrawer(false)}
+          ModalProps={{
+            keepMounted: true,
+            sx: {
+              zIndex: 2600,
+            },
+          }}
           PaperProps={{
             sx: {
               width: { xs: '100vw', sm: 420 },
               maxWidth: '420px',
+              zIndex: 2601,
             },
           }}
         >

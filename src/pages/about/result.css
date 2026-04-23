@@ -36,10 +36,25 @@
 
 /* Header */
 .result-title{
-  text-align:center;
+  position: relative;
+  display: table;
+  margin: clamp(28px, 6vw, 72px) auto 8px;
+  padding-bottom: 22px;
+  text-align: center;
+  font-weight: 700;
   font-size: clamp(28px, 4.2vw, 48px);
-  margin-top: clamp(28px, 6vw, 72px);
-  margin-bottom: 8px;
+}
+
+.result-title::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 4px;
+  background: #1c88d9;
+  border-radius: 999px;
 }
 .result-sub{
   text-align:center;

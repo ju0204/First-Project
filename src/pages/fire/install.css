@@ -14,13 +14,14 @@
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  padding: 40px 24px 100px;
+  padding: 20px 0 0 24px;
 }
 
 /* 공통 섹션 */
 .install-section {
   width: 100%;
-  margin-bottom: 100px;
+  max-width: 1400px;
+  margin: 40px 0 80px;
 }
 
 .install-section:last-child {
@@ -29,39 +30,53 @@
 
 /* 첫 번째 섹션 */
 .install-section-first {
-  padding-top: 10px;
-  padding-top: 40px;
+  display: flex;
+  min-height: 460px;
+  overflow: hidden;
 }
 
-.install-first-text {
+.install-visual {
+  width: 45%;
+  min-height: 460px;
+}
+
+.install-visual img {
+  display: block;
   width: 100%;
-  max-width: 1100px;
+  height: 100%;
+  object-fit: cover;
 }
 
-.install-first-title {
-  margin: 0 0 44px;
-  font-size: 3.2rem;
+.install-content {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 64px;
+  background: linear-gradient(135deg, #2f6d76 0%, #254a96 100%);
+  color: #ffffff;
+}
+
+.install-subtitle {
+  margin: 0 0 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.install-title {
+  margin: 0 0 26px;
+  font-size: 2.6rem;
   font-weight: 800;
   line-height: 1.2;
-  color: #000;
-  word-break: keep-all;
 }
 
-.install-first-summary {
-  margin: 0 0 22px;
-  font-size: 1.2rem;
-  font-weight: 800;
-  line-height: 1.65;
-  color: #222;
-  word-break: keep-all;
-}
-
-.install-first-description {
+.install-description {
   margin: 0;
-  font-size: 1rem;
+  max-width: 620px;
+  font-size: 1.05rem;
   font-weight: 500;
-  line-height: 1.8;
-  color: #9a9a9a;
+  line-height: 1.75;
   word-break: keep-all;
 }
 
@@ -71,7 +86,6 @@
   min-height: 320px;
   display: flex;
   align-items: center;
-  border-top: 1px solid #e8e8e8;
   padding-top: 40px;
 }
 
@@ -99,17 +113,29 @@
     padding: 36px 24px 80px;
   }
 
-  .install-first-title {
-    font-size: 2.7rem;
-    margin-bottom: 34px;
+  .install-section-first {
+    min-height: 420px;
   }
 
-  .install-first-summary {
-    font-size: 1.45rem;
+  .install-visual {
+    min-height: 420px;
   }
 
-  .install-first-description {
+  .install-content {
+    padding: 44px 46px;
+  }
+
+  .install-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .install-title {
+    font-size: 2.2rem;
+  }
+
+  .install-description {
     font-size: 1rem;
+    line-height: 1.7;
   }
 }
 
@@ -123,51 +149,90 @@
     margin-bottom: 70px;
   }
 
-  .install-first-title {
-    margin-bottom: 24px;
-    font-size: 2.2rem;
+  .install-section-first {
+    flex-direction: column;
+    gap: 0;
   }
 
-  .install-first-summary {
-    margin-bottom: 16px;
-    font-size: 1.05rem;
+  .install-visual,
+  .install-content {
+    width: 100%;
+  }
+
+  .install-visual {
+    min-height: 0;
+    height: 260px;
+  }
+
+  .install-content {
+    padding: 36px 24px;
+  }
+
+  .install-subtitle {
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+
+  .install-title {
+    margin-bottom: 18px;
+    font-size: 34px;
+  }
+
+  .install-description {
+    font-size: 15px;
     line-height: 1.7;
   }
 
-  .install-first-description {
-    font-size: 0.95rem;
-    line-height: 1.75;
-  }
-
-  .install-section-second,
-  .install-section-third {
-    min-height: 220px;
-    padding-top: 28px;
-  }
-
-  .install-section-title {
-    font-size: 1.5rem;
-    margin-bottom: 12px;
-  }
-
-  .install-section-text {
-    font-size: 0.95rem;
-    line-height: 1.7;
+  .install-section:not(.intro-section-first) {
+    min-height: 180px;
+    font-size: 22px;
   }
 }
 
 
-/* 두 번째 섹션 */
+/* 두 번째 섹션-------*/
 .install-section-second {
   padding-top: 30px;
 }
 
+.install-process-wrap {
+  width: 100%;
+}
+
+.install-process-heading {
+  position: relative;
+  display: table;
+  margin: 50px auto 80px;
+  padding-bottom: 22px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #111;
+  word-break: keep-all;
+}
+
+.install-process-heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 4px;
+  background: #1c88d9;
+  border-radius: 999px;
+}
+
 .install-process-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 26px;
+  grid-template-columns: repeat(3, minmax(220px, 280px));
+  justify-content: center;
+  column-gap: 90px;
   row-gap: 32px;
   align-items: start;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .install-process-item {
@@ -175,17 +240,23 @@
 }
 
 .install-process-icon {
-  width: 86px;
-  height: 86px;
+  width: 110px;
+  height: 110px;
   margin: 0 auto 18px;
   border-radius: 50%;
-  background: #a18968;
-  color: #ffffff;
+  background: #F9F9F9;
+  /* border: 3px solid #6d6c6c; */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 34px;
-  line-height: 1;
+  overflow: hidden;
+}
+
+.install-process-icon-img {
+  width: 64px;
+  height: 88px;
+  object-fit: contain;
+  display: block;
 }
 
 .install-process-title {
@@ -211,7 +282,7 @@
   right: 0;
   top: 50%;
   height: 1px;
-  background: #8f8f8f;
+  background: #5762a0;
   transform: translateY(-50%);
 }
 
@@ -223,7 +294,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #5d5d64;
+  background: #353585;
   border: 2px solid #d9d9d9;
   color: #ffffff;
   font-size: 1rem;
@@ -264,66 +335,65 @@
 
 @media (max-width: 1200px) {
   .install-process-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
     column-gap: 20px;
-    row-gap: 40px;
+    row-gap: 36px;
   }
 }
 
 @media (max-width: 768px) {
-  .install-process-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 14px;
-    row-gap: 28px;
-    align-items: start;
+    .install-process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 20px;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   .install-process-item {
     width: 100%;
   }
 
-  .install-process-item:last-child {
-    grid-column: 1 / -1;
-    max-width: 220px;
-    margin: 0 auto;
+  .install-process-icon {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 10px;
   }
 
-  .install-process-icon {
-    width: 68px;
-    height: 68px;
-    margin-bottom: 12px;
-    font-size: 26px;
+  .install-process-icon-img {
+    width: 28px;
+    height: 28px;
   }
 
   .install-process-title {
-    margin-bottom: 16px;
-    font-size: 0.95rem;
-    line-height: 1.4;
+    margin-bottom: 12px;
+    font-size: 0.82rem;
+    line-height: 1.35;
   }
 
   .install-process-divider {
-    margin: 0 10px 18px;
-    height: 30px;
+    margin: 0 6px 14px;
+    height: 26px;
   }
 
   .install-process-number {
-    width: 30px;
-    height: 30px;
-    font-size: 0.9rem;
+    width: 26px;
+    height: 26px;
+    font-size: 0.78rem;
   }
 
   .install-process-list {
-    padding: 0 4px 0 16px;
+    padding: 0 2px 0 12px;
   }
 
   .install-process-list li {
-    margin-bottom: 6px;
-    font-size: 0.84rem;
-    line-height: 1.65;
+    margin-bottom: 5px;
+    font-size: 0.72rem;
+    line-height: 1.5;
   }
 
   .install-process-list li::before {
-    left: -10px;
+    left: -9px;
   }
 }
 
@@ -342,13 +412,28 @@
 }
 
 .intro-third-records-title {
-  margin: 0;
+  position: relative;
+  display: table;
+  margin: 150px auto 60px;
+  padding-bottom: 22px;
   text-align: center;
-  font-size: 2.35rem;
-  font-weight: 800;
+  font-size: 35px;
+  font-weight: 600;
   line-height: 1.3;
   color: #111;
   word-break: keep-all;
+}
+
+.intro-third-records-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 4px;
+  background: #1c88d9;
+  border-radius: 999px;
 }
 
 .intro-third-records-sub {
@@ -403,31 +488,41 @@
 
 .rec-info {
   position: relative;
-  padding: 10px 20px 10px 0;
-  border-bottom: 1px solid #e9e9e9;
+  padding: 2px 10px 2px 0;
+  border: 1px solid #e9e9e9;
+  min-height: 60px;
 }
 
 .rec-name {
-  margin: 0 0 6px;
-  font-size: 0.95rem;
-  font-weight: 700;
+  margin: 10px 0 5px 20px;
+  font-size: 15px;
+  font-weight: 500;
   color: #222;
-  line-height: 1.4;
+  line-height: 1.15;
 }
 
 .rec-date {
-  margin: 0;
-  font-size: 0.8rem;
+  margin: 0 0 0 20px;
+  font-size: 13px;
   color: #9a9a9a;
+  line-height: 1.1;
 }
 
 .rec-plus {
   position: absolute;
-  right: 0;
-  bottom: 10px;
-  font-size: 1rem;
+  right: 10px;
+  top: 8px;
+  font-size: 25px;
+  font-weight: 400;
   color: #9a9a9a;
   line-height: 1;
+  transition: font-weight 0.15s ease, transform 0.15s ease, color 0.15s ease;
+}
+
+.rec-card:hover .rec-plus {
+  font-weight: 400;
+  transform: scale(1.15);
+  color: #111;
 }
 
 .intro-rec-pagination,
@@ -439,20 +534,47 @@
   margin-top: 30px;
 }
 
+.rec-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 70px;
+  flex-wrap: wrap;
+}
+
 .pg-arrow,
 .pg-num {
-  min-width: 36px;
-  height: 36px;
-  border: 1px solid #dcdcdc;
-  background: #fff;
-  color: #555;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 20px;
   cursor: pointer;
-  font-size: 0.9rem;
+  line-height: 1;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.pg-arrow {
+  font-size: 16px;
+}
+
+.pg-arrow:hover,
+.pg-num:hover {
+  color: #111111;
+}
+
+.pg-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
 }
 
 .pg-num.active {
-  background: #1f6b43;
-  border-color: #1f6b43;
+  background: #1553b1;
   color: #fff;
 }
 
@@ -463,74 +585,100 @@
   z-index: 9999;
   background: rgba(0, 0, 0, 0.55);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
 }
 
 .rec-modal-inner {
   position: relative;
-  width: min(1100px, 100%);
-  max-height: 90vh;
-  overflow: auto;
-  background: #fff;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1.2fr 0.8fr;
 }
 
-.modal-x {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  z-index: 2;
-  border: 0;
-  background: transparent;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #444;
+.modal-left {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 56px 56px 48px;
+  background: #6f7480;
+}
+
+.modal-right {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px 10px 15px;
+  border-right: 1px solid #8d93a3;
+  background: #595e68;
 }
 
 .modal-right img {
   display: block;
   width: 100%;
-  height: 100%;
-  min-height: 520px;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
 }
 
-.modal-left {
-  padding: 34px 30px;
+.modal-x {
+  position: absolute;
+  top: 26px;
+  right: 32px;
+  z-index: 10;
+  border: 0;
+  background: transparent;
+  font-size: 3.2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #ffffff;
 }
 
 .modal-left h2 {
-  margin: 0 0 14px;
-  font-size: 1.7rem;
-  color: #1b1b1b;
+  margin: 70px 0 50px;
+  font-size: 40px;
+  font-weight: 600;
+  color: #e9e7e7;
+  line-height: 1.2;
 }
 
 .modal-left h3 {
-  margin: 22px 0 14px;
-  font-size: 1.05rem;
-  color: #1b1b1b;
+  margin: 34px 0 18px;
+  font-size: 30px;
+  font-weight: 500;
+  color: #e9e7e7;
 }
 
 .modal-left p {
-  margin: 10px 0;
-  font-size: 0.98rem;
-  line-height: 1.65;
-  color: #444;
+  margin: 0 0 22px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #e9e7e7;
+}
+
+.modal-left p b {
+  display: inline-block;
+  min-width: 92px;
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .modal-left hr {
   border: 0;
-  border-top: 1px solid #ececec;
-  margin: 18px 0;
+  border-top: 1px solid rgba(223, 220, 220, 1);
+  margin: 50px 0;
 }
 
 .modal-gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .modal-gallery img {
@@ -578,23 +726,58 @@
   }
 
   .rec-modal {
-    padding: 12px;
+    padding: 0;
   }
 
   .rec-modal-inner {
+    width: 100vw;
+    height: 100vh;
     grid-template-columns: 1fr;
-  }
-
-  .modal-right img {
-    min-height: 260px;
+    overflow-y: auto;
   }
 
   .modal-left {
-    padding: 22px 18px;
+    order: 2;
+    height: auto;
+    padding: 28px 20px 24px;
+  }
+
+  .modal-right {
+    order: 1;
+    height: auto;
+    padding: 70px 20px 20px;
+  }
+
+  .modal-right img {
+    width: 100%;
+    max-height: 42vh;
+    object-fit: cover;
+  }
+
+  .modal-x {
+    top: 18px;
+    right: 20px;
+    font-size: 2.4rem;
+  }
+
+  .modal-left h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+
+  .modal-left p {
+    margin-bottom: 16px;
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  .modal-left p b {
+    min-width: 74px;
   }
 
   .modal-gallery {
     grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 }
 

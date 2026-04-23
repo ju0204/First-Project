@@ -16,6 +16,7 @@ import Notice from './pages/option/Notice';
 import NoticeDetail from './pages/option/NoticeDetail';
 import Footer from './components/Footer';
 import Intro from './pages/fire/intro';
+import Consulting from './pages/fire/consulting';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/ceo" element={<Ceo />} />
         <Route path="/notice" element={<Notice />} />
         <Route path="/notice/:id" element={<NoticeDetail />} />
+        <Route path="/consulting" element={<Consulting />} />
 
         {/* 기타 경로에 대한 라우트를 추가하세요 */}
       </Routes>

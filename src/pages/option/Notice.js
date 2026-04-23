@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import noticeData from './noticeData';
+import OptionTab from './optionTab';
+import noticeBg from '../image/dasan.png';
 import './Notice.css';
 
 function Notice() {
   return (
     <div className="notice-page">
+      <OptionTab
+        subtitle="NOTICE"
+        title="공지사항"
+        backgroundImage={noticeBg}
+      />
       <div className="notice-inner">
         <h2 className="notice-title">공지사항</h2>
         <div className="notice-title-line" />

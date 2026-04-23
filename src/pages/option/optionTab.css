@@ -4,19 +4,16 @@
   box-sizing: border-box;
 }
 
-.tabs-container {
+.option-tabs-container {
   position: relative;
   width: 100%;
   overflow: hidden;
 }
 
-.background-image {
+.option-background-image {
   position: relative;
   width: 100%;
-  min-height: 60vh;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-    url('/src/pages/image/company.jpg');
+  min-height: 50vh;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -25,13 +22,13 @@
   padding: 40px 20px;
 }
 
-.title-box {
+.option-title-box {
   position: relative;
   z-index: 1;
   text-align: center;
 }
 
-.tab-subtitle {
+.option-tab-subtitle {
   margin: 0 0 10px;
   font-family: "Noto Sans KR", sans-serif;
   font-size: clamp(14px, 1.4vw, 20px);
@@ -41,11 +38,11 @@
   color: #1c88d9;
 }
 
-.tab-title {
+.option-tab-title {
   margin: 0;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: clamp(42px, 6vw, 40px);
-  font-weight: 700;
+  font-size: clamp(36px, 5vw, 40px);
+  font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.04em;
   color: #ffffff;
@@ -53,32 +50,32 @@
 }
 
 @media (max-width: 1024px) {
-  .background-image {
-    min-height: 52vh;
+  .option-background-image {
+    min-height: 42vh;
   }
 
-  .tab-subtitle {
+  .option-tab-subtitle {
     margin-bottom: 8px;
     font-size: clamp(13px, 2vw, 18px);
   }
 
-  .tab-title {
-    font-size: clamp(34px, 7vw, 64px);
+  .option-tab-title {
+    font-size: clamp(30px, 6vw, 54px);
   }
 }
 
 @media (max-width: 768px) {
-  .background-image {
-    min-height: 42vh;
+  .option-background-image {
+    min-height: 34vh;
     padding: 32px 16px;
   }
 
-  .tab-subtitle {
+  .option-tab-subtitle {
     margin-bottom: 6px;
     font-size: clamp(12px, 3.4vw, 16px);
   }
 
-  .tab-title {
-    font-size: clamp(28px, 10vw, 48px);
+  .option-tab-title {
+    font-size: clamp(26px, 9vw, 42px);
   }
 }

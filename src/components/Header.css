@@ -6,7 +6,7 @@
   --muted:#6b7280;
   --border:rgba(0,0,0,.1);
   --nav-h: clamp(56px, 9vh, 80px);
-  --mega-offset: 15px;
+  --mega-offset: 17px;
 
   --mobile-line:#d9d9d9;
   --mobile-sub-bg:#f3f3f3;
@@ -14,19 +14,30 @@
 }
 
 #navbar{
-  background:#fff !important;
-  border-bottom:1px solid rgba(0,0,0,.06);
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+
+  background: transparent !important;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  transition:
+    background-color .30s ease,
+    border-color .30s ease,
+    box-shadow .30s ease,
+    color .18s ease;
 }
 
 #navbar .nav-link-custom,
 #navbar .nav-menu{
-  color:var(--text) !important;
+  color: #fff !important;
 }
 
 #navbar .top-link:hover{
-  background:transparent;
-  color:var(--text) !important;
+  background: rgba(255,255,255,.14);
+  color: #fff !important;
 }
 
 #nav-container{
@@ -41,12 +52,24 @@
 .brand{
   display:flex;
   align-items:center;
+  text-decoration:none;
 }
 
 #nav-logo{
-  width:clamp(28px, 2.4vw, 42px);
+  width: 70px;
   height:auto;
   margin-right:clamp(12px, 2.2vw, 24px);
+  margin-right:12px;
+}
+
+.brand-name{
+  display:block;
+  font-family:"Noto Sans KR", sans-serif;
+  font-size:25px;
+  font-weight:800;
+  color:#213291;
+  line-height:1;
+  white-space:nowrap;
 }
 
 .navbar-nav.main-nav{
@@ -83,7 +106,7 @@
   transform:scaleX(0);
   opacity:0;
   transform-origin:center;
-  transition: transform .18s ease, opacity .18s ease;
+  transition: transform .12s ease, opacity .1s ease;
 }
 
 .nav-link-custom:hover::after{
@@ -97,12 +120,12 @@
   right:0;
   background:#fff;
   box-shadow:none !important;
-  border-top:none !important;
+  border-top:1px solid rgba(0,0,0,.08) !important;
   border-bottom:1px solid rgba(0,0,0,.08) !important;
-  transform:translateY(-8px);
+  transform:translateY(-4px);
   opacity:0;
   pointer-events:none;
-  transition:transform .22s cubic-bezier(.22,1,.36,1), opacity .18s ease;
+  transition: transform .10s ease, opacity .10s ease;
   z-index:1030;
   top:calc(var(--nav-h) + var(--mega-offset));
 }
@@ -156,6 +179,7 @@
 .mega-panel .mega-link:hover{
   color:var(--accent);
   text-decoration:none;
+  color: #2657b1;
 }
 
 .mega-panel::before{
@@ -163,8 +187,8 @@
   position:absolute;
   left:0;
   right:0;
-  top:-12px;
-  height:12px;
+  top:-8px;
+  height:8px;
 }
 
 /* 모바일 아이콘 */
@@ -273,50 +297,42 @@
 }
 
 #navbar:hover{
-  background:#fff !important;
-  border-bottom:1px solid rgba(0,0,0,.06);
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  background: rgba(255,255,255) !important;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
 }
 
 #navbar:hover .nav-link-custom,
 #navbar:hover .nav-menu{
-  color:var(--text) !important;
+  color: #111 !important;
 }
 
 #navbar:hover .top-link:hover{
-  background:transparent;
-  color:var(--text) !important;
+  background: #fff;
+  color: #111 !important;
 }
 
-#navbar.scrolled{
-  background:#fff !important;
-  border-bottom:1px solid rgba(0,0,0,.06);
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
-}
+/* 모바일 */
+@media (max-width: 768px){
+  #nav-container{
+    display:flex !important;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 16px;
+  }
 
-#navbar.scrolled .nav-link-custom,
-#navbar.scrolled .nav-menu{
-  color:var(--text) !important;
-}
-
-#navbar.scrolled .top-link:hover{
-  background:transparent;
-  color:var(--text) !important;
-}
-
-@media (max-width: 992px){
   .navbar .main-nav{
     display:none !important;
   }
 
   #nav-logo{
-    width:clamp(32px,8vw,44px);
-    margin-left:2vw;
+    width:50px;
+    margin-right:0;
+    margin-left:0;
   }
 
   .nav-menu{
-    width:clamp(32px,8vw,44px);
-    margin-right:2vw;
+    width:32px;
   }
 
   .mega-panel{
@@ -330,34 +346,6 @@
 
   .mobile-submenu-link{
     font-size:clamp(16px, 4vw, 19px);
-  }
-}
-
-@media (min-width: 993px){
-  #nav-container{
-    display:grid !important;
-    grid-template-columns:auto 1fr auto;
-    align-items:center;
-    padding:0 clamp(16px, 4vw, 32px);
-  }
-
-  .navbar-nav.main-nav{
-    justify-self:center;
-    justify-content:center;
-    margin:0 !important;
-    gap:clamp(12px, 1.2vw, 20px);
-  }
-
-  #nav-container .me-auto{
-    margin-right:0 !important;
-  }
-
-  .brand{
-    justify-self:start;
-  }
-
-  .nav-menu{
-    justify-self:end;
   }
 }
 

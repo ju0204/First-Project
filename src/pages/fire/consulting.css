@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 
-.repair-page {
+.consulting-page {
   width: 100%;
   font-family: 'Noto Sans KR', sans-serif;
   background: #fff;
 }
 
-.repair-content-wrap {
+.consulting-content-wrap {
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
@@ -19,31 +19,31 @@
 
 
 /*=====첫번째 섹션=====*/
-.repair-section {
+.consulting-section {
   width: 100%;
   max-width: 1400px;
   margin: 40px 0 80px;
 }
 
-.repair-section-first {
+.consulting-section-first {
   display: flex;
   min-height: 460px;
   overflow: hidden;
 }
 
-.repair-visual {
+.consulting-visual {
   width: 45%;
   min-height: 460px;
 }
 
-.repair-visual img {
+.consulting-visual img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.repair-content {
+.consulting-content {
   width: 55%;
   display: flex;
   flex-direction: column;
@@ -53,46 +53,47 @@
   color: #ffffff;
 }
 
-.repair-subtitle {
+.consulting-subtitle {
   margin: 0 0 18px;
   font-size: 1rem;
   font-weight: 700;
   opacity: 0.9;
 }
 
-.repair-title {
+.consulting-title {
   margin: 0 0 26px;
   font-size: 2.6rem;
   font-weight: 800;
   line-height: 1.2;
 }
 
-.repair-description {
+.consulting-description {
   margin: 0;
   max-width: 620px;
   display: block;
 }
 
-.repair-description p {
+.consulting-description p {
   margin: 0;
   font-size: 1.05rem;
   font-weight: 500;
   line-height: 1.75;
   word-break: keep-all;
 }
+
 /* ====== 두 번째 섹션 =========*/
-.repair-section-second {
+.consulting-section-second {
   margin-top: 110px;
 }
 
-.repair-strength-section-wrap {
+.consulting-strength-section-wrap {
   width: 100%;
 }
 
-.repair-strength-heading {
+.consulting-strength-heading {
   position: relative;
   display: table;
-  margin: 150px auto 60px;
+  margin:  150px auto 60px;
   padding-bottom: 22px;
   text-align: center;
   font-size: 35px;
@@ -102,7 +103,7 @@
   word-break: keep-all;
 }
 
-.repair-strength-heading::after {
+.consulting-strength-heading::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -114,34 +115,34 @@
   border-radius: 999px;
 }
 
-.repair-strength-wrap {
+.consulting-strength-wrap {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
-.repair-strength-card {
+.consulting-strength-card {
   background: #f7f7f7;
   border-radius: 4px;
   padding: 38px 28px 34px;
   text-align: center;
 }
 
-.repair-strength-icon {
+.consulting-strength-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 18px;
 }
 
-.repair-strength-icon-img {
+.consulting-strength-icon-img {
   width: 120px;
   height: 120px;
   object-fit: contain;
   display: block;
 }
 
-.repair-strength-title {
+.consulting-strength-title {
   margin: 0 0 26px;
   font-size: 25px;
   font-weight: 700;
@@ -151,7 +152,7 @@
   text-align: center;
 }
 
-.repair-strength-list {
+.consulting-strength-list {
   width: fit-content;
   max-width: 300px;
   margin: 30px auto 0;
@@ -159,7 +160,7 @@
   text-align: left;
 }
 
-.repair-strength-list li {
+.consulting-strength-list li {
   margin-bottom: 12px;
   font-size: 0.95rem;
   line-height: 1.7;
@@ -169,118 +170,51 @@
 }
 
 
-/*====세번째 섹션=======*/
-.repair-section-third {
-  margin-top: 120px;
-}
-
-.repair-policy-wrap {
-  width: 100%;
-}
-
-.repair-policy-heading {
-  position: relative;
-  display: table;
-  margin: 150px auto 60px;
-  padding-bottom: 22px;
-  text-align: center;
-  font-size: 35px;
-  font-weight: 600;
-  line-height: 1.3;
-  color: #111;
-  word-break: keep-all;
-}
-
-.repair-policy-heading::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 52px;
-  height: 4px;
-  background: #1c88d9;
-  border-radius: 999px;
-}
-
-.repair-policy-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 30px;
-  align-items: start;
-}
-
-.repair-policy-column {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.repair-policy-card {
-  border: 1px solid #008CD3;
-  border-radius: 24px;
-  background: #F9F9F9;
-  padding: 28px 32px;
-  min-height: 108px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.repair-policy-title {
-  margin: 0 0 10px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.35;
-  color: #111;
-  word-break: keep-all;
-}
 
 
 
 @media (max-width: 1200px) {
+ 
 }
 
 @media (max-width: 768px) {
-  .repair-section-second {
+  .consulting-section-second {
     margin-top: 70px;
   }
 
-  .repair-strength-wrap {
+  .consulting-strength-wrap {
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
-  .repair-strength-heading {
+  .consulting-strength-heading {
     margin-bottom: 36px;
     font-size: 2rem;
     padding-bottom: 18px;
   }
 
-  .repair-strength-card {
+  .consulting-strength-card {
     padding: 28px 20px 24px;
   }
 
-  .repair-strength-icon {
+  .consulting-strength-icon {
     font-size: 42px;
     margin-bottom: 14px;
   }
 
-  .repair-strength-title {
+  .consulting-strength-title {
     margin-bottom: 10px;
     font-size: 1rem;
   }
 
-  .repair-strength-list {
+  .consulting-strength-list {
     padding-left: 18px;
   }
 
-  .repair-strength-list li {
+  .consulting-strength-list li {
     margin-bottom: 10px;
     font-size: 0.9rem;
     line-height: 1.65;
   }
-
 
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
 
 body {
   font-family:"Noto Sans KR", sans-serif;
@@ -152,7 +152,7 @@ body {
 }
 
 /* modal */
-.rec-modal {
+ /* .rec-modal {
   position: fixed;
   inset: 0;
   overflow: hidden;
@@ -222,7 +222,7 @@ body {
 
 .modal-gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 사진 4개까지 한 줄 */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 12px;
   align-items: start;
 }
@@ -268,10 +268,10 @@ body {
 .modal-close:hover {
   background: #fff;
   color: #222;
-}
+}  */
 
 /* 스크롤 */
-.modal-left::-webkit-scrollbar {
+/* .modal-left::-webkit-scrollbar {
   width: 8px;
 }
 
@@ -281,10 +281,10 @@ body {
 
 .modal-left::-webkit-scrollbar-track {
   background: transparent;
-}
+} */
 
 /* tablet */
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
   .rec-name {
     font-size: 26px;
   }
@@ -340,10 +340,10 @@ body {
   .modal-gallery {
     grid-template-columns: repeat(2, 1fr);
   }
-}
+} */
 
 /* mobile */
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .rec-wrap {
     width: 92%;
     padding: 56px 0 80px;
@@ -420,4 +420,4 @@ body {
 .modal-x:hover {
   transform: scale(1.2);
   opacity: 0.7;
-}
+}  */

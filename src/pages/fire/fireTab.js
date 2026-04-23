@@ -1,27 +1,19 @@
-
 import './fireTab.css';
 
-
-const CompanyTabs = () => {
-
-
-
-
+const FireTab = ({
+  subtitle = 'BUSINESS',
+  title = '대건이엔에스',
+}) => {
   return (
-    <div className="tabs-container">
-      <div className="background-image">
-        <div className="centered-text">대건이엔에스</div>
+    <div className="fire-tabs-container">
+      <div className="fire-background-image">
+        <div className="fire-title-box">
+          <p className="fire-tab-subtitle">{subtitle}</p>
+          <h1 className="fire-tab-title">{title}</h1>
+        </div>
       </div>
-      {/* <ul className="tabs">
-        <li className={activeTab === 'install' ? 'active' : ''}>
-          <Link to="/install">설치사업</Link>
-        </li>
-        <li className={activeTab === 'repair' ? 'active' : ''}>
-          <Link to="/repair">유지보수</Link>
-        </li>
-      </ul> */}
     </div>
   );
 };
 
-export default CompanyTabs;
+export default FireTab;

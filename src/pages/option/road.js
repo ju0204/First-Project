@@ -1,4 +1,5 @@
 import "./road.css";
+import CompanyTabs from '../about/companyTabs';
 
 export default function Road() {
   const EMBED_SRC =
@@ -6,7 +7,10 @@ export default function Road() {
 
   
     return (
+      
     <div className="road-page">
+      <CompanyTabs title="오시는 길" />
+
       <div className="contact-container">
         <h2 className="road-title">오시는 길</h2>
 

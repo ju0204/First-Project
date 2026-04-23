@@ -1,62 +1,114 @@
-import React, { Component } from 'react';
 import FireTab from './fireTab';
+
+import InspectIcon from '../image/solution1.png';
+import ManageIcon from '../image/solution2.png';
+import RepairIcon from '../image/solution3.png';
+
 import './repair.css';
 
-class repair extends Component {
-    render() {
-        return (
-            <div>
-                <FireTab />
-                <div>
-                    <div className="one-container">
-                            <div className="introduce-text">
-                                <h1 className="introduce-text1"> 산불소화시설 유지보수 </h1>
-                                <p className="introduce-text2">
-                                산불소화시설은 비상시에 즉시 사용할 수 있도록 지속적인 관심과 관리을 필요로 하는 중요 시설물입니다.<br/>
-                                시설물 기동에 이상이 발견될 때에는 정상 유지되도록 보수 가능한 업체를 선정하여 보수하도록 하며, 저희는 수년간의 산불소화시설 설치경험과 보수 노하우를 갖춘 업체입니다.
-                                </p>
-                            </div>
-                        </div>
+export default function Repair() {
+  const introImage =
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80';
 
-                        <div className="repair-line"></div>
-                    <div className="repair-two-container">
-                        <div className="repair-need-title">
-                            <h1>산불소화시설 유지 보수가 필요할때?</h1>
-                        </div>
-                        <div className="repair-need-ex-container">
-                            <ul className="repair-need-list">
-                                <li>
-                                    <p className="repair-need-number">1</p>
-                                    <p className="repair-need-text"> 엔진펌프 또는 모터펌프가 정상기동하지 않을 때</p>
-                                </li>
-                                <li>
-                                    <p className="repair-need-number">2</p>
-                                    <p className="repair-need-text">노출배관의 동파 또는 파손에 따른 배관 누수를 발견한 때</p>
-                                </li>
-                                <li>
-                                    <p className="repair-need-number">3</p>
-                                    <p className="repair-need-text">물탱크 내벽 또는 외벽의 누수를 발견한 때</p>
-                                </li>
-                                <li>
-                                    <p className="repair-need-number">4</p>
-                                    <p className="repair-need-text">수관수막타워 방사량이 다른 수관수막타워에 비해 현저한 차이를 보일 때</p>
-                                </li>
-                                <li>
-                                    <p className="repair-need-number">5</p>
-                                    <p className="repair-need-text">비정상적인 기계 경고음이 발생할 때</p>
-                                </li>
-                                <li>
-                                    <p className="repair-need-number">6</p>
-                                    <p className="repair-need-text">그 외 중요한 보수가 즉시 필요하다고 판단될 때</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div className="repair-page">
+
+    <FireTab title="산불소화시설" />
+
+    <div className="repair-content-wrap">
+      <section className="repair-section repair-section-first">
+        <div className="repair-visual">
+          <img src={introImage} alt="일반설비 소개 이미지" />
+        </div>
+
+        <div className="repair-content">
+          <p className="repair-subtitle">INSTALLATION LOCATIONS</p>
+          <h2 className="repair-title">유지보수·점검</h2>
+
+          <div className="repair-description">
+            <p>
+                산불소화시설은 중요시설물로 언제든 운영 가능한 상태여야 합니다.<br/>
+                대건이앤에서는 국내 수준급의 유지관리 솔루션을 제공합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="repair-section repair-section-second">
+        <div className="repair-strength-section-wrap">
+          <h2 className="repair-strength-heading">유지보수 솔루션</h2>
+
+          <div className="repair-strength-wrap">
+            <div className="repair-strength-card">
+              <div className="repair-strength-icon">
+                <img src={InspectIcon} alt="시설물 점검 아이콘" className="repair-strength-icon-img" />
+              </div>
+              <h3 className="repair-strength-title">시설물 점검</h3>
+              <ul className="repair-strength-list">
+                <li>정상작동 여부 판단</li>
+                <li>월 1회 이상 정기점검</li>
+                <li>년 2회 이상 정밀점검</li>
+              </ul>
             </div>
-            
-        );
-    }
-}
 
-export default repair;
+            <div className="repair-strength-card">
+              <div className="repair-strength-icon">
+                <img src={ManageIcon} alt="시설물 관리 아이콘" className="repair-strength-icon-img" />
+              </div>
+              <h3 className="repair-strength-title">시설물 관리</h3>
+              <ul className="repair-strength-list">
+                <li>전문인력의 세심한 시설관리 요령 제공</li>
+                <li>효율적인 운영관리 자문 및 노하우 제공</li>
+              </ul>
+            </div>
+
+            <div className="repair-strength-card">
+              <div className="repair-strength-icon">
+                <img src={RepairIcon} alt="유지보수 아이콘" className="repair-strength-icon-img" />
+              </div>
+              <h3 className="repair-strength-title">유지보수</h3>
+              <ul className="repair-strength-list">
+                <li>전문인력의 철저한 유지보수</li>
+                <li>체계적이고 효율적인 점검 및 수리</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="repair-section repair-section-third">
+        <div className="repair-policy-wrap">
+          <h2 className="repair-policy-heading">체계적인 유지보수·점검이 필요할때</h2>
+
+          <div className="repair-policy-grid">
+            <div className="repair-policy-column left">
+              <div className="repair-policy-card">
+                <h3 className="repair-policy-title">전문인력의 정기적인 시설물 점검이 필요할때</h3>
+              </div>
+
+              <div className="repair-policy-card">
+                <h3 className="repair-policy-title">상시 사용 가능한 최적의 상태를 유지하고 싶을때</h3>
+              </div>
+
+              <div className="repair-policy-card">
+                <h3 className="repair-policy-title">시설 관리자의 유지관리 업무 부담을 줄이고 싶을때</h3>
+              </div>
+            </div>
+
+            <div className="repair-policy-column right">
+              <div className="repair-policy-card">
+                <h3 className="repair-policy-title">절절한 범위의 점검 및 수리가 필요할때</h3>
+              </div>
+
+              <div className="repair-policy-card">
+                <h3 className="repair-policy-title">신속하고 중요한 보수가 필요할때</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        </div>
+    </div>
+  );
+}

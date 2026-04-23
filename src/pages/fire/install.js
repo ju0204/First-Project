@@ -1,6 +1,12 @@
 import React, { useMemo, useState, useEffect } from "react";
 import './install.css';
+import Contract from '../image/contract.png';
+import Repair from '../image/repair.png';
+import Management from '../image/management.png';
 import FireTab from './fireTab';
+
+  const introImage =
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80';
 
 const RECORDS = [
   { id: 1, year: 2018, month: 3, site: "관음사 사찰", location: "서울", projectType: "사찰 공사", period: "2018-03~2018-06", client: "관악구청", contractor: "도원건설", image: "https://picsum.photos/seed/rec-1/800/600", images: ["https://picsum.photos/seed/rec-1-1/800/600","https://picsum.photos/seed/rec-1-2/800/600","https://picsum.photos/seed/rec-1-3/800/600"] },
@@ -45,98 +51,78 @@ export default function IntroPage() {
   }, [sorted, page]);
   return (
     <div className="install-page">
-      <FireTab />
+      <FireTab title="시공·실적" />
 
       <div className="install-content-wrap">
         {/* 1번째 섹션 */}
-        <section className="install-section install-section-first">
-          <div className="install-first-text">
-            <h2 className="install-first-title">제조부문</h2>
+        <section className="install-section intro-section-first">
+        <div className="install-visual">
+          <img src={introImage} alt="일반설비 소개 이미지" />
+        </div>
 
-            <p className="install-first-summary">
-              파라텍은 1973년, 대한민국 소방안전의 시작과 함께 설립된 회사로
-              <br />
-              국내 최초로 스프링클러를 개발, 생산 및 인증을 받았습니다.
-            </p>
-
-            <p className="install-first-description">
-              현재, 파라텍의 제품은 국내 인증은 물론 UL/FM 등 해외인증을 취득하여 대한민국의 소방제품 분야를 선도하고 있습니다.
-              <br />
-              우수한 품질을 인정받아 여의도 IFC, 인천공항 및 삼성전자 등 국내 유수의 랜드마크 및 기반 시설에 제품을 납품하고 있습니다.
-            </p>
-          </div>
-        </section>
+        <div className="install-content">
+          <p className="install-subtitle">SOLUTIONS</p>
+          <h2 className="install-title">산불소화시설 시공 솔루션</h2>
+          <p className="install-description">
+            소중한 재산과 인명,산림자원을 산불로부터 보호하고 직접적인 진화와 예방으로 지켜냅니다.
+          </p>
+        </div>
+      </section>
 
         {/* 2번째 섹션 */}
         <section className="install-section install-section-second">
+          <div className="install-process-wrap">
+            <p className="install-process-heading">시공 솔루션</p>
             <div className="install-process-grid">
-                <div className="install-process-item">
-                <div className="install-process-icon">🔧</div>
-                <h3 className="install-process-title">제안 · 컨설팅</h3>
+              <div className="install-process-item">
+                <div className="install-process-icon">
+                  <img src={Contract} alt="견적, 계약 아이콘" className="install-process-icon-img" />
+                </div>
+                <h3 className="install-process-title">견적·계약</h3>
                 <div className="install-process-divider">
-                    <span className="install-process-number">1</span>
+                  <span className="install-process-number">1</span>
                 </div>
                 <ul className="install-process-list">
-                    <li>고객 환경 분석 및 요구사항 검토</li>
-                    <li>현장 여건에 맞는 기초 제안</li>
+                  <li>합리적이고 현실적인 비용산출</li>
+                  <li>자연 훼손 최소화 방안 제시</li>
                 </ul>
-                </div>
+              </div>
 
-                <div className="install-process-item">
-                <div className="install-process-icon">📐</div>
-                <h3 className="install-process-title">설계 · 엔지니어링</h3>
+              <div className="install-process-item">
+                <div className="install-process-icon">
+                  <img src={Repair} alt="시공 아이콘" className="install-process-icon-img" />
+                </div>
+                <h3 className="install-process-title">시공</h3>
                 <div className="install-process-divider">
-                    <span className="install-process-number">2</span>
+                  <span className="install-process-number">2</span>
                 </div>
                 <ul className="install-process-list">
-                    <li>시공 전 설계 검토 및 계획 수립</li>
-                    <li>환경에 맞는 구조 설계 진행</li>
+                  <li>수년간의 기술 노하우로 전문 인력 시공</li>
+                  <li>안전우선과 무하자시공</li>
                 </ul>
-                </div>
+              </div>
 
-                <div className="install-process-item">
-                <div className="install-process-icon">📋</div>
-                <h3 className="install-process-title">인 · 허가</h3>
+              <div className="install-process-item">
+                <div className="install-process-icon">
+                  <img src={Management} alt="사후관리 아이콘" className="install-process-icon-img" />
+                </div>
+                <h3 className="install-process-title">사후관리</h3>
                 <div className="install-process-divider">
-                    <span className="install-process-number">3</span>
+                  <span className="install-process-number">3</span>
                 </div>
                 <ul className="install-process-list">
-                    <li>관련 절차 검토 및 행정 대응</li>
-                    <li>업무 진행에 필요한 문서 정리</li>
+                  <li>철저한 전문인력의 시설운영관리</li>
+                  <li>최적의 성능발휘를 위한 차별화된 서비스 제공</li>
                 </ul>
-                </div>
-
-                <div className="install-process-item">
-                <div className="install-process-icon">🏗️</div>
-                <h3 className="install-process-title">시공 · 설치</h3>
-                <div className="install-process-divider">
-                    <span className="install-process-number">4</span>
-                </div>
-                <ul className="install-process-list">
-                    <li>현장 일정에 맞춘 시공 수행</li>
-                    <li>품질 기준에 따른 설치 진행</li>
-                </ul>
-                </div>
-
-                <div className="install-process-item">
-                <div className="install-process-icon">✅</div>
-                <h3 className="install-process-title">점검 · 유지관리</h3>
-                <div className="install-process-divider">
-                    <span className="install-process-number">5</span>
-                </div>
-                <ul className="install-process-list">
-                    <li>설치 후 점검 및 성능 확인</li>
-                    <li>지속적인 유지관리 지원</li>
-                </ul>
-                </div>
+              </div>
             </div>
-            </section>
+          </div>
+        </section>
 
         {/* 세번째 섹션 */}
         <section className="intro-section intro-section-third">
           <div className="intro-third-records">
-            <h3 className="intro-third-records-title">사 업 실 적</h3>
-            <p className="intro-third-records-sub">주요 수행 현장</p>
+            <h3 className="intro-third-records-title">사업실적</h3>
 
             <div className="rec-grid intro-rec-grid">
               {current.map((r) => (

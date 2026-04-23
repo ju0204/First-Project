@@ -1,32 +1,41 @@
 import React, { useEffect } from 'react';
 import CompanyTabs from './companyTabs';
+import CreativeIcon from '../image/creative.png';
+import HarmonyIcon from '../image/harmony.png';
+import GrowthIcon from '../image/growth.png';
 import './about.css';
 
 /* 핵심가치 데이터: 기존 그대로 */
 const VALUES_3B = [
   {
-    key: 'base',
-    en: 'Base',
-    ko: '기초',
+    key: '창의',
+    icon: CreativeIcon,
+    en: '창의',
+    ko: '새로운 도전',
+    ko2: '지식과 독창성',
     punch: '안전하고 튼튼한',
     desc:
-      '기본과 원칙을 지켜 신뢰할 수 있는 기반을 쌓고, 모든 사업의 출발점인 안전을 최우선으로 합니다.',
+      '축적된 노하우와 전문지식으로 독창적인 기술력을 결합하여 안전하고 효율적인 최적의 솔루션을 제공합니다.',
   },
   {
-    key: 'belief',
-    en: 'Belief',
-    ko: '믿음',
+    key: '조화',
+    icon: HarmonyIcon,
+    en: '조화',
+    ko: '상호존중',
+    ko2: '자연과 공존',
     punch: '상호간의 든든한',
     desc:
-      '고객·파트너·동료와의 약속을 지키며 협력의 신뢰를 구축하고 지속적인 성장을 도모합니다.',
+      '구성원 및 파트너십 간의 상호존중과 배려를 바탕으로 사람과 자연이 조화롭게 서로 공존할 수 있는 관계를 만들어 갑니다.',
   },
   {
-    key: 'balance',
-    en: 'Balance',
-    ko: '균형',
+    key: '성장',
+    icon: GrowthIcon,
+    en: '성장',
+    ko: '의지와 열정',
+    ko2: '지속가능',
     punch: '자연과의 반듯한',
     desc:
-      '자연과 사람이 공존하는 조화를 추구하며 친환경적이고 지속가능한 해법을 실천합니다.',
+      '성장의 원동력은 뜨거운 열정입니다. 불굴의 의지로 한계를 돌파하며, 사회와 환경에 기여하는 지속가능한 기업으로 거듭나겠습니다.',
   },
 ];
 
@@ -42,10 +51,10 @@ export default function About() {
 
   return (
     <div>
-      <CompanyTabs />
+      <CompanyTabs title="경영이념" />
 
       {/* 히어로(좌 텍스트 / 우 이미지) */}
-      <section className="about-hero reveal-on-scroll">
+      {/* <section className="about-hero reveal-on-scroll">
         <div className="hero-copy">
           <div className="hero-eyebrow">회사소개</div>
           <h2 className="hero-title">
@@ -67,16 +76,35 @@ export default function About() {
           <img className="hero-photo" src="/img/forest-fire.jpg" alt="산불 및 재해방지 이미지" />
           <i className="hero-accent" aria-hidden="true" />
         </figure>
-      </section>
+      </section> */}
 
       {/* ===== 핵심가치 섹션 (그대로) ===== */}
-      <section className="values-wrap">
-  <h2 className="values-title reveal-on-scroll">경영 방침 : 3B</h2>
+  
+  <div className="about-page-title-wrap">
+    <h2 className="about-page-title">경영이념</h2>
+  </div>
 
-  <p className="values-subtitle reveal-on-scroll">
-    넓고 푸른 하늘 아래 자연과 사람이 공존하는 세상을 만들기 위해
-    <b> 대건이앤에스</b>는 <b>3B(Base, Belief, Balance)</b>를 핵심가치로 삼습니다.
-  </p>
+  <section className="vision-section reveal-on-scroll">
+    <div className="vision-head">
+      <p className="vision-eyebrow">VISION</p>
+      <h2 className="vision-title">비전</h2>
+    </div>
+
+    <div className="vision-box">
+      <p className="vision-text">
+        " 창의적인 도전으로 지속 가능한 성장 속에 자연과 사람이 조화롭게 공존할 수 있는 세상을 만들어갑니다 "
+      </p>
+    </div>
+  </section>
+
+
+
+  <section className="values-wrap">
+  
+    <div className="vision-head">
+      <p className="vision-eyebrow">Core Values</p>
+      <h2 className="vision-title">핵심가치</h2>
+  </div>
 
   <div className="values-grid">
     {VALUES_3B.map(v => (
@@ -86,12 +114,14 @@ export default function About() {
         aria-label={v.en}
       >
         <div className={`value-circle ${v.key}`} aria-hidden="true">
+          <img src={v.icon} alt="" className="value-icon" />
           <div className="value-en">{v.en}</div>
         </div>
 
         <div className="value-text">
-          <p className="value-punch">{v.punch}</p>
-          <h3 className="value-ko">{v.ko}</h3>
+          {/* <p className="value-punch">{v.punch}</p> */}
+          <p className="value-ko">{v.ko}</p>
+          <p className="value-ko">{v.ko2}</p>
           <p className="value-desc">{v.desc}</p>
         </div>
       </article>

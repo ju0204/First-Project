@@ -1,82 +1,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
-.tabs-container {
-  position: relative;
+* {
+  box-sizing: border-box;
 }
 
-.background-image {
+.fire-tabs-container {
   position: relative;
-  background-image: url('/src/pages/image/forest2.jpg'); /* 배경 이미지 경로 */
+  width: 100%;
+  overflow: hidden;
+}
+
+.fire-background-image {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url('/src/pages/image/forest2.jpg');
   background-size: cover;
   background-position: center;
-  height: 55vh; /* 배경 이미지의 높이 조정 */
-  display: flex;
-  align-items: center; /* 수직 중앙 정렬 */
-  justify-content: center; /* 수평 중앙 정렬 */
-  flex-direction: column; /* 텍스트를 중앙에 위치시키기 위해 설정 */
-}
-
-.centered-text {
-  font-size: clamp(24px, 4vw, 40px);
-  font-weight: 600; /* 'weight'는 잘못된 값 → 숫자/bold 로 */
-  color: #fff; /* 텍스트 색상, 배경에 따라 조정 */
-  text-align: center; /* 텍스트 중앙 정렬 */
-  z-index: 1; /* 텍스트가 탭 아래에 위치하도록 설정 */
-}
-
-.tabs {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 10vh;
-  margin: 0;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* 배경의 가독성을 위한 반투명 배경 */
-  position: absolute; /* 절대 위치 설정 */
-  bottom: 0; /* 하단에 위치 */
-  z-index: 2; /* 탭이 텍스트 위에 위치하도록 설정 */
-}
-
-.tabs li {
-  margin: 0;
   display: flex;
   align-items: center;
-  justify-content: center; /* 텍스트를 수평 중앙에 배치 */
+  justify-content: center;
+  padding: 40px 20px;
 }
 
-.tabs li a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 160px; /* 흰색 크기 조절 가능 */
-  display: block;
-  transition: background-color 0.3s ease;
-  height: 100%; /* 전체 높이 사용 */
-  display: flex;
-  align-items: center; /* 텍스트를 수직 중앙에 배치 */
-  justify-content: center; /* 텍스트를 수평 중앙에 배치 */
-  font-size: 2vw; /* 폰트 크기 조정 */
+.fire-title-box {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.fire-tab-subtitle {
+  margin: 0 0 10px;
   font-family: "Noto Sans KR", sans-serif;
-  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+  font-size: clamp(14px, 1.4vw, 20px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1c88d9;
 }
 
-.tabs li.active a {
-  background-color: white; /* 활성화된 탭의 배경색 */
-  color: black;
+.fire-tab-title {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: clamp(36px, 5vw, 40px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  word-break: keep-all;
 }
 
-.tabs li a:hover {
-  background-color: white; /* 활성화된 탭의 배경색 */
-  color: black;
+@media (max-width: 1024px) {
+  .fire-background-image {
+    min-height: 50vh;
+  }
+
+  .fire-tab-subtitle {
+    margin-bottom: 8px;
+    font-size: clamp(13px, 2vw, 18px);
+  }
+
+  .fire-tab-title {
+    font-size: clamp(30px, 6vw, 52px);
+  }
 }
 
-.tab-content {
-  padding: 20px;
-}
+@media (max-width: 768px) {
+  .fire-background-image {
+    min-height: 40vh;
+    padding: 32px 16px;
+  }
 
-@media (max-width: 1000px) {
-  .tabs li a {
-    font-size: small; /* 화면 크기에 따라 폰트 크기 조정 */
-    padding: 10px 50px; /* 탭 패딩을 줄여 화면이 작아져도 탭이 가로로 유지되도록 조정 */
+  .fire-tab-subtitle {
+    margin-bottom: 6px;
+    font-size: clamp(12px, 3.4vw, 16px);
+  }
+
+  .fire-tab-title {
+    font-size: clamp(26px, 9vw, 42px);
   }
 }

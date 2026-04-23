@@ -1,5 +1,7 @@
 // Ask.jsx
 import React, { useRef, useState } from "react";
+import OptionTab from './optionTab';
+import askBg from '../image/mount.jpg';
 import "./ask.css";
 
 function Ask() {
@@ -58,6 +60,13 @@ function Ask() {
 
   return (
     <div className="ask-wrap">
+
+      <OptionTab
+        subtitle="CONTACT"
+        title="문의하기"
+        backgroundImage={askBg}
+      />
+
       <section className="hero">
         <h1>문의하기</h1>
         <p>

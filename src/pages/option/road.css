@@ -12,17 +12,32 @@
 * { box-sizing: border-box; }
 
 .road-page{
-  padding: 64px 16px 80px;
+  padding: 0 0 80px;
   color: var(--ink);
   font-family: "Noto Sans KR", sans-serif;
 }
 
 .road-title{
+  position: relative;
+  display: table;
+  margin: 100px auto 60px;
+  padding-bottom: 22px;
   text-align: center;
-  font-weight: 900;
   letter-spacing: -.02em;
-  font-size: clamp(24px, 3.6vw, 40px);
-  margin: 24px 0 60px;
+  font-weight: 700;
+  font-size: clamp(28px, 4.2vw, 48px);
+}
+
+.road-title::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 4px;
+  background: #1c88d9;
+  border-radius: 999px;
 }
 
 .contact-container{
@@ -101,15 +116,15 @@
 }
 
 @media (max-width: 768px){
-  .road-page{
-    padding: 56px 14px 40px;
-  }
+.road-page{
+  padding: 0 14px 40px;
+}
 
-  .road-title{
-    font-size: clamp(22px, 8vw, 34px);
-    margin: 18px 0 18px;
-  }
-
+.road-title{
+  font-size: clamp(22px, 8vw, 34px);
+  margin: 18px auto 18px;
+  padding-bottom: 18px;
+}
   .map-container{
     margin: 10px auto 24px;
   }

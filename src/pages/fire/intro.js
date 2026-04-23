@@ -1,5 +1,10 @@
 import React from 'react';
 import './intro.css';
+import Contract from '../image/contract.png';
+import Intro2 from '../image/intro2.png';
+import Intro3 from '../image/intro3.png';
+import Repair from '../image/repair.png';
+import Management from '../image/management.png';
 import FireTab from './fireTab';
 
 export default function Intro() {
@@ -9,7 +14,7 @@ export default function Intro() {
   return (
     <div className="intro-page">
 
-    <FireTab />
+    <FireTab title="산불소화시설" />
 
     <div className="intro-content-wrap">
       <section className="intro-section intro-section-first">
@@ -18,68 +23,167 @@ export default function Intro() {
         </div>
 
         <div className="intro-content">
-          <p className="intro-subtitle">GENERAL FACILITIES</p>
-          <h2 className="intro-title">일반설비</h2>
-          <p className="intro-description">
-            공동주택, 교육문화시설, 종합병원, 업무시설 등 다양한 사업영역에서
-            축적한 노하우와 전문 인력들을 바탕으로 도시의 공간에 새로운 가치를 더하고,
-            보다 나은 환경을 만들기 위하여 끊임없이 노력하고 있습니다.
-          </p>
+          <p className="intro-subtitle">INSTALLATION LOCATIONS</p>
+          <h2 className="intro-title">산불소화시설설치장소</h2>
+
+          <div className="intro-description">
+            <ul className="intro-description-list">
+              <li>자연휴양림, 목재 체험장</li>
+              <li>농·산촌 산림 인접 지역</li>
+              <li>산불이 빈번하게 발생하는 지역</li>
+              <li>대형산불로 확산 우려가 큰 지역</li>
+            </ul>
+
+            <ul className="intro-description-list">
+              <li>전통사찰, 군부대 등 산불 취약 지역</li>
+              <li>국가 중요 시설물</li>
+              <li>그 외 리조트 및 호텔 등 시설물</li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section className="intro-section intro-section-second">
-        <div className="intro-text-block">
-            <h3 className="intro-second-title">
-            소방은 <span>예방</span>이 시작입니다.
-            </h3>
+      {/* 2번째 섹션 */}
+        <section className="intro-section intro-section-second">
+          <div className="intro-process-wrap">
+            <p className="intro-process-heading">시공 솔루션</p>
 
-            <p className="intro-second-summary">
-            크라운방재(주)는 다양한 건축물과 시설물의 소방시설이 정상적으로 작동되도록
-            <span> 정기적인 점검, 유지보수, 개선 관리</span>를 체계적으로 수행합니다.
-            </p>
+            <div className="intro-process-grid">
+              <div className="intro-process-item">
+                <div className="intro-process-icon">
+                  <img src={Contract} alt="의뢰, 제안 아이콘" className="intro-process-icon-img" />
+                </div>
+                <h3 className="intro-process-title">의뢰·제안</h3>
+                <div className="intro-process-divider">
+                  <span className="intro-process-number">1</span>
+                </div>
+                <ul className="intro-process-list">
+                  <li>설치효과 및 방향성 제시</li>
+                  <li>자연 훼손 최소화 방안 제시</li>
+                </ul>
+              </div>
 
-            <p className="intro-second-description">
-            소방시설 유지관리는 단순한 점검을 넘어, 생명을 보호하고 재산 피해를 최소화하는
-            사전 예방의 핵심입니다.
-            <br />
-            당사는 관련 법령에 따른 정기점검(종합정밀점검/작동기능점검)은 물론, 고객 맞춤형
-            점검 계획 수립과 데이터 기반의 위험 요소 분석을 통해 한 차원 높은 품질의
-            서비스를 제공합니다.
-            </p>
-        </div>
+              <div className="intro-process-item">
+                <div className="intro-process-icon">
+                  <img src={Intro2} alt="검토 아이콘" className="intro-process-icon-img" />
+                </div>
+                <h3 className="intro-process-title">검토(수정)</h3>
+                <div className="intro-process-divider">
+                  <span className="intro-process-number">2</span>
+                </div>
+                <ul className="intro-process-list">
+                  <li>관계법령 검토 및 지침 참고</li>
+                  <li>타당성 여부 판단</li>
+                </ul>
+              </div>
+
+              <div className="intro-process-item">
+                <div className="intro-process-icon">
+                  <img src={Intro3} alt="설계자문 아이콘" className="intro-process-icon-img" />
+                </div>
+                <h3 className="intro-process-title">설계자문</h3>
+                <div className="intro-process-divider">
+                  <span className="intro-process-number">3</span>
+                </div>
+                <ul className="intro-process-list">
+                  <li>국내 수준급 역량의 설계자문</li>
+                  <li>지침에 의한 핵심시설 설계자문</li>
+                </ul>
+              </div>
+
+              <div className="intro-process-item">
+                <div className="intro-process-icon">
+                  <img src={Repair} alt="시공 아이콘" className="intro-process-icon-img" />
+                </div>
+                <h3 className="intro-process-title">시공</h3>
+                <div className="intro-process-divider">
+                  <span className="intro-process-number">4</span>
+                </div>
+                <ul className="intro-process-list">
+                  <li>수년간의 시공 노하우로 효율적인 기술력 제공</li>
+                  <li>안전 우선과 하자제로화 시공</li>
+                </ul>
+              </div>
+
+              <div className="intro-process-item">
+                <div className="intro-process-icon">
+                  <img src={Management} alt="사후관리 아이콘" className="intro-process-icon-img" />
+                </div>
+                <h3 className="intro-process-title">사후관리</h3>
+                <div className="intro-process-divider">
+                  <span className="intro-process-number">5</span>
+                </div>
+                <ul className="intro-process-list">
+                  <li>최적의 성능발휘를 위한 차별화된 사후관리</li>
+                  <li>철저한 전문인력의 시설운영 관리</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
-
 
       <section className="intro-section intro-section-third">
-        <h3 className="intro-third-title intro-third-title-desktop">
-            산불소화시설이 필요한 곳
-        </h3>
+        <div className="intro-third-wrap">
+          <h2 className="intro-third-heading">중요 구성 시설물</h2>
 
-        <div className="intro-third-row">
-            <div className="intro-third-visual">
-            <img
-                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80"
-                alt="산불소화시설 관련 이미지"
-            />
+          <div className="intro-third-box-group">
+            <div className="intro-third-box">
+              <div className="intro-third-left">
+                <div className="intro-third-photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=900&q=80"
+                    alt="수관수막설비"
+                  />
+                </div>
+              </div>
+
+              <div className="intro-third-right">
+                <p className="intro-third-right-title">수관수막설비</p>
+                <ul className="intro-third-right-list">
+                  <li>보호대상 시설물 주변 입목보다 높은 위치에서 360°로 회전하며 물을 분사할 수 있는 타워형 살수 장치</li>
+                </ul>
+              </div>
             </div>
 
-            <div className="intro-third-content">
-            <h3 className="intro-third-title intro-third-title-mobile">
-                산불소화시설이 필요한 곳
-            </h3>
+            <div className="intro-third-box">
+              <div className="intro-third-left">
+                <div className="intro-third-photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80"
+                    alt="기계실"
+                  />
+                </div>
+              </div>
 
-            <ul className="intro-third-list">
-                <li>자연휴양림, 산림 및 목재 체험장</li>
-                <li>시험림, 보호림 등 보호할 가치가 높은 산림</li>
-                <li>농산촌 등 산림과 인접한 지역</li>
-                <li>산불이 빈번하게 발생하는 지역</li>
-                <li>대형산불로 확산될 우려가 큰 지역</li>
-                <li>그 외 산불로 인해 재산상의 큰 피해가 예상되는 지역</li>
-            </ul>
+              <div className="intro-third-right">
+                <p className="intro-third-right-title">기계실</p>
+                <ul className="intro-third-right-list">
+                  <li>물탱크, 가압송수장치(펌프), 옥내배관 등으로 구성된 기계 설비류를 보호하는 가설건축물</li>
+                </ul>
+              </div>
             </div>
+
+            <div className="intro-third-box">
+              <div className="intro-third-left">
+                <div className="intro-third-photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80"
+                    alt="산불진화용 급수전 및 관리로"
+                  />
+                </div>
+              </div>
+
+              <div className="intro-third-right">
+                <p className="intro-third-right-title">산불진화용 급수전 및 관리로</p>
+                <ul className="intro-third-right-list">
+                  <li>수관수막설비 외에 산불 진화에 필요한 물을 공급하는 설비</li>
+                  <li>수관수막설비과 그 부대시설의 운영, 관리를 위해 인력 및 장비가 원활하게 통행할 수 있도록 유지하는 통로</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        </section>
+      </section>
         </div>
     </div>
   );
