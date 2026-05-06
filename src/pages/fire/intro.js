@@ -5,11 +5,11 @@ import Intro2 from '../image/intro2.png';
 import Intro3 from '../image/intro3.png';
 import Repair from '../image/repair.png';
 import Management from '../image/management.png';
+import MainB1 from '../image/main-b1.jpg';
 import FireTab from './fireTab';
 
 export default function Intro() {
-  const introImage =
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80';
+  const introImage = MainB1;
 
   return (
     <div className="intro-page">

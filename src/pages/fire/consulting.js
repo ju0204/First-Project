@@ -4,12 +4,13 @@ import Consulting1 from '../image/consulting1.png';
 import Consulting2 from '../image/consulting2.png';
 import Consulting3 from '../image/consulting3.png';
 
+import MainB4 from '../image/main-b4.jpg';
+
 import './consulting.css';
 
 export default function Consulting() {
-  const introImage =
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80';
-
+  const introImage = MainB4;
+  
   return (
     <div className="consulting-page">
 

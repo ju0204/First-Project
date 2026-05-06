@@ -4,11 +4,11 @@ import InspectIcon from '../image/solution1.png';
 import ManageIcon from '../image/solution2.png';
 import RepairIcon from '../image/solution3.png';
 
+import MainB3 from '../image/main-b3.jpg';
 import './repair.css';
 
 export default function Repair() {
-  const introImage =
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80';
+  const introImage = MainB3;
 
   return (
     <div className="repair-page">

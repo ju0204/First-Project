@@ -10,7 +10,8 @@
 .slider-container{
   position:relative;
   width:100%;
-  height:clamp(540px, 100vh, 900px); /* 화면 커져도/작아도 안정적인 높이 */
+  height:100vh;
+  height:100dvh;
   overflow:hidden;
   font-family:"Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
@@ -80,18 +81,7 @@
   opacity:0; transform: translateY(12px);
 }
 
-/* CTA 버튼 */
-.cta{
-  display:inline-flex; align-items:center; gap:8px;
-  margin-top: 22px; padding: 14px 18px;
-  background: var(--brand); color:#fff; text-decoration:none;
-  background-color: #1f8b67;
-  border-radius: 12px; font-weight:700; letter-spacing:.01em;
-  box-shadow: 0 10px 30px rgba(16,185,129,.28);
-  opacity:0; transform: translateY(12px);
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-}
-.cta:hover{ transform: translateY(-2px); box-shadow: 0 16px 36px rgba(16,185,129,.35); filter:brightness(1.02); }
+
 
 /* ===== 등장 애니메이션 ===== */
 .is-active .overline,
@@ -136,11 +126,15 @@
 
 /* ===== 반응형 미세 조정 ===== */
 @media (max-width: 768px){
-  .slider-container{ height: clamp(520px, 78vh, 760px); }
-  .arrow{ width:48px; height:48px; }
+  .slider-container{
+    height:100vh;
+    height:100dvh;
+  }
 }
 
 @media (max-width: 560px){
-  .slider-container{ height: clamp(480px, 72vh, 680px); }
-  .text-box{ width: 92vw; }
+  .slider-container{
+    height:100vh;
+    height:100dvh;
+  }
 }

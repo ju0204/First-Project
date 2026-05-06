@@ -8,19 +8,17 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const images = [
   {
-    src: require('../pages/image/forest-fire.jpg'),
+    src: require('../pages/image/slide1.png'),
     overline: "MAINTENANCE & SUPPORT",
     title: "전문적인 유지보수 서비스",
     description: "정기적인 점검과 신속한 대응으로 시설의 최적 상태를 유지합니다.",
-    cta: "서비스 문의",
     href: "/contact"
   },
   {
-    src: require('../pages/image/forest.jpg'),
+    src: require('../pages/image/slide4.png'),
     overline: "INSTALLATION",
     title: "산불소화시설 설치사업",
     description: "산불의 예방과 초기 진화를 위해 맞춤형 시설을 설계·시공합니다.",
-    cta: "자세히 보기",
     href: "/business/install"
   },
   {
@@ -28,7 +26,6 @@ const images = [
     overline: "MAINTENANCE",
     title: "산불소화시설 유지보수",
     description: "이상 징후를 조기에 발견하고 신속 보수로 가동률을 높입니다.",
-    cta: "유지보수 안내",
     href: "/business/maintenance"
   },
 ];

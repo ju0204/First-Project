@@ -3,10 +3,10 @@ import './install.css';
 import Contract from '../image/contract.png';
 import Repair from '../image/repair.png';
 import Management from '../image/management.png';
+import MainB2 from '../image/main-b2.png';
 import FireTab from './fireTab';
 
-  const introImage =
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80';
+  const introImage = MainB2;
 
 const RECORDS = [
   { id: 1, year: 2026, month: 1, site: "전남 강진군 주작산자연휴양림", location: "전남 강진군", projectType: "산불소화시설", period: "2026-01", image: "/images/performance/2026/2026-1-1.jpg", images: ["/images/performance/2026/2026-1-2.jpg","/images/performance/2026/2026-1-3.jpg"] },
