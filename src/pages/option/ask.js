@@ -58,7 +58,14 @@ function Ask() {
         }),
       });
 
-      if (!res.ok) throw new Error("send_failed");
+      const result = await res.json().catch(() => null);
+
+      console.log("문의 API 응답:", result);
+
+      if (!res.ok || result?.ok === false) {
+        console.error("문의 API 실패:", result);
+        throw new Error(result?.error || "send_failed");
+      }
 
       setStatus({ sending: false, ok: true, error: "" });
       f.reset();
