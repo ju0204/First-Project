@@ -16,7 +16,7 @@
   min-height: 60vh;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-    url('/src/pages/image/company.jpg');
+    url('/src/pages/image/company.png');
   background-size: cover;
   background-position: center;
   display: flex;

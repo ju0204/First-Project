@@ -22,7 +22,7 @@ export default function Consulting() {
         </div>
 
         <div className="consulting-content">
-          <p className="consulting-subtitle">INSTALLATION LOCATIONS</p>
+          <p className="consulting-subtitle">PROFESSIONAL CONSULTING</p>
           <h2 className="consulting-title">컨설팅·제안</h2>
 
           <div className="consulting-description">

@@ -87,11 +87,15 @@
 
 @media (max-width: 768px) {
   .notice-page {
-    padding: 60px 16px 80px;
+    padding: 0 0 80px;
+  }
+
+  .notice-inner {
+    margin-top: 50px;
   }
 
   .notice-title {
-    font-size: 34px;
+    font-size: 25px;
   }
 
   .notice-title-line {

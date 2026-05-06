@@ -65,11 +65,12 @@
 .brand-name{
   display:block;
   font-family:"Noto Sans KR", sans-serif;
-  font-size:25px;
+  font-size:28px;
   font-weight:800;
-  color:#213291;
+  color:#fff;
   line-height:1;
   white-space:nowrap;
+  transition: color .18s ease;
 }
 
 .navbar-nav.main-nav{
@@ -124,8 +125,9 @@
   border-bottom:1px solid rgba(0,0,0,.08) !important;
   transform:translateY(-4px);
   opacity:0;
+  visibility:hidden;
   pointer-events:none;
-  transition: transform .10s ease, opacity .10s ease;
+  transition: transform .10s ease, opacity .10s ease, visibility .10s ease;
   z-index:1030;
   top:calc(var(--nav-h) + var(--mega-offset));
 }
@@ -133,6 +135,7 @@
 .mega-panel.show{
   transform:translateY(0);
   opacity:1;
+  visibility:visible;
   pointer-events:auto;
 }
 
@@ -193,9 +196,18 @@
 
 /* 모바일 아이콘 */
 .nav-menu{
-  width:clamp(28px,2.2vw,36px);
-  height:auto;
+  width:44px !important;
+  height:44px !important;
+  min-width:44px !important;
+  padding:0 !important;
   margin-right:clamp(12px,3vw,24px);
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+.nav-menu svg{
+  font-size:32px !important;
 }
 
 .close-icon-box{
@@ -211,7 +223,7 @@
 
 #close-icon{
   color:var(--text);
-  font-size:clamp(28px, 3.6vw, 40px);
+  font-size:30px;
 }
 
 /* 모바일 Drawer 아코디언 */
@@ -232,8 +244,8 @@
 
 .mobile-accordion-trigger{
   width:100%;
-  min-height:58px;
-  padding:0 18px;
+  min-height:65px;
+  padding:0 22px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -243,7 +255,7 @@
   cursor:pointer;
   font-family:"Noto Sans KR", sans-serif;
   font-size:22px;
-  font-weight:700;
+  font-weight:500;
   color:var(--text);
   text-align:left;
 }
@@ -281,12 +293,12 @@
 .mobile-single-link{
   display:flex;
   align-items:center;
-  min-height:58px;
-  padding:0 18px;
+  min-height:65px;
+  padding:0 22px;
   background:#fff;
   font-family:"Noto Sans KR", sans-serif;
   font-size:22px;
-  font-weight:700;
+  font-weight:500;
   color:var(--text);
   text-decoration:none;
 }
@@ -300,6 +312,10 @@
   background: rgba(255,255,255) !important;
   border-bottom: 1px solid rgba(0,0,0,.06);
   box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+#navbar:hover .brand-name{
+  color:#213291;
 }
 
 #navbar:hover .nav-link-custom,

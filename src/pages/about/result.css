@@ -39,10 +39,11 @@
   position: relative;
   display: table;
   margin: clamp(28px, 6vw, 72px) auto 8px;
-  padding-bottom: 22px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
   text-align: center;
   font-weight: 700;
-  font-size: clamp(28px, 4.2vw, 48px);
+  font-size: 30px;
 }
 
 .result-title::after{
@@ -52,7 +53,7 @@
   bottom: 0;
   transform: translateX(-50%);
   width: 52px;
-  height: 4px;
+  height: 3px;
   background: #1c88d9;
   border-radius: 999px;
 }
@@ -60,7 +61,7 @@
   text-align:center;
   color: var(--muted);
   margin: 0 0 clamp(24px, 4vw, 40px);
-  font-size: clamp(14px,1.6vw,18px);
+  font-size: 15px
 }
 
 /* ===== Timeline ===== */
@@ -173,6 +174,21 @@
      --year-top-gap: 28px;
      --page-left-gap: 48px; /* ← 원하는 만큼 조절(예: 16~40px) */
 }
+  .history-head {
+  width: 100vw;
+  margin-left: calc(-1 * (clamp(12px, 3vw, 16px) + var(--page-left-gap)));
+  text-align: center;
+}
+
+.result-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-sub {
+  text-align: center;
+}
+
 
   .tl-year{
     min-height: var(--year-badge-h);
@@ -251,5 +267,7 @@
   .tl-col.right:empty{
     display: none;
   }
+
+  
 
 }

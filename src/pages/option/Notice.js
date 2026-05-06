@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import noticeData from './noticeData';
 import OptionTab from './optionTab';
-import noticeBg from '../image/dasan.png';
+import noticeBg from '../image/notice.png';
 import './Notice.css';
 
 function Notice() {

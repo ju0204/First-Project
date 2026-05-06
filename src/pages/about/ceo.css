@@ -25,7 +25,7 @@
   padding-bottom: 22px;
   text-align: center;
   font-weight: 700;
-  font-size: clamp(28px, 4.2vw, 48px);
+  font-size: 30px;
   letter-spacing: -0.03em;
   color: var(--ink);
 }
@@ -37,7 +37,7 @@
   bottom: 0;
   transform: translateX(-50%);
   width: 52px;
-  height: 4px;
+  height: 3px;
   background: #1c88d9;
   border-radius: 999px;
 }
@@ -141,7 +141,7 @@
   }
 }
 
-@media (max-width: 680px){
+@media (max-width: 768px){
   .ceo-wrap{
     margin: 6vh auto 8vh;
     padding: 0 20px;
@@ -162,5 +162,14 @@
 
   .sign-name{
     font-size: 24px;
+  }
+
+  .ceo-title {
+    font-size: 25px;
+  }
+
+  .ceo-title::after {
+    width: 50px;
+    height: 3px;
   }
 }

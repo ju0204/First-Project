@@ -1,138 +1,324 @@
-:root{
-  --ink:#0f172a;
-  --muted:#64748b;
-  --accent:#1c3886;
-  --border:rgba(15,23,42,.12);
-  --card:#ffffff;
-  --bg:#ffffff;
-  --shadow:0 10px 24px rgba(2,6,23,.08);
-  --radius:14px;
+:root {
+  --ink: #111827;
+  --muted: #555;
+  --accent: #013c8c;
+  --accent-dark: #0a2f6f;
+  --required: #d93025;
+  --input-bg: #f7f7f7;
+  --bg: #ffffff;
 }
 
-* { box-sizing: border-box; }
-.ask-wrap{ background:var(--bg); color:var(--ink); min-height:100%; 
-    font-family: 'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; 
-}
-.hero{
-  padding:64px 16px 24px; text-align:center;
-}
-.hero h1{
-  font-size:clamp(24px,3.6vw,40px);
-  letter-spacing:-.02em; margin:0 0 10px; font-weight:900;
-}
-.hero p{
-  color:var(--muted); margin:0 auto; max-width:720px;
+* {
+  box-sizing: border-box;
 }
 
-/* Form card */
-.form-area{
-  max-width:880px; margin:16px auto 80px; padding:0 16px;
-}
-form{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:20px;
-}
-.row{ display:grid; gap:14px; margin-bottom:12px; }
-.row.one{ grid-template-columns: 1fr; }
-.row.two{ grid-template-columns: 1fr 1fr; }
-@media (max-width: 760px){
-  .row.two{ grid-template-columns: 1fr; }
+.ask-wrap {
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100%;
+  font-family: 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
 }
 
-.field label{
-  display:block; font-size:14px; font-weight:700; margin:0 0 6px;
-}
-.req::after{ content:"*"; color:#ef4444; margin-left:4px; }
-
-input, textarea{
-  width:100%; padding:12px 12px; border:1px solid var(--border);
-  border-radius:10px; font-size:15px; background:#fff; color:var(--ink);
-}
-textarea{ min-height:140px; resize:vertical; }
-input:focus, textarea:focus{
-  outline:2px solid color-mix(in srgb, var(--accent) 30%, transparent);
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+/* 제목 영역 */
+.ask-title-area {
+  padding: 70px 16px 36px;
+  text-align: center;
 }
 
-/* Consent */
-/* ===== 동의 영역 정리 ===== */
-.agree{
-  display:flex;
-  align-items:flex-start;   /* 멀티라인일 때 체크박스와 텍스트 윗줄 정렬 */
-  gap:15px;                 /* 체크박스 ↔ 텍스트 간격 (원하면 6~12px로 조절) */
-  margin:14px 0 10px;       /* 영역 바깥 여백 */
-  margin-left: 20px;
-  padding-top:2px;
+.ask-title-area h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #111;
 }
 
-.agree input[type="checkbox"]{
-  flex:0 0 auto;
-  width:18px; height:18px;  /* 체크박스 크기 */
-  margin:0;                 /* 개별 마진 제거(간격은 gap으로 관리) */
-  margin-top:2px;   
-
+.ask-title-area h1 span {
+  color: var(--accent);
 }
 
-.agree label{
-  line-height:1.45;
-  font-size:15px;           /* 기본 크기 */
-  font-weight:600;          /* 기본 굵기 */
-  color:var(--ink);
+.ask-title-area p {
+  margin: 18px 0 0;
+  font-size: 15px;
+  color: #333;
 }
 
-.agree label .lead{
-  display:inline-block;
-  white-space:nowrap;       /* “(필수)…동의합니다.” 한 줄 유지 */
-  font-weight:700;          /* 한 줄 문구는 더 굵게 */
-  font-size:14px; 
+/* 폼 전체 */
+.form-area {
+  max-width: 1080px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
 }
 
-.agree small{
-  display:block;
-  margin-top:6px;           /* lead와의 간격 */
-  font-size:13px;           /* 안내문은 작게 */
-  line-height:1.6;
-  color:var(--muted);
+form {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
 }
 
-/* 아주 좁은 화면에서는 줄바꿈 허용 */
-@media (max-width: 380px){
-  .agree label .lead{ white-space:normal; }
+/* *표시는 필수입니다. */
+.required-guide {
+  text-align: right;
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: #333;
 }
 
-/* Buttons */
-/* Buttons */
-.actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:6px;
-  justify-content:center;   /* ✅ 가운데 정렬 */
-  align-items:center;        /* (선택) 수직 중앙정렬 */
-  margin-top: 40px;
+.required-guide span {
+  color: var(--required);
+  font-weight: 700;
 }
 
-.btn{
-  appearance:none; border:none; border-radius:10px; padding:12px 16px;
-  font-weight:800; cursor:pointer; background:#e5e7eb;
-}
-.btn.primary{ background:var(--accent); color:#fff; }
-
-/* 허니팟(봇 방지) — 화면에서 보이지 않게 */
-.hp{
-  position:absolute !important;
-  left:-9999px !important;
-  width:0 !important; height:0 !important;
-  opacity:0 !important; pointer-events:none !important;
+/* 입력 항목 */
+.field {
+  margin-bottom: 22px;
 }
 
-/* 상태 메시지 */
-.status{ margin:8px 0 0; font-size:14px; }
-.status.ok{ color:#15803d; }     /* 초록 */
-.status.error{ color:#b91c1c; }  /* 빨강 */
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
 
-/* 전송 중 버튼 비활성화 스타일(가벼운 표시) */
-.btn[disabled]{ opacity:.7; cursor:not-allowed; }
+/* 필수 빨간 별표 */
+.req::after {
+  content: " *";
+  color: var(--required);
+  font-weight: 700;
+}
+
+/* input / textarea */
+input,
+textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--ink);
+  font-size: 15px;
+  padding: 15px 16px;
+  border-radius: 0;
+}
+
+input {
+  height: 48px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* placeholder */
+input::placeholder,
+textarea::placeholder {
+  color: #aaa;
+}
+
+/* 포커스 */
+input:focus,
+textarea:focus {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+/* 개인정보 박스 */
+.privacy-box {
+  height: 120px;
+  overflow-y: auto;
+  padding: 20px 22px;
+  background: var(--input-bg);
+  border: none;
+  color: #333;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.privacy-box p {
+  margin: 0 0 14px;
+}
+
+.privacy-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* 개인정보 박스 스크롤바 */
+.privacy-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.privacy-box::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+
+.privacy-box::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+
+/* 동의 체크 */
+.agree {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.agree input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.agree label {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 버튼 */
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.btn {
+  min-width: 180px;
+  height: 48px;
+  border: none;
+  border-radius: 6px;
+  background: #e5e7eb;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* 에러 메시지 */
+.status {
+  margin: 12px 0 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.status.error {
+  color: #b91c1c;
+}
+
+/* 허니팟 */
+.hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 태블릿 */
+@media (max-width: 768px) {
+  .ask-title-area {
+    padding: 52px 16px 30px;
+  }
+
+  .ask-title-area h1 {
+    font-size: 26px;
+  }
+
+  .ask-title-area p {
+    font-size: 13px;
+  }
+
+  .form-area {
+    padding: 0 18px;
+  }
+
+  .field {
+    margin-bottom: 20px;
+  }
+
+  input {
+    height: 46px;
+  }
+
+  textarea {
+    min-height: 120px;
+  }
+
+  .privacy-box {
+    height: 130px;
+    padding: 16px;
+  }
+
+  .btn {
+    width: 170px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 480px) {
+  .ask-title-area {
+    padding: 44px 16px 26px;
+  }
+
+  .ask-title-area h1 {
+    font-size: 23px;
+    line-height: 1.35;
+  }
+
+  .required-guide {
+    font-size: 12px;
+  }
+
+  .field label {
+    font-size: 14px;
+  }
+
+  input,
+  textarea {
+    font-size: 14px;
+    padding: 13px 14px;
+  }
+
+  .agree {
+    align-items: flex-start;
+  }
+
+  .agree label {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .actions {
+    margin-top: 36px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

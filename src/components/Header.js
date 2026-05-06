@@ -32,17 +32,31 @@ class Header extends Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll, { passive: true });
-    window.addEventListener('blur', this.handleWindowBlur);
+    window.addEventListener('blur', this.closeAllMenus);
+    window.addEventListener('focus', this.closeAllMenus);
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
     this.handleScroll();
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('blur', this.handleWindowBlur);
+    window.removeEventListener('blur', this.closeAllMenus);
+    window.removeEventListener('focus', this.closeAllMenus);
     document.removeEventListener('visibilitychange', this.handleVisibilityChange);
     this.clearMegaTimers();
   }
+
+  handleWindowFocus = () => {
+    this.closeAllMenus();
+  };
+
+  handlePageShow = () => {
+    this.closeAllMenus();
+  };
+
+  handleDocumentMouseLeave = () => {
+    this.closeAllMenus();
+  };
 
   handleScroll = () => {
     const scrolled = window.scrollY > 10;
@@ -98,9 +112,7 @@ class Header extends Component {
   };
 
   handleVisibilityChange = () => {
-    if (document.hidden) {
-      this.closeAllMenus();
-    }
+    this.closeAllMenus();
   };
 
   closeDrawerAndMove = () => {
@@ -188,6 +200,7 @@ class Header extends Component {
           id="navbar"
           data-bs-theme="light"
           className={isScrolled ? 'scrolled' : ''}
+          onMouseLeave={this.closeAllMenus}
         >
           <Container id="nav-container" fluid>
             <Navbar.Brand as={Link} to="/" className="brand">
@@ -201,8 +214,6 @@ class Header extends Component {
                 className="nav-item has-mega"
                 onMouseEnter={() => this.openMega('about')}
                 onMouseLeave={() => this.closeMegaDelayed('about')}
-                onFocus={() => this.openMega('about')}
-                onBlur={() => this.closeMegaDelayed('about')}
               >
                 <span className={`nav-link-custom top-link ${megaOpen === 'about' ? 'active' : ''}`}>
                   회사소개
@@ -212,10 +223,26 @@ class Header extends Component {
                   <div className="mega-inner">
                     <div className="mega-col">
                       <ul>
-                        <li><Link to="/ceo" className="mega-link">인사말</Link></li>
-                        <li><Link to="/about" className="mega-link">경영이념</Link></li>
-                        <li><Link to="/result" className="mega-link">연혁</Link></li>
-                        <li><Link to="/road" className="mega-link">오시는길</Link></li>
+                        <li>
+                          <Link to="/ceo" className="mega-link" onClick={this.closeAllMenus}>
+                            인사말
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/about" className="mega-link" onClick={this.closeAllMenus}>
+                            경영이념
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/result" className="mega-link" onClick={this.closeAllMenus}>
+                            연혁
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/road" className="mega-link" onClick={this.closeAllMenus}>
+                            오시는길
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -227,8 +254,6 @@ class Header extends Component {
                 className="nav-item has-mega"
                 onMouseEnter={() => this.openMega('biz')}
                 onMouseLeave={() => this.closeMegaDelayed('biz')}
-                onFocus={() => this.openMega('biz')}
-                onBlur={() => this.closeMegaDelayed('biz')}
               >
                 <span className={`nav-link-custom top-link ${megaOpen === 'biz' ? 'active' : ''}`}>
                   사업소개
@@ -238,10 +263,26 @@ class Header extends Component {
                   <div className="mega-inner">
                     <div className="mega-col">
                       <ul>
-                        <li><Link to="/intro" className="mega-link">산불소화시설</Link></li>
-                        <li><Link to="/install" className="mega-link">시공·실적</Link></li>
-                        <li><Link to="/repair" className="mega-link">유지보수점검</Link></li>
-                        <li><Link to="/consulting" className="mega-link">전문 컨설팅</Link></li>
+                        <li>
+                          <Link to="/intro" className="mega-link" onClick={this.closeAllMenus}>
+                            산불소화시설
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/install" className="mega-link" onClick={this.closeAllMenus}>
+                            시공·실적
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/repair" className="mega-link" onClick={this.closeAllMenus}>
+                            유지보수점검
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/consulting" className="mega-link" onClick={this.closeAllMenus}>
+                            전문 컨설팅
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                   </div>

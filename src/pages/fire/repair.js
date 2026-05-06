@@ -13,7 +13,7 @@ export default function Repair() {
   return (
     <div className="repair-page">
 
-    <FireTab title="산불소화시설" />
+    <FireTab title="유지보수·점검" />
 
     <div className="repair-content-wrap">
       <section className="repair-section repair-section-first">
@@ -22,7 +22,7 @@ export default function Repair() {
         </div>
 
         <div className="repair-content">
-          <p className="repair-subtitle">INSTALLATION LOCATIONS</p>
+          <p className="repair-subtitle">MAINTENANCE & INSPECTION</p>
           <h2 className="repair-title">유지보수·점검</h2>
 
           <div className="repair-description">

@@ -25,7 +25,7 @@
   text-align: center;
   letter-spacing: -.02em;
   font-weight: 700;
-  font-size: clamp(28px, 4.2vw, 48px);
+  font-size: 30px;
 }
 
 .road-title::after{
@@ -35,7 +35,7 @@
   bottom: 0;
   transform: translateX(-50%);
   width: 52px;
-  height: 4px;
+  height: 3px;
   background: #1c88d9;
   border-radius: 999px;
 }
@@ -122,7 +122,7 @@
 
 .road-title{
   font-size: clamp(22px, 8vw, 34px);
-  margin: 18px auto 18px;
+  margin: 50px auto 60px;
   padding-bottom: 18px;
 }
   .map-container{
