@@ -56,10 +56,23 @@ function NoticeDetail() {
           </div>
 
           <div className="notice-detail-content">
-            {notice.content.split('\n').map((line, idx) => (
-              <p key={idx}>{line}</p>
-            ))}
-          </div>
+          {notice.content.split('\n').map((line, idx) => {
+            const text = line.trim();
+            const isLink = text.startsWith('http');
+
+            return (
+              <p key={idx}>
+                {isLink ? (
+                  <a href={text} target="_blank" rel="noopener noreferrer">
+                    산불소화시설 설치 및 운영 관리 지침 
+                  </a>
+                ) : (
+                  line
+                )}
+              </p>
+            );
+          })}
+        </div>
         </div>
 
         <div className="notice-detail-bottom">

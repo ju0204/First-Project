@@ -61,6 +61,8 @@
 .notice-detail-content {
   min-height: 380px;
   padding: 40px 20px 80px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .notice-detail-content p {
@@ -69,6 +71,17 @@
   line-height: 1.9;
   color: #555;
   white-space: pre-line;
+}
+
+.notice-detail-content a {
+  color: #1e90ff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.notice-detail-content a:hover {
+  color: #1553b1;
 }
 
 .notice-detail-bottom {
