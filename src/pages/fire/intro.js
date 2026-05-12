@@ -6,6 +6,9 @@ import Intro3 from '../image/intro3.png';
 import Repair from '../image/repair.png';
 import Management from '../image/management.png';
 import MainB1 from '../image/main-b1.jpg';
+import Facility1 from '../image/intro31.jpg';
+import Facility2 from '../image/intro4.jpg';
+import Facility3 from '../image/intro33.jpg';
 import FireTab from './fireTab';
 
 export default function Intro() {
@@ -131,7 +134,7 @@ export default function Intro() {
               <div className="intro-third-left">
                 <div className="intro-third-photo">
                   <img
-                    src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=900&q=80"
+                    src={Facility1}
                     alt="수관수막설비"
                   />
                 </div>
@@ -149,16 +152,16 @@ export default function Intro() {
               <div className="intro-third-left">
                 <div className="intro-third-photo">
                   <img
-                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80"
+                    src={Facility2}
                     alt="기계실"
                   />
                 </div>
               </div>
 
               <div className="intro-third-right">
-                <p className="intro-third-right-title">기계실</p>
+                <p className="intro-third-right-title">기계설비</p>
                 <ul className="intro-third-right-list">
-                  <li>물탱크, 가압송수장치(펌프), 옥내배관 등으로 구성된 기계 설비류를 보호하는 가설건축물</li>
+                  <li>물탱크, 가압송수장치(펌프), 옥내외배관 등으로 구성된 기계 설비류</li>
                 </ul>
               </div>
             </div>
@@ -167,16 +170,16 @@ export default function Intro() {
               <div className="intro-third-left">
                 <div className="intro-third-photo">
                   <img
-                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80"
+                    src={Facility3}
                     alt="산불진화용 급수전 및 관리로"
                   />
                 </div>
               </div>
 
               <div className="intro-third-right">
-                <p className="intro-third-right-title">산불진화용 급수전 및 관리로</p>
+                <p className="intro-third-right-title">기계실 / 관리로</p>
                 <ul className="intro-third-right-list">
-                  <li>수관수막설비 외에 산불 진화에 필요한 물을 공급하는 설비</li>
+                  <li>산불소화시설 중요시설설비를 보호하기위한 가설건축물</li>
                   <li>수관수막설비과 그 부대시설의 운영, 관리를 위해 인력 및 장비가 원활하게 통행할 수 있도록 유지하는 통로</li>
                 </ul>
               </div>

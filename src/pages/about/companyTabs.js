@@ -11,6 +11,8 @@ const CompanyTabs = ({
         <div className="title-box">
           <p className="tab-subtitle">{subtitle}</p>
           <h1 className="tab-title">{title}</h1>
+
+          
         </div>
       </div>
     </div>

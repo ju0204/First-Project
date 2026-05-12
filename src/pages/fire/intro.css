@@ -481,6 +481,12 @@
     height: 180px;
   }
 
+  .intro-third-photo img {
+    object-fit: cover;
+    object-position: 60% center;
+  }
+  
+
   .intro-third-right {
     min-height: 180px;
     padding: 24px 26px;

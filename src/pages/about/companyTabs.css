@@ -38,18 +38,36 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #1c88d9;
+  color: #207dc5;
 }
 
 .tab-title {
   margin: 0;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: clamp(42px, 6vw, 40px);
+  font-size: clamp(50px, 6vw, 40px);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.04em;
   color: #ffffff;
   word-break: keep-all;
+}
+
+.option-breadcrumb {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.breadcrumb-arrow {
+  font-size: 22px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 @media (max-width: 1024px) {

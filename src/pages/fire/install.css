@@ -236,17 +236,24 @@
 
 .install-process-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 280px));
+  grid-template-columns: repeat(3, 280px);
   justify-content: center;
   column-gap: 90px;
   row-gap: 32px;
-  align-items: start;
+  align-items: stretch;
   max-width: 1300px;
   margin: 0 auto;
 }
 
 .install-process-item {
   text-align: center;
+  background: #f5f5f5;
+  width: 340px;
+  height: 395px;
+  padding: 52px 30px 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .install-process-icon {
@@ -254,7 +261,7 @@
   height: 110px;
   margin: 0 auto 18px;
   border-radius: 50%;
-  background: #F9F9F9;
+  background: #f5f5f5;
   /* border: 3px solid #6d6c6c; */
   display: flex;
   align-items: center;
@@ -352,16 +359,19 @@
 }
 
 @media (max-width: 768px) {
-    .install-process-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 12px;
-    row-gap: 20px;
-    max-width: 100%;
+  .install-process-grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 16px;
+    max-width: 350px;
     margin: 0 auto;
   }
 
   .install-process-item {
     width: 100%;
+    height: auto;
+    min-height: 280px;
+    padding: 36px 24px;
   }
 
   .install-process-heading {
@@ -374,45 +384,45 @@
   }
 
   .install-process-icon {
-    width: 58px;
-    height: 58px;
-    margin-bottom: 10px;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 16px;
   }
 
   .install-process-icon-img {
-    width: 28px;
-    height: 28px;
+    width: 65px;
+    height: 65px;
   }
 
   .install-process-title {
-    margin-bottom: 12px;
-    font-size: 0.82rem;
+    margin-bottom: 16px;
+    font-size: 1rem;
     line-height: 1.35;
   }
 
   .install-process-divider {
-    margin: 0 6px 14px;
-    height: 26px;
+    margin: 0 6px 20px;
+    height: 30px;
   }
 
   .install-process-number {
-    width: 26px;
-    height: 26px;
-    font-size: 0.78rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
   }
 
   .install-process-list {
-    padding: 0 2px 0 12px;
+    padding: 0 8px 0 18px;
   }
 
   .install-process-list li {
-    margin-bottom: 5px;
-    font-size: 0.72rem;
-    line-height: 1.5;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.7;
   }
 
   .install-process-list li::before {
-    left: -9px;
+    left: -10px;
   }
 }
 

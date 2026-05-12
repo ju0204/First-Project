@@ -9,18 +9,17 @@ const Footer = () => {
         <div className="footer-info">
           <p>
             <span>상호명 : 대건이앤에스</span>
-            <span>주소 : 서울특별시 어쩌고 저쩌고 1동 101호</span>
+            <span>주소 : 경기도 남양주시 다산순환로20 다산현대프리미어캠퍼스 A동 1026호</span>
           </p>
 
           <p>
             <span>대표자 : 박정이</span>
-            <span>사업자등록번호 : 000-00-00000</span>
-            <span>TEL : 02-000-0000</span>
+            <span>사업자등록번호 : 510-13-90993</span>
+            <span>TEL : 02-979-2785</span>
           </p>
 
           <p>
-            <span>FAX : 02-000-0000</span>
-            <span>E-mail : @gmail.com</span>
+            <span>E-mail : nam11060@naver.com</span>
           </p>
 
           <p className="copyright">

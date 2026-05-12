@@ -9,23 +9,23 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 const images = [
   {
     src: require('../pages/image/slide1.png'),
-    overline: "MAINTENANCE & SUPPORT",
-    title: "전문적인 유지보수 서비스",
-    description: "정기적인 점검과 신속한 대응으로 시설의 최적 상태를 유지합니다.",
+    overline: "SAFEGUARDING LIVES & FORESTS",
+    title: "산불재해 전문기업",
+    description: "대건이앤에스는 산불소화시설의 설계 자문부터 시공, 유지보수까지 현장에 맞는 전문 솔루션을 제공합니다.",
     href: "/contact"
   },
   {
-    src: require('../pages/image/slide4.png'),
-    overline: "INSTALLATION",
-    title: "산불소화시설 설치사업",
-    description: "산불의 예방과 초기 진화를 위해 맞춤형 시설을 설계·시공합니다.",
+    src: require('../pages/image/slide2.png'),
+    overline: "PROFESSIONAL TECHNOLOG",
+    title: "전문 기술로 구축하는 산불소화시설",
+    description: "축적된 기술력과 꼼꼼한 현장 관리를 통해 산불 예방과 초기 대응을 위한 시설을 안정적으로 구축합니다.",
     href: "/business/install"
   },
   {
-    src: require('../pages/image/forest2.jpg'),
-    overline: "MAINTENANCE",
-    title: "산불소화시설 유지보수",
-    description: "이상 징후를 조기에 발견하고 신속 보수로 가동률을 높입니다.",
+    src: require('../pages/image/slide3.png'),
+    overline: "EXPERT MAINTENANCE & CONSULTING",
+    title: "유지보수/점검과 전문 컨설팅",
+    description: "현장별 시설 상태와 운영 환경을 고려하여 효율적인 유지관리와 현장에 맞는 전문적인 컨설팅을 제안합니다.",
     href: "/business/maintenance"
   },
 ];

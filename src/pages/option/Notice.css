@@ -10,7 +10,7 @@
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .notice-title {
@@ -92,6 +92,7 @@
 
   .notice-inner {
     margin-top: 50px;
+    padding: 0 18px;
   }
 
   .notice-title {

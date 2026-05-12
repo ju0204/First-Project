@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import noticeData from './noticeData';
+import OptionTab from './optionTab';
+import noticeBg from '../image/notice.png';
 import './NoticeDetail.css';
 
 function NoticeDetail() {
@@ -12,6 +14,11 @@ function NoticeDetail() {
   if (!notice) {
     return (
       <div className="notice-detail-page">
+              <OptionTab
+        subtitle="NOTICE"
+        title="공지사항"
+        backgroundImage={noticeBg}
+      />
         <div className="notice-detail-inner">
           <h2 className="notice-detail-title-main">공지사항</h2>
           <div className="notice-detail-title-line" />
@@ -28,6 +35,12 @@ function NoticeDetail() {
 
   return (
     <div className="notice-detail-page">
+      <OptionTab
+        subtitle="NOTICE"
+        title="공지사항"
+        backgroundImage={noticeBg}
+      />
+
       <div className="notice-detail-inner">
         <h2 className="notice-detail-title-main">공지사항</h2>
         <div className="notice-detail-title-line" />

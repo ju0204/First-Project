@@ -3,7 +3,7 @@ import CompanyTabs from '../about/companyTabs';
 
 export default function Road() {
   const EMBED_SRC =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160.557408579193!2d127.14698249678952!3d37.6125742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cb747bfd545a7%3A0xd9359f275409fd38!2z64uk7IKw7ZiE64yA7ZSE66as66-47Ja07Lqg7Y287Iqk66qw!5e0!3m2!1sko!2skr!4v1776332371959!5m2!1sko!2skr";
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160.522436310655!2d127.1489934409495!3d37.61339707214284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cb77da26efc13%3A0xb20dabbfc0159ca1!2z64yA6rG07J207JWk7JeQ7Iqk!5e0!3m2!1sko!2skr!4v1778576059050!5m2!1sko!2skr";
 
   
     return (

@@ -89,10 +89,10 @@ export default function IntroPage() {
         </div>
 
         <div className="install-content">
-          <p className="install-subtitle">SOLUTIONS</p>
-          <h2 className="install-title">산불소화시설 시공 솔루션</h2>
+          <p className="install-subtitle">CONSTRUCTION PROJECTS</p>
+          <h2 className="install-title">산불소화시설 시공·실적</h2>
           <p className="install-description">
-            소중한 재산과 인명,산림자원을 산불로부터 보호하고 직접적인 진화와 예방으로 지켜냅니다.
+            소중한 재산과 인명, 산림자원을 산불로부터 보호하고 직접적인 진화와 예방으로 지켜냅니다.
           </p>
         </div>
       </section>

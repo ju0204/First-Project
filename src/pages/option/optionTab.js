@@ -17,6 +17,7 @@ const OptionTab = ({
         <div className="option-title-box">
           <p className="option-tab-subtitle">{subtitle}</p>
           <h1 className="option-tab-title">{title}</h1>
+
         </div>
       </div>
     </div>

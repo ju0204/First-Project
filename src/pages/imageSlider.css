@@ -69,7 +69,7 @@
 
 .headline{
   font-weight:800;
-  font-size: clamp(28px, 6vw, 64px);
+  font-size: 60px;
   line-height:1.12; margin: 0 0 14px;
   opacity:0; transform: translateY(12px);
 }
@@ -129,6 +129,10 @@
   .slider-container{
     height:100vh;
     height:100dvh;
+  }
+
+  .headline{
+    font-size: 40px;
   }
 }
 
