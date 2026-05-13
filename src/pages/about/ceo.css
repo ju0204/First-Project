@@ -25,7 +25,7 @@
   padding-bottom: 22px;
   text-align: center;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 37px;
   letter-spacing: -0.03em;
   color: var(--ink);
 }
@@ -94,20 +94,26 @@
   margin: 0 0 22px;
 }
 
+.p-best {
+  font-weight: 700;
+}
+
 .ceo-sign{
-  margin-top: 34px;
+  margin-top: 43px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
   text-align: right;
+
 }
 
 .sign-company{
-  font-size: 17px;
+  font-size: 23px;
   color: var(--ink);
-  font-weight: 700;
+  font-weight: 500;
+  margin-right: 10px;
 }
 
 .sign-name{

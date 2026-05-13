@@ -32,6 +32,8 @@ p {
   display: flex;
   overflow: hidden;
   background: #111;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .business-panel {
@@ -173,6 +175,8 @@ p {
 @media (max-width: 786px) {
   .main-business-panels {
     grid-template-columns: 1fr;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 
   .business-panel {
