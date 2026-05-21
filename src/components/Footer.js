@@ -19,7 +19,7 @@ const Footer = () => {
           </p>
 
           <p>
-            <span>E-mail : nam11060@naver.com</span>
+            <span>E-mail : daens510@naver.com</span>
           </p>
 
           <p className="copyright">

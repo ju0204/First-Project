@@ -37,7 +37,7 @@ export default function Road() {
           </div>
           <div className="road-details">
             <span className="road-label">E-mail</span>
-            <span className="road-name">nam11060@naver.com</span>
+            <span className="road-name">daens510@naver.com</span>
           </div>
         </div>
       </div>
